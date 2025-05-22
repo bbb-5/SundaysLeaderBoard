@@ -4,11 +4,12 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
+	"os"
 
 	_ "github.com/mattn/go-sqlite3"
 )
 
-const db_file string = "SundaysDatabase.db"
+//const db_file string = "SundaysDatabase.db"
 
 type Player struct {
 	Name      string
@@ -24,10 +25,10 @@ func new_player(name string, id int) *Player {
 
 //----------- Getting players from DB -----------------------------
 
-func find_players() []*Player {
+func find_players(path string) []*Player {
 	players := []*Player{}
 
-	db, err := sql.Open("sqlite3", db_file)
+	db, err := sql.Open("sqlite3", path)
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -51,6 +52,11 @@ func find_players() []*Player {
 }
 
 func main() {
-	players := find_players()
+
+	db_argument := os.Args[1]
+	fmt.Print(db_argument)
+
+	players := find_players(db_argument)
 	print(players)
+
 }
