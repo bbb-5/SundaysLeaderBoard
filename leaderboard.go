@@ -101,6 +101,30 @@ func get_medal_count(player *Player, path string) int {
 	return medal_amount[0]
 }
 
+func get_gold_count(player *Player, path string) int {
+
+	gold_amount := []int{}
+
+	db, err := sql.Open("sqlite3", path)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	gold_medals, err := db.Query("SELECT COUNT(tournament_id) FROM Wins WHERE team_id IN (SELECT team_id FROM PlayerTeam WHERE player_id = ?) AND medal='Gold'", player.Player_Id)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for gold_medals.Next() {
+		var amount int
+		gold_medals.Scan(&amount)
+		gold_amount = append(gold_amount, amount)
+	}
+
+	db.Close()
+	return gold_amount[0]
+}
+
 //---------- Main, testing functions -----------------------------------------------------------------
 
 func main() {
@@ -116,5 +140,8 @@ func main() {
 
 	medals := get_medal_count(players[2], db_argument)
 	print("\n", players[2].Name, " has gotten ", medals, " medals")
+
+	golds := get_gold_count(players[2], db_argument)
+	print("\n", players[2].Name, " has gotten ", golds, " gold medals")
 
 }
