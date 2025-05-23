@@ -21,9 +21,9 @@ func new_player(name string, id int) *Player {
 	return p
 }
 
-//----------- Getting players from DB -----------------------------
+//----------- Getting players from DB ------------------------------------------------------
 
-func find_players(path string) []*Player {
+func get_players(path string) []*Player {
 	players := []*Player{}
 
 	db, err := sql.Open("sqlite3", path)
@@ -51,7 +51,7 @@ func find_players(path string) []*Player {
 
 //------- Finding how many tournaments certain player has attended -------------------------
 
-func find_participation(player *Player, path string) int {
+func get_participation(player *Player, path string) int {
 
 	participated := []int{}
 
@@ -75,17 +75,46 @@ func find_participation(player *Player, path string) int {
 	return participated[0]
 }
 
-//-------Getting a player's wins-------------------------
+//----------- Getting the medals a player has won ---------------------------------------------------
+
+func get_medal_count(player *Player, path string) int {
+
+	medal_amount := []int{}
+
+	db, err := sql.Open("sqlite3", path)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	medals, err := db.Query("SELECT COUNT(tournament_id) FROM Wins WHERE team_id IN (SELECT team_id FROM PlayerTeam WHERE player_id = ?)", player.Player_Id)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for medals.Next() {
+		var amount int
+		medals.Scan(&amount)
+		medal_amount = append(medal_amount, amount)
+	}
+
+	db.Close()
+	return medal_amount[0]
+}
+
+//---------- Main, testing functions -----------------------------------------------------------------
 
 func main() {
 
 	db_argument := os.Args[1]
 	fmt.Print(db_argument)
 
-	players := find_players(db_argument)
+	players := get_players(db_argument)
 	print(players)
 
-	participation := find_participation(players[2], db_argument)
+	participation := get_participation(players[2], db_argument)
 	print("\n", players[2].Name, " has participatied ", participation, " times")
+
+	medals := get_medal_count(players[2], db_argument)
+	print("\n", players[2].Name, " has gotten ", medals, " medals")
 
 }
