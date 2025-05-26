@@ -11,8 +11,18 @@ import (
 )
 
 type Player struct {
-	Name      string `json:"player_name"`
-	Player_Id int    `json:"-"`
+	Name      string
+	Player_Id int
+}
+
+type PlayerJSON struct {
+	Name          string `json:"player_name"`
+	Player_Id     int    `json:"-"`
+	Participation int    `json:"participation"`
+	Medals        int    `json:"medals"`
+	Gold          int    `json:"gold"`
+	Silver        int    `json:"silver"`
+	Bronze        int    `json:"bronze"`
 }
 
 func new_player(name string, id int) *Player {
@@ -20,6 +30,18 @@ func new_player(name string, id int) *Player {
 	p.Name = name
 	p.Player_Id = id
 	return p
+}
+
+func new_playerJSON(name string, id int, participation int, medals int, gold int, silver int, bronze int) *PlayerJSON {
+	pj := new(PlayerJSON)
+	pj.Name = name
+	pj.Player_Id = id
+	pj.Participation = participation
+	pj.Medals = medals
+	pj.Gold = gold
+	pj.Silver = silver
+	pj.Bronze = bronze
+	return pj
 }
 
 //----------- Getting players from DB ------------------------------------------------------
@@ -202,9 +224,33 @@ func get_votings_count(player *Player, path string) int {
 }
 */
 
-//---------- Encodes JSON file ---------------------
+// --------- Forming player data for JSON file -------------------------------------------------------
 
-func encode_json(players []*Player) {
+func get_player_stats(players []*Player, path string) []*PlayerJSON {
+
+	playersJSON := []*PlayerJSON{}
+	participation := 0
+	gold := 0
+	silver := 0
+	bronze := 0
+	medals := 0
+
+	for _, player := range players {
+		participation = get_participation(player, path)
+		gold = get_gold_count(player, path)
+		silver = get_silver_count(player, path)
+		bronze = get_bronze_count(player, path)
+		medals = gold + silver + bronze
+
+		playersJSON = append(playersJSON, new_playerJSON(player.Name, player.Player_Id, participation, medals, gold, silver, bronze))
+	}
+
+	return playersJSON
+}
+
+//---------- Encodes JSON file -----------------------------------------------------------------------
+
+func encode_json(players []*PlayerJSON) {
 
 	json_data, err := json.MarshalIndent(players, "", "\t")
 	if err != nil {
@@ -221,9 +267,9 @@ func main() {
 	fmt.Print(db_argument)
 
 	players := get_players(db_argument)
-	print(players)
 
-	encode_json(players)
+	playersJSON := get_player_stats(players, db_argument)
+	encode_json(playersJSON)
 
 	/*
 		participation := get_participation(players[2], db_argument)
