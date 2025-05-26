@@ -2,6 +2,7 @@ package main
 
 import (
 	"database/sql"
+	"encoding/json"
 	"fmt"
 	"log"
 	"os"
@@ -10,8 +11,8 @@ import (
 )
 
 type Player struct {
-	Name      string
-	Player_Id int
+	Name      string `json:"player_name"`
+	Player_Id int    `json:"-"`
 }
 
 func new_player(name string, id int) *Player {
@@ -173,6 +174,45 @@ func get_bronze_count(player *Player, path string) int {
 	return bronze_amount[0]
 }
 
+//---------  Last place and extra topics--------------------------------------------------------------
+
+/*
+func get_votings_count(player *Player, path string) int {
+
+	bronze_amount := []int{}
+
+	db, err := sql.Open("sqlite3", path)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	silver_medals, err := db.Query("SELECT COUNT(tournament_id) FROM Wins WHERE team_id IN (SELECT team_id FROM PlayerTeam WHERE player_id = ?) AND medal='Bronze'", player.Player_Id)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for silver_medals.Next() {
+		var amount int
+		silver_medals.Scan(&amount)
+		bronze_amount = append(bronze_amount, amount)
+	}
+
+	db.Close()
+	return bronze_amount[0]
+}
+*/
+
+//---------- Encodes JSON file ---------------------
+
+func encode_json(players []*Player) {
+
+	json_data, err := json.MarshalIndent(players, "", "\t")
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("%s\n", json_data)
+}
+
 //---------- Main, testing functions -----------------------------------------------------------------
 
 func main() {
@@ -183,19 +223,21 @@ func main() {
 	players := get_players(db_argument)
 	print(players)
 
-	participation := get_participation(players[2], db_argument)
-	print("\n", players[2].Name, " has participatied ", participation, " times")
+	encode_json(players)
 
-	medals := get_medal_count(players[2], db_argument)
-	print("\n", players[2].Name, " has gotten ", medals, " medals")
+	/*
+		participation := get_participation(players[2], db_argument)
+		print("\n", players[2].Name, " has participatied ", participation, " times")
 
-	golds := get_gold_count(players[2], db_argument)
-	print("\n", players[2].Name, " has gotten ", golds, " gold medals")
+		medals := get_medal_count(players[2], db_argument)
+		print("\n", players[2].Name, " has gotten ", medals, " medals")
 
-	silvers := get_silver_count(players[2], db_argument)
-	print("\n", players[2].Name, " has gotten ", silvers, " silver medals")
+		golds := get_gold_count(players[2], db_argument)
+		print("\n", players[2].Name, " has gotten ", golds, " gold medals")
 
-	bronzes := get_bronze_count(players[2], db_argument)
-	print("\n", players[2].Name, " has gotten ", bronzes, " bronze medals")
+		silvers := get_silver_count(players[2], db_argument)
+		print("\n", players[2].Name, " has gotten ", silvers, " silver medals")
 
+		bronzes := get_bronze_count(players[2], db_argument)
+		print("\n", players[2].Name, " has gotten ", bronzes, " bronze medals")*/
 }
