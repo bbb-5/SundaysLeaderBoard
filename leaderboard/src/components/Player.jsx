@@ -1,7 +1,10 @@
 const Player = ({player}) => {
     return (
         <li>
-            {player.player_name}
+            <p>{player.player_name}</p>
+            <p>Gold: {player.gold}</p>
+            <p>Silver: {player.silver}</p>
+            <p>Bronze: {player.bronze}</p>
         </li>
     )
 }

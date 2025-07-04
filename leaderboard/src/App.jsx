@@ -16,13 +16,18 @@ function App() {
     })
   }, [])
 
+  const handleSort = (sortFunction) => {
+    const newPlayers = [...players].sort(sortFunction)
+    setPlayers(newPlayers)
+  }
+
 
   return (
     <>
     <h1>Sunday's Leaderboard</h1>
     <TopBar></TopBar>
     <LeaderBoard players={players}></LeaderBoard>
-    <BottomBar></BottomBar>
+    <BottomBar sortHandler={handleSort}/>
     </>
   )
 }
