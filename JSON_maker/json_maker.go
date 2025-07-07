@@ -31,6 +31,12 @@ type Extra_Award struct {
 	Name string `json:"name"`
 }
 
+type Team struct {
+	Id      int       `json:"id"`
+	Name    string    `json:"name"`
+	Players []*Player `json:"players"`
+}
+
 // ------- Constructors -------------------------------------------------------
 
 func new_extra(id int, name string) *Extra_Award {
@@ -58,6 +64,21 @@ func new_playerJSON(name string, id int, participation int, gold int, silver int
 	pj.Extras = extras
 	pj.Nickname = nickname
 	return pj
+}
+
+func new_team(name string, id int) *Team {
+	t := new(Team)
+	t.Name = name
+	t.Id = id
+	return t
+}
+
+func new_teamJSON(name string, id int, players []*Player) *Team {
+	tj := new(Team)
+	tj.Name = name
+	tj.Id = id
+	tj.Players = players
+	return tj
 }
 
 // ------- Getting things from db --------------------------------------------
@@ -101,6 +122,26 @@ func get_players(db *sql.DB) []*Player {
 	}
 
 	return players
+}
+
+func get_teams(db *sql.DB) []*Team {
+
+	teams := []*Team{}
+
+	team_data, err := db.Query("SELECT * FROM Team ORDER BY team_id")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for team_data.Next() {
+		var id int
+		var name string
+
+		team_data.Scan(&id, &name)
+
+		teams = append(teams, new_team(name, id))
+	}
+	return teams
 }
 
 //---------- Gets stuff for players -----------------------------------------------------------------------
@@ -252,6 +293,17 @@ func encode_json_player(players []*PlayerJSON) {
 	fmt.Printf("%s\n", json_data)
 }
 
+//---------- Encodes JSON Player file -----------------------------------------------------------------------
+
+func encode_json_team(teams []*Team) {
+
+	json_data, err := json.MarshalIndent(teams, "", "\t")
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("%s\n", json_data)
+}
+
 //---------- Main, testing functions -----------------------------------------------------------------
 
 func main() {
@@ -272,6 +324,9 @@ func main() {
 
 	playersJSON := get_player_stats(players, db)
 	encode_json_player(playersJSON)
+
+	teams := get_teams(db)
+	encode_json_team(teams)
 
 	db.Close()
 }
