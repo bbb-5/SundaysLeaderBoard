@@ -16,14 +16,14 @@ type Player struct {
 }
 
 type PlayerJSON struct {
-	Name          string `json:"name"`
-	Player_Id     int    `json:"id"`
-	Participation int    `json:"participation"`
-	Gold          int    `json:"gold"`
-	Silver        int    `json:"silver"`
-	Bronze        int    `json:"bronze"`
-	//Extras        []*Extra_Award `json:"extra_awards"`
-	Nickname string `json:"nickname"`
+	Name          string         `json:"name"`
+	Player_Id     int            `json:"id"`
+	Participation int            `json:"participation"`
+	Gold          int            `json:"gold"`
+	Silver        int            `json:"silver"`
+	Bronze        int            `json:"bronze"`
+	Extras        []*Extra_Award `json:"extra_awards"`
+	Nickname      string         `json:"nickname"`
 }
 
 type Extra_Award struct {
@@ -47,7 +47,7 @@ func new_player(id int, name string) *Player {
 	return p
 }
 
-func new_playerJSON(name string, id int, participation int, gold int, silver int, bronze int, nickname string) *PlayerJSON {
+func new_playerJSON(name string, id int, participation int, gold int, silver int, bronze int, nickname string, extras []*Extra_Award) *PlayerJSON {
 	pj := new(PlayerJSON)
 	pj.Name = name
 	pj.Player_Id = id
@@ -55,12 +55,10 @@ func new_playerJSON(name string, id int, participation int, gold int, silver int
 	pj.Gold = gold
 	pj.Silver = silver
 	pj.Bronze = bronze
-	//pj.Extras = extras
+	pj.Extras = extras
 	pj.Nickname = nickname
 	return pj
 }
-
-//extras []*Extra_Award
 
 // ------- Getting things from db --------------------------------------------
 
@@ -187,6 +185,25 @@ func get_nickname(player *Player, db *sql.DB) string {
 	return nickname
 }
 
+func get_player_extras(player *Player, db *sql.DB) []*Extra_Award {
+
+	extras := []*Extra_Award{}
+
+	extra_data, err := db.Query("SELECT name, extra_award_id FROM ExtraAward WHERE extra_award_id IN (SELECT extra_award_id FROM PlayerExtraAward WHERE player_id=?)", player.Player_Id)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for extra_data.Next() {
+		var name string
+		var id int
+		extra_data.Scan(&name, &id)
+		extras = append(extras, new_extra(id, name))
+	}
+
+	return extras
+}
+
 //---------- Encodes JSON file -----------------------------------------------------------------------
 
 func encode_json(extra_awards []*Extra_Award) {
@@ -208,6 +225,7 @@ func get_player_stats(players []*Player, db *sql.DB) []*PlayerJSON {
 	silver := 0
 	bronze := 0
 	nickname := ""
+	var extras = []*Extra_Award{}
 
 	for _, player := range players {
 		participation = get_participation(player, db)
@@ -215,8 +233,9 @@ func get_player_stats(players []*Player, db *sql.DB) []*PlayerJSON {
 		silver = get_silver_count(player, db)
 		bronze = get_bronze_count(player, db)
 		nickname = get_nickname(player, db)
+		extras = get_player_extras(player, db)
 
-		playersJSON = append(playersJSON, new_playerJSON(player.Name, player.Player_Id, participation, gold, silver, bronze, nickname))
+		playersJSON = append(playersJSON, new_playerJSON(player.Name, player.Player_Id, participation, gold, silver, bronze, nickname, extras))
 	}
 
 	return playersJSON
