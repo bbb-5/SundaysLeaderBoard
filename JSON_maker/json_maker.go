@@ -64,14 +64,9 @@ func new_playerJSON(name string, id int, participation int, gold int, silver int
 
 // ------- Getting things from db --------------------------------------------
 
-func get_extras(path string) []*Extra_Award {
+func get_extras(db *sql.DB) []*Extra_Award {
 
 	extras := []*Extra_Award{}
-
-	db, err := sql.Open("sqlite3", path)
-	if err != nil {
-		fmt.Println(err)
-	}
 
 	extra_data, err := db.Query("SELECT * FROM ExtraAward ORDER BY extra_award_id")
 	if err != nil {
@@ -86,18 +81,12 @@ func get_extras(path string) []*Extra_Award {
 
 		extras = append(extras, new_extra(id, name))
 	}
-
-	db.Close()
 	return extras
 }
 
-func get_players(path string) []*Player {
-	players := []*Player{}
+func get_players(db *sql.DB) []*Player {
 
-	db, err := sql.Open("sqlite3", path)
-	if err != nil {
-		fmt.Println(err)
-	}
+	players := []*Player{}
 
 	player_data, err := db.Query("SELECT player_id, name FROM Player ORDER BY player_id")
 	if err != nil {
@@ -113,20 +102,14 @@ func get_players(path string) []*Player {
 		players = append(players, new_player(id, name))
 	}
 
-	db.Close()
 	return players
 }
 
 //---------- Gets stuff for players -----------------------------------------------------------------------
 
-func get_gold_count(player *Player, path string) int {
+func get_gold_count(player *Player, db *sql.DB) int {
 
 	gold_amount := []int{}
-
-	db, err := sql.Open("sqlite3", path)
-	if err != nil {
-		fmt.Println(err)
-	}
 
 	gold_medals, err := db.Query("SELECT COUNT(tournament_id) FROM Placement WHERE team_id IN (SELECT team_id FROM PlayerTeam WHERE player_id = ?) AND (medaltype_id='1' OR medaltype_id='4')", player.Player_Id)
 	if err != nil {
@@ -139,18 +122,12 @@ func get_gold_count(player *Player, path string) int {
 		gold_amount = append(gold_amount, amount)
 	}
 
-	db.Close()
 	return gold_amount[0]
 }
 
-func get_silver_count(player *Player, path string) int {
+func get_silver_count(player *Player, db *sql.DB) int {
 
 	silver_amount := []int{}
-
-	db, err := sql.Open("sqlite3", path)
-	if err != nil {
-		fmt.Println(err)
-	}
 
 	silver_medals, err := db.Query("SELECT COUNT(tournament_id) FROM Placement WHERE team_id IN (SELECT team_id FROM PlayerTeam WHERE player_id = ?) AND (medaltype_id='2' OR medaltype_id='5')", player.Player_Id)
 	if err != nil {
@@ -163,18 +140,12 @@ func get_silver_count(player *Player, path string) int {
 		silver_amount = append(silver_amount, amount)
 	}
 
-	db.Close()
 	return silver_amount[0]
 }
 
-func get_bronze_count(player *Player, path string) int {
+func get_bronze_count(player *Player, db *sql.DB) int {
 
 	bronze_amount := []int{}
-
-	db, err := sql.Open("sqlite3", path)
-	if err != nil {
-		fmt.Println(err)
-	}
 
 	silver_medals, err := db.Query("SELECT COUNT(tournament_id) FROM Placement WHERE team_id IN (SELECT team_id FROM PlayerTeam WHERE player_id = ?) AND (medaltype_id='3' OR medaltype_id='6')", player.Player_Id)
 	if err != nil {
@@ -187,18 +158,12 @@ func get_bronze_count(player *Player, path string) int {
 		bronze_amount = append(bronze_amount, amount)
 	}
 
-	db.Close()
 	return bronze_amount[0]
 }
 
-func get_participation(player *Player, path string) int {
+func get_participation(player *Player, db *sql.DB) int {
 
 	participated := []int{}
-
-	db, err := sql.Open("sqlite3", path)
-	if err != nil {
-		fmt.Println(err)
-	}
 
 	participations, err := db.Query("SELECT COUNT(player_id) FROM PlayerTeam WHERE player_id = ?", player.Player_Id)
 	if err != nil {
@@ -211,20 +176,23 @@ func get_participation(player *Player, path string) int {
 		participated = append(participated, amount)
 	}
 
-	db.Close()
 	return participated[0]
 }
 
 /*
-func get_nickname(path string) string {
-
-	nickname := ""
+func get_nickname(player *Player, path string) string {
 
 	db, err := sql.Open("sqlite3", path)
 	if err != nil {
 		fmt.Println(err)
 	}
 
+	nickname, err := db.Query("SELECT name FROM Nickname WHERE player_id=?", player.Player_Id)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	return nickname
 }*/
 
 //---------- Encodes JSON file -----------------------------------------------------------------------
@@ -240,7 +208,7 @@ func encode_json(extra_awards []*Extra_Award) {
 
 // --------- Forming player data for JSON file ------------------------------------------
 
-func get_player_stats(players []*Player, path string) []*PlayerJSON {
+func get_player_stats(players []*Player, db *sql.DB) []*PlayerJSON {
 
 	playersJSON := []*PlayerJSON{}
 	participation := 0
@@ -249,10 +217,10 @@ func get_player_stats(players []*Player, path string) []*PlayerJSON {
 	bronze := 0
 
 	for _, player := range players {
-		participation = get_participation(player, path)
-		gold = get_gold_count(player, path)
-		silver = get_silver_count(player, path)
-		bronze = get_bronze_count(player, path)
+		participation = get_participation(player, db)
+		gold = get_gold_count(player, db)
+		silver = get_silver_count(player, db)
+		bronze = get_bronze_count(player, db)
 
 		playersJSON = append(playersJSON, new_playerJSON(player.Name, player.Player_Id, participation, gold, silver, bronze))
 	}
@@ -278,13 +246,19 @@ func main() {
 	db_argument := os.Args[1]
 	fmt.Print(db_argument)
 
-	extras := get_extras(db_argument)
+	db, err := sql.Open("sqlite3", db_argument)
+	if err != nil {
+		fmt.Println(err)
+	}
 
-	players := get_players(db_argument)
+	extras := get_extras(db)
+
+	players := get_players(db)
 
 	encode_json(extras)
 
-	playersJSON := get_player_stats(players, db_argument)
+	playersJSON := get_player_stats(players, db)
 	encode_json_player(playersJSON)
 
+	db.Close()
 }
