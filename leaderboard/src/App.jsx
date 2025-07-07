@@ -21,7 +21,6 @@ function App() {
     setPlayers(newPlayers)
   }
 
-
   return (
     <>
     <h1>Sunday's Leaderboard</h1>
