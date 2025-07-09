@@ -56,6 +56,7 @@ type DB struct {
 	Extra_Awards []*Extra_Award
 	Teams        []*Team
 	Tournaments  []*Tournament
+	Placements   []*Placement
 }
 
 // ------- Constructors -------------------------------------------------------
@@ -127,6 +128,15 @@ func new_placement(team_id int, tournament_id int, medaltype_id int) *Placement 
 	pl.Tournament_id = tournament_id
 	pl.MedalType_id = medaltype_id
 	return pl
+}
+
+func new_DB(extras []*Extra_Award, players []*PlayerJSON, teams []*Team, tournaments []*Tournament, placements []*Placement) *DB {
+	db := new(DB)
+	db.Extra_Awards = extras
+	db.Players = players
+	db.Teams = teams
+	db.Tournaments = tournaments
+	return db
 }
 
 // ------- Getting things from db --------------------------------------------
@@ -427,6 +437,28 @@ func get_team_stats(teams []*Team, db *sql.DB) []*Team {
 	return teamsJSON
 }
 
+// --------- Forming Database ------------------------------------------
+
+func form_db(db *sql.DB) *DB {
+
+	extras := get_extras(db)
+
+	players := get_players(db)
+	playersJSON := get_player_stats(players, db)
+
+	teams := get_teams(db)
+	teamsJSON := get_team_stats(teams, db)
+
+	tournaments := get_tournaments(db)
+	tournamentsJSON := get_tournament_stats(tournaments, db)
+
+	placements := get_placements(db)
+
+	DB := new_DB(extras, playersJSON, teamsJSON, tournamentsJSON, placements)
+
+	return DB
+}
+
 // --------- Forming tournament data for JSON file ------------------------------------------
 
 func get_tournament_stats(tournaments []*Tournament, db *sql.DB) []*Tournament {
@@ -485,6 +517,17 @@ func encode_json_placements(placements []*Placement) {
 	fmt.Printf("%s\n", json_data)
 }
 
+//---------- Encodes DB to JSON file -----------------------------------------------------------------------
+
+func encode_json_DB(db *DB) {
+
+	json_data, err := json.MarshalIndent(db, "", "\t")
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("%s\n", json_data)
+}
+
 //---------- Main, testing functions -----------------------------------------------------------------
 
 func main() {
@@ -497,27 +540,8 @@ func main() {
 		fmt.Println(err)
 	}
 
-	extras := get_extras(db)
-
-	players := get_players(db)
-
-	encode_json(extras)
-
-	playersJSON := get_player_stats(players, db)
-	encode_json_player(playersJSON)
-
-	teams := get_teams(db)
-
-	teamsJSON := get_team_stats(teams, db)
-	encode_json_team(teamsJSON)
-
-	tournaments := get_tournaments(db)
-
-	tournamentsJSON := get_tournament_stats(tournaments, db)
-	encode_json_tournament(tournamentsJSON)
-
-	placements := get_placements(db)
-	encode_json_placements(placements)
+	db_json := form_db(db)
+	encode_json_DB(db_json)
 
 	db.Close()
 }
