@@ -6,7 +6,7 @@ const Leaderboard = ({players}) => {
         <div>
             <ul>
                 {players.map(player =>
-                    <Player key={player.player_name} player={player}/>
+                    <Player key={player.id} player={player}/>
                 )}
             </ul>
         </div>

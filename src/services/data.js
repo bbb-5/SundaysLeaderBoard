@@ -1,10 +1,9 @@
 import axios from 'axios'
-const baseUrl = './players.json'
+const baseUrl = './SundaysData.json'
 
-const getPlayers = () => {
+const getData = () => {
     const request = axios.get(baseUrl)
     return request.then(response => response)
 }
 
-
-export default {getPlayers}
+export default {getData}
