@@ -489,7 +489,6 @@ func encode_json_DB(db *DB) {
 func main() {
 
 	db_argument := os.Args[1]
-	fmt.Print(db_argument)
 
 	db, err := sql.Open("sqlite3", db_argument)
 	if err != nil {
@@ -501,3 +500,5 @@ func main() {
 
 	db.Close()
 }
+
+//go run JSON_maker/json_maker.go ../Sundays_Clean_DB/SundaysDatabase.db > SundaysData.json
