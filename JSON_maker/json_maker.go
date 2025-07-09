@@ -473,50 +473,6 @@ func get_tournament_stats(tournaments []*Tournament, db *sql.DB) []*Tournament {
 	return tournamentsJSON
 }
 
-//---------- Encodes JSON Player file -----------------------------------------------------------------------
-
-func encode_json_player(players []*PlayerJSON) {
-
-	json_data, err := json.MarshalIndent(players, "", "\t")
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Printf("%s\n", json_data)
-}
-
-//---------- Encodes JSON Team file -----------------------------------------------------------------------
-
-func encode_json_team(teams []*Team) {
-
-	json_data, err := json.MarshalIndent(teams, "", "\t")
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Printf("%s\n", json_data)
-}
-
-//---------- Encodes JSON Tournament file -----------------------------------------------------------------------
-
-func encode_json_tournament(tournaments []*Tournament) {
-
-	json_data, err := json.MarshalIndent(tournaments, "", "\t")
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Printf("%s\n", json_data)
-}
-
-//---------- Encodes JSON Placement file -----------------------------------------------------------------------
-
-func encode_json_placements(placements []*Placement) {
-
-	json_data, err := json.MarshalIndent(placements, "", "\t")
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Printf("%s\n", json_data)
-}
-
 //---------- Encodes DB to JSON file -----------------------------------------------------------------------
 
 func encode_json_DB(db *DB) {
