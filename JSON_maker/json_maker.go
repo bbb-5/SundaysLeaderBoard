@@ -46,9 +46,9 @@ type Tournament struct {
 }
 
 type Placement struct {
-	Team_id       int
-	Tournament_id int
-	MedalType_id  int
+	Team_id       int `json:"team_id"`
+	Tournament_id int `json:"tournament_id"`
+	MedalType_id  int `json:"medaltype_id"`
 }
 
 type DB struct {
@@ -136,6 +136,7 @@ func new_DB(extras []*Extra_Award, players []*PlayerJSON, teams []*Team, tournam
 	db.Players = players
 	db.Teams = teams
 	db.Tournaments = tournaments
+	db.Placements = placements
 	return db
 }
 
