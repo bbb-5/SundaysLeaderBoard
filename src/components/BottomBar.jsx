@@ -13,7 +13,7 @@ const BottomBar = ({sortHandler}) => {
             <Button onClick={sort((a, b) => b.bronze - a.bronze)} label='Bronze'> </Button>
             <Button onClick={sort((a, b) => (b.gold/b.participation) - (a.gold/a.participation))} label='Percentage'> </Button>
             <Button onClick={sort((a, b) => (b.gold+b.silver+b.bronze) - (a.gold+a.silver+a.bronze))} label='Over all'> </Button>
-            <Button label='Extra voting'> </Button>
+            <Button onClick={sort((a, b) => b.extra_awards.length - a.extra_awards.length)} label='Extra voting'> </Button>
         </div>
     )
 }

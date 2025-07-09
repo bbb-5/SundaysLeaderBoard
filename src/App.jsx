@@ -26,10 +26,15 @@ function App() {
     setPlayers(newPlayers)
   }
 
+  const handleReverse = () => {
+    const newPlayers = [...players].reverse()
+    setPlayers(newPlayers)
+  }
+
   return (
     <>
     <h1>Sunday's Leaderboard</h1>
-    <TopBar></TopBar>
+    <TopBar reverseHandler={handleReverse} ></TopBar>
     <LeaderBoard players={players}></LeaderBoard>
     <BottomBar sortHandler={handleSort}/>
     </>
