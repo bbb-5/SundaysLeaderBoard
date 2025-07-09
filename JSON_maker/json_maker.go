@@ -45,6 +45,19 @@ type Tournament struct {
 	Teams []int  `json:"teams_ids"`
 }
 
+type Placement struct {
+	Team_id       int
+	Tournament_id int
+	MedalType_id  int
+}
+
+type DB struct {
+	Players      []*PlayerJSON
+	Extra_Awards []*Extra_Award
+	Teams        []*Team
+	Tournaments  []*Tournament
+}
+
 // ------- Constructors -------------------------------------------------------
 
 func new_extra(id int, name string) *Extra_Award {
@@ -106,6 +119,14 @@ func new_tournamentJSON(name string, id int, tournament_type string, date string
 	tr.Date = date
 	tr.Teams = teams
 	return tr
+}
+
+func new_placement(team_id int, tournament_id int, medaltype_id int) *Placement {
+	pl := new(Placement)
+	pl.Team_id = team_id
+	pl.Tournament_id = tournament_id
+	pl.MedalType_id = medaltype_id
+	return pl
 }
 
 // ------- Getting things from db --------------------------------------------
@@ -230,6 +251,28 @@ func get_teams_players(db *sql.DB, team *Team) []int {
 	}
 
 	return player_ids
+}
+
+func get_placements(db *sql.DB) []*Placement {
+
+	placements := []*Placement{}
+
+	placement_data, err := db.Query("SELECT * FROM Placement")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for placement_data.Next() {
+		var tournament_id int
+		var team_id int
+		var medaltype_id int
+
+		placement_data.Scan(&team_id, &tournament_id, &medaltype_id)
+
+		placements = append(placements, new_placement(tournament_id, team_id, medaltype_id))
+	}
+
+	return placements
 }
 
 //---------- Gets stuff for players -----------------------------------------------------------------------
@@ -431,6 +474,17 @@ func encode_json_tournament(tournaments []*Tournament) {
 	fmt.Printf("%s\n", json_data)
 }
 
+//---------- Encodes JSON Placement file -----------------------------------------------------------------------
+
+func encode_json_placements(placements []*Placement) {
+
+	json_data, err := json.MarshalIndent(placements, "", "\t")
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("%s\n", json_data)
+}
+
 //---------- Main, testing functions -----------------------------------------------------------------
 
 func main() {
@@ -461,6 +515,9 @@ func main() {
 
 	tournamentsJSON := get_tournament_stats(tournaments, db)
 	encode_json_tournament(tournamentsJSON)
+
+	placements := get_placements(db)
+	encode_json_placements(placements)
 
 	db.Close()
 }
