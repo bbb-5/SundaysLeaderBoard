@@ -32,9 +32,17 @@ type Extra_Award struct {
 }
 
 type Team struct {
-	Id      int       `json:"id"`
-	Name    string    `json:"name"`
-	Players []*Player `json:"players"`
+	Id        int    `json:"id"`
+	Name      string `json:"name"`
+	PlayerIds []int  `json:"players_ids"`
+}
+
+type Tournament struct {
+	Id    int    `json:"id"`
+	Name  string `json:"name"`
+	Type  string `json:"type"`
+	Date  string `json:"date"`
+	Teams []int  `json:"teams_ids"`
 }
 
 // ------- Constructors -------------------------------------------------------
@@ -73,12 +81,31 @@ func new_team(name string, id int) *Team {
 	return t
 }
 
-func new_teamJSON(name string, id int, players []*Player) *Team {
+func new_teamJSON(name string, id int, players []int) *Team {
 	tj := new(Team)
 	tj.Name = name
 	tj.Id = id
-	tj.Players = players
+	tj.PlayerIds = players
 	return tj
+}
+
+func new_tournament(name string, id int, tournament_type string, date string) *Tournament {
+	tr := new(Tournament)
+	tr.Name = name
+	tr.Id = id
+	tr.Type = tournament_type
+	tr.Date = date
+	return tr
+}
+
+func new_tournamentJSON(name string, id int, tournament_type string, date string, teams []int) *Tournament {
+	tr := new(Tournament)
+	tr.Name = name
+	tr.Id = id
+	tr.Type = tournament_type
+	tr.Date = date
+	tr.Teams = teams
+	return tr
 }
 
 // ------- Getting things from db --------------------------------------------
@@ -124,6 +151,48 @@ func get_players(db *sql.DB) []*Player {
 	return players
 }
 
+func get_tournaments(db *sql.DB) []*Tournament {
+
+	tournaments := []*Tournament{}
+
+	tournament_data, err := db.Query("SELECT * FROM Tournament")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for tournament_data.Next() {
+		var id int
+		var name string
+		var tournament_type string
+		var date string
+
+		tournament_data.Scan(&id, &tournament_type, &name, &date)
+
+		tournaments = append(tournaments, new_tournament(name, id, tournament_type, date))
+	}
+
+	return tournaments
+}
+
+func get_tournament_teams(db *sql.DB, tournament *Tournament) []int {
+
+	tournament_ids := []int{}
+
+	tournament_id_data, err := db.Query("SELECT team_id FROM TournamentTeam WHERE tournament_id=?", tournament.Id)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for tournament_id_data.Next() {
+		var id int
+		tournament_id_data.Scan(&id)
+		tournament_ids = append(tournament_ids, id)
+	}
+
+	return tournament_ids
+}
+
 func get_teams(db *sql.DB) []*Team {
 
 	teams := []*Team{}
@@ -142,6 +211,25 @@ func get_teams(db *sql.DB) []*Team {
 		teams = append(teams, new_team(name, id))
 	}
 	return teams
+}
+
+func get_teams_players(db *sql.DB, team *Team) []int {
+
+	player_ids := []int{}
+
+	team_data, err := db.Query("SELECT player_id FROM PlayerTeam where team_id=?", team.Id)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for team_data.Next() {
+		var id int
+		team_data.Scan(&id)
+		player_ids = append(player_ids, id)
+	}
+
+	return player_ids
 }
 
 //---------- Gets stuff for players -----------------------------------------------------------------------
@@ -282,6 +370,34 @@ func get_player_stats(players []*Player, db *sql.DB) []*PlayerJSON {
 	return playersJSON
 }
 
+// --------- Forming team data for JSON file ------------------------------------------
+
+func get_team_stats(teams []*Team, db *sql.DB) []*Team {
+
+	teamsJSON := []*Team{}
+
+	for _, team := range teams {
+		player_ids := get_teams_players(db, team)
+		teamsJSON = append(teamsJSON, new_teamJSON(team.Name, team.Id, player_ids))
+	}
+
+	return teamsJSON
+}
+
+// --------- Forming tournament data for JSON file ------------------------------------------
+
+func get_tournament_stats(tournaments []*Tournament, db *sql.DB) []*Tournament {
+
+	tournamentsJSON := []*Tournament{}
+
+	for _, tournament := range tournaments {
+		team_ids := get_tournament_teams(db, tournament)
+		tournamentsJSON = append(tournamentsJSON, new_tournamentJSON(tournament.Name, tournament.Id, tournament.Type, tournament.Date, team_ids))
+	}
+
+	return tournamentsJSON
+}
+
 //---------- Encodes JSON Player file -----------------------------------------------------------------------
 
 func encode_json_player(players []*PlayerJSON) {
@@ -293,11 +409,22 @@ func encode_json_player(players []*PlayerJSON) {
 	fmt.Printf("%s\n", json_data)
 }
 
-//---------- Encodes JSON Player file -----------------------------------------------------------------------
+//---------- Encodes JSON Team file -----------------------------------------------------------------------
 
 func encode_json_team(teams []*Team) {
 
 	json_data, err := json.MarshalIndent(teams, "", "\t")
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("%s\n", json_data)
+}
+
+//---------- Encodes JSON Tournament file -----------------------------------------------------------------------
+
+func encode_json_tournament(tournaments []*Tournament) {
+
+	json_data, err := json.MarshalIndent(tournaments, "", "\t")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -326,7 +453,14 @@ func main() {
 	encode_json_player(playersJSON)
 
 	teams := get_teams(db)
-	encode_json_team(teams)
+
+	teamsJSON := get_team_stats(teams, db)
+	encode_json_team(teamsJSON)
+
+	tournaments := get_tournaments(db)
+
+	tournamentsJSON := get_tournament_stats(tournaments, db)
+	encode_json_tournament(tournamentsJSON)
 
 	db.Close()
 }
