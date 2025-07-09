@@ -1985,5 +1985,141 @@
 			]
 		}
 	],
-	"Placements": null
+	"Placements": [
+		{
+			"team_id": 4,
+			"tournament_id": 1,
+			"medaltype_id": 1
+		},
+		{
+			"team_id": 8,
+			"tournament_id": 2,
+			"medaltype_id": 1
+		},
+		{
+			"team_id": 12,
+			"tournament_id": 3,
+			"medaltype_id": 1
+		},
+		{
+			"team_id": 14,
+			"tournament_id": 4,
+			"medaltype_id": 1
+		},
+		{
+			"team_id": 17,
+			"tournament_id": 5,
+			"medaltype_id": 4
+		},
+		{
+			"team_id": 19,
+			"tournament_id": 5,
+			"medaltype_id": 5
+		},
+		{
+			"team_id": 22,
+			"tournament_id": 5,
+			"medaltype_id": 6
+		},
+		{
+			"team_id": 23,
+			"tournament_id": 6,
+			"medaltype_id": 4
+		},
+		{
+			"team_id": 25,
+			"tournament_id": 6,
+			"medaltype_id": 5
+		},
+		{
+			"team_id": 27,
+			"tournament_id": 6,
+			"medaltype_id": 6
+		},
+		{
+			"team_id": 29,
+			"tournament_id": 7,
+			"medaltype_id": 4
+		},
+		{
+			"team_id": 33,
+			"tournament_id": 7,
+			"medaltype_id": 5
+		},
+		{
+			"team_id": 35,
+			"tournament_id": 7,
+			"medaltype_id": 6
+		},
+		{
+			"team_id": 39,
+			"tournament_id": 8,
+			"medaltype_id": 4
+		},
+		{
+			"team_id": 36,
+			"tournament_id": 8,
+			"medaltype_id": 5
+		},
+		{
+			"team_id": 40,
+			"tournament_id": 8,
+			"medaltype_id": 6
+		},
+		{
+			"team_id": 42,
+			"tournament_id": 9,
+			"medaltype_id": 1
+		},
+		{
+			"team_id": 46,
+			"tournament_id": 10,
+			"medaltype_id": 1
+		},
+		{
+			"team_id": 51,
+			"tournament_id": 11,
+			"medaltype_id": 1
+		},
+		{
+			"team_id": 54,
+			"tournament_id": 12,
+			"medaltype_id": 1
+		},
+		{
+			"team_id": 57,
+			"tournament_id": 13,
+			"medaltype_id": 1
+		},
+		{
+			"team_id": 60,
+			"tournament_id": 14,
+			"medaltype_id": 1
+		},
+		{
+			"team_id": 64,
+			"tournament_id": 15,
+			"medaltype_id": 1
+		},
+		{
+			"team_id": 68,
+			"tournament_id": 16,
+			"medaltype_id": 1
+		},
+		{
+			"team_id": 72,
+			"tournament_id": 17,
+			"medaltype_id": 4
+		},
+		{
+			"team_id": 76,
+			"tournament_id": 17,
+			"medaltype_id": 5
+		},
+		{
+			"team_id": 74,
+			"tournament_id": 17,
+			"medaltype_id": 6
+		}
+	]
 }

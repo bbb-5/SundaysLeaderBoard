@@ -11,6 +11,7 @@ import Player from './components/Player'
 
 function App() {
   const [players, setPlayers] = useState([])
+  const [tournaments, setTournaments] = useState([])
   const [data, setData] = useState([])
   
   useEffect(() => {
@@ -18,6 +19,7 @@ function App() {
       setData(jsonData.data)
       console.log(jsonData.data)
       setPlayers(jsonData.data.Players)
+      setTournaments(jsonData.data.Tournaments)
     })
   }, [])
 
@@ -31,10 +33,15 @@ function App() {
     setPlayers(newPlayers)
   }
 
+  const handleFilter = (tournament_type) => {
+    const filteredTournaments = [...tournaments].filter( (tournament) => tournament.type == tournament_type)
+    setTournaments(filteredTournaments)
+  }
+
   return (
     <>
     <h1>Sunday's Leaderboard</h1>
-    <TopBar reverseHandler={handleReverse} ></TopBar>
+    <TopBar reverseHandler={handleReverse} filterHandler={handleFilter}></TopBar>
     <LeaderBoard players={players}></LeaderBoard>
     <BottomBar sortHandler={handleSort}/>
     </>

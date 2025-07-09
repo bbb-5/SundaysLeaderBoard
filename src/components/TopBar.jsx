@@ -1,10 +1,10 @@
 import Button from "./Button"
 
-const TopBar = ({reverseHandler}) => {
+const TopBar = ({reverseHandler, filterHandler}) => {
     return (
         <div>
-            <Button label='Indoor'> </Button>
-            <Button label='Beach'> </Button>
+            <Button onClick={() => filterHandler('Indoor')} label='Indoor'> </Button>
+            <Button onClick={() => filterHandler('Beach')} label='Beach'> </Button>
             <Button label='Both'> </Button>
             <Button onClick={reverseHandler} label='Reverse'> </Button>
         </div>
