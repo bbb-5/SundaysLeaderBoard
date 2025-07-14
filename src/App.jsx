@@ -18,7 +18,7 @@ function App() {
     dataService.getData().then((jsonData) => {
       setData(jsonData.data)
       console.log(jsonData.data)
-      setPlayers(jsonData.data.Players)
+      setPlayers(jsonData.data.Players.filter((player) => (player.gold+player.silver+player.bronze != 0)))
       setTournaments(jsonData.data.Tournaments)
     })
   }, [])
