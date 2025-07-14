@@ -1,12 +1,15 @@
 import Player from "./Player"
+import RankBox from "./RankBox"
+import PlayerBox from './PlayerBox'
 
 const Leaderboard = ({players}) => {
     console.log(players)
+
     return (
         <div>
             <ul>
-                {players.map(player =>
-                    <Player key={player.id} player={player}/>
+                {players.map( (player,index) =>
+                    <PlayerBox player={player} number={index+1} key={player.id}/>
                 )}
             </ul>
         </div>
