@@ -1,5 +1,5 @@
 const Player = ({player}) => {
-    
+
     return (
         <div>
             <p>{player.name}</p>
@@ -7,8 +7,8 @@ const Player = ({player}) => {
             <p>Silver: {player.silver}</p>
             <p>Bronze: {player.bronze}</p>
             <p>Participation: {player.participation}</p>
-            <p>Winning Ratio: {player.gold / player.participation}</p>
-            <p>Medals: {((player.gold+player.silver+player.bronze)/100)*100}</p>
+            <p>Winning Ratio: {(player.gold / player.participation/100)*100}</p>
+            <p>Medals: {player.gold+player.silver+player.bronze}</p>
             <p>Extra Awards: {player.extra_awards.length}</p>
         </div>
     )

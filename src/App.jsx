@@ -23,6 +23,8 @@ function App() {
     })
   }, [])
 
+  useEffect 
+
   const handleSort = (sortFunction) => {
     const newPlayers = [...players].sort(sortFunction)
     setPlayers(newPlayers)

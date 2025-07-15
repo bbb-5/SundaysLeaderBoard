@@ -14,6 +14,18 @@ li {
   margin-bottom: 1em;
 }
 
+.leaderboard {
+  padding:0.4em;
+  background-color: #141414;
+  margin:1em;
+}
+
+.leaderboard ul {
+  max-height: 65vh;
+  overflow: scroll;
+  padding: 1em;
+}
+
 .rankbox {
   border: solid thin lightcyan;
   margin-bottom: 1em;

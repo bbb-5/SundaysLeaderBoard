@@ -6,7 +6,7 @@ const Leaderboard = ({players}) => {
     console.log(players)
 
     return (
-        <div>
+        <div className="leaderboard">
             <ul>
                 {players.map( (player,index) =>
                     <PlayerBox player={player} number={index+1} key={player.id}/>
