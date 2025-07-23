@@ -13,17 +13,116 @@
 					"name": "Team that never gave up"
 				}
 			],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": [
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 10,
+						"name": "ATLA Tournament",
+						"type": "Indoor",
+						"date": "2024-11-03T11:30:00Z",
+						"teams_ids": [
+							44,
+							45,
+							46,
+							47
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Aliisa",
 			"id": 1,
-			"participation": 17,
+			"participation": 18,
 			"gold": 2,
 			"silver": 3,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Aliisa T"
+			"nickname": "Aliisa T",
+			"placements": [
+				{
+					"medaltype": "Silver_Beach",
+					"tournament": {
+						"id": 5,
+						"name": "Cat Tournament",
+						"type": "Beach",
+						"date": "2024-07-06T09:00:00Z",
+						"teams_ids": [
+							17,
+							18,
+							19,
+							20,
+							21,
+							22
+						]
+					}
+				},
+				{
+					"medaltype": "Silver_Beach",
+					"tournament": {
+						"id": 6,
+						"name": "HungerGames Tournament",
+						"type": "Beach",
+						"date": "2024-08-25T09:00:00Z",
+						"teams_ids": [
+							23,
+							24,
+							25,
+							26,
+							27,
+							28
+						]
+					}
+				},
+				{
+					"medaltype": "Silver_Beach",
+					"tournament": {
+						"id": 8,
+						"name": "Disney Tournament",
+						"type": "Beach",
+						"date": "2024-09-08T09:00:00Z",
+						"teams_ids": [
+							36,
+							37,
+							38,
+							39,
+							40
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 9,
+						"name": "Pirate Tournament",
+						"type": "Indoor",
+						"date": "2024-10-06T11:30:00Z",
+						"teams_ids": [
+							41,
+							42,
+							43,
+							78
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 15,
+						"name": "HaikyuuRematch Tournament",
+						"type": "Indoor",
+						"date": "2025-04-13T11:30:00Z",
+						"teams_ids": [
+							64,
+							65,
+							66,
+							67
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Ayaz",
@@ -33,17 +132,98 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": [
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 16,
+						"name": "MythicalCreatures Tournament",
+						"type": "Indoor",
+						"date": "2025-05-18T11:30:00Z",
+						"teams_ids": [
+							68,
+							69,
+							70,
+							71
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "DJ",
 			"id": 3,
-			"participation": 11,
+			"participation": 12,
 			"gold": 3,
 			"silver": 0,
 			"bronze": 1,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": [
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 2,
+						"name": "Haikyuu Tournament",
+						"type": "Indoor",
+						"date": "2024-03-24T09:00:00Z",
+						"teams_ids": [
+							5,
+							6,
+							7,
+							8
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 4,
+						"name": "Ghibli Tournament",
+						"type": "Indoor",
+						"date": "2024-05-26T09:00:00Z",
+						"teams_ids": [
+							13,
+							14,
+							15,
+							16
+						]
+					}
+				},
+				{
+					"medaltype": "Bronze_Beach",
+					"tournament": {
+						"id": 6,
+						"name": "HungerGames Tournament",
+						"type": "Beach",
+						"date": "2024-08-25T09:00:00Z",
+						"teams_ids": [
+							23,
+							24,
+							25,
+							26,
+							27,
+							28
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 13,
+						"name": "AmazingAnimals Tournament",
+						"type": "Indoor",
+						"date": "2025-02-16T11:30:00Z",
+						"teams_ids": [
+							56,
+							57,
+							58,
+							59
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Edu",
@@ -53,7 +233,8 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": []
 		},
 		{
 			"name": "Ella",
@@ -72,7 +253,76 @@
 					"name": "Oracle Defender"
 				}
 			],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": [
+				{
+					"medaltype": "Gold_Beach",
+					"tournament": {
+						"id": 6,
+						"name": "HungerGames Tournament",
+						"type": "Beach",
+						"date": "2024-08-25T09:00:00Z",
+						"teams_ids": [
+							23,
+							24,
+							25,
+							26,
+							27,
+							28
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Beach",
+					"tournament": {
+						"id": 7,
+						"name": "Moomin Tournament",
+						"type": "Beach",
+						"date": "2024-08-04T09:00:00Z",
+						"teams_ids": [
+							29,
+							30,
+							31,
+							32,
+							33,
+							34,
+							35
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 12,
+						"name": "Programming Tournament",
+						"type": "Indoor",
+						"date": "2025-01-12T11:30:00Z",
+						"teams_ids": [
+							52,
+							53,
+							54,
+							55
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Beach",
+					"tournament": {
+						"id": 17,
+						"name": "Gods of Ragnarök Tournament",
+						"type": "Beach",
+						"date": "2025-06-22T11:30:00Z",
+						"teams_ids": [
+							72,
+							73,
+							74,
+							75,
+							76,
+							77
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Eve",
@@ -82,7 +332,27 @@
 			"silver": 0,
 			"bronze": 1,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": [
+				{
+					"medaltype": "Bronze_Beach",
+					"tournament": {
+						"id": 7,
+						"name": "Moomin Tournament",
+						"type": "Beach",
+						"date": "2024-08-04T09:00:00Z",
+						"teams_ids": [
+							29,
+							30,
+							31,
+							32,
+							33,
+							34,
+							35
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Gray",
@@ -92,22 +362,73 @@
 			"silver": 0,
 			"bronze": 1,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": [
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 3,
+						"name": "StarWars Tournament",
+						"type": "Indoor",
+						"date": "2024-04-28T09:00:00Z",
+						"teams_ids": [
+							9,
+							10,
+							11,
+							12
+						]
+					}
+				},
+				{
+					"medaltype": "Bronze_Beach",
+					"tournament": {
+						"id": 5,
+						"name": "Cat Tournament",
+						"type": "Beach",
+						"date": "2024-07-06T09:00:00Z",
+						"teams_ids": [
+							17,
+							18,
+							19,
+							20,
+							21,
+							22
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Hanna-Mari",
 			"id": 8,
-			"participation": 5,
+			"participation": 6,
 			"gold": 1,
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": [
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 16,
+						"name": "MythicalCreatures Tournament",
+						"type": "Indoor",
+						"date": "2025-05-18T11:30:00Z",
+						"teams_ids": [
+							68,
+							69,
+							70,
+							71
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Ilari",
 			"id": 9,
-			"participation": 16,
+			"participation": 17,
 			"gold": 1,
 			"silver": 1,
 			"bronze": 2,
@@ -117,17 +438,181 @@
 					"name": "Best team spirit"
 				}
 			],
-			"nickname": "Ilari K"
+			"nickname": "Ilari K",
+			"placements": [
+				{
+					"medaltype": "Bronze_Beach",
+					"tournament": {
+						"id": 7,
+						"name": "Moomin Tournament",
+						"type": "Beach",
+						"date": "2024-08-04T09:00:00Z",
+						"teams_ids": [
+							29,
+							30,
+							31,
+							32,
+							33,
+							34,
+							35
+						]
+					}
+				},
+				{
+					"medaltype": "Silver_Beach",
+					"tournament": {
+						"id": 8,
+						"name": "Disney Tournament",
+						"type": "Beach",
+						"date": "2024-09-08T09:00:00Z",
+						"teams_ids": [
+							36,
+							37,
+							38,
+							39,
+							40
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 11,
+						"name": "HarryPotter Tournament",
+						"type": "Indoor",
+						"date": "2024-12-01T11:30:00Z",
+						"teams_ids": [
+							48,
+							49,
+							50,
+							51
+						]
+					}
+				},
+				{
+					"medaltype": "Bronze_Beach",
+					"tournament": {
+						"id": 17,
+						"name": "Gods of Ragnarök Tournament",
+						"type": "Beach",
+						"date": "2025-06-22T11:30:00Z",
+						"teams_ids": [
+							72,
+							73,
+							74,
+							75,
+							76,
+							77
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Ismo",
 			"id": 10,
-			"participation": 14,
+			"participation": 15,
 			"gold": 4,
 			"silver": 1,
 			"bronze": 1,
 			"extra_awards": [],
-			"nickname": "Ismo P"
+			"nickname": "Ismo P",
+			"placements": [
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 3,
+						"name": "StarWars Tournament",
+						"type": "Indoor",
+						"date": "2024-04-28T09:00:00Z",
+						"teams_ids": [
+							9,
+							10,
+							11,
+							12
+						]
+					}
+				},
+				{
+					"medaltype": "Bronze_Beach",
+					"tournament": {
+						"id": 5,
+						"name": "Cat Tournament",
+						"type": "Beach",
+						"date": "2024-07-06T09:00:00Z",
+						"teams_ids": [
+							17,
+							18,
+							19,
+							20,
+							21,
+							22
+						]
+					}
+				},
+				{
+					"medaltype": "Silver_Beach",
+					"tournament": {
+						"id": 6,
+						"name": "HungerGames Tournament",
+						"type": "Beach",
+						"date": "2024-08-25T09:00:00Z",
+						"teams_ids": [
+							23,
+							24,
+							25,
+							26,
+							27,
+							28
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 11,
+						"name": "HarryPotter Tournament",
+						"type": "Indoor",
+						"date": "2024-12-01T11:30:00Z",
+						"teams_ids": [
+							48,
+							49,
+							50,
+							51
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 13,
+						"name": "AmazingAnimals Tournament",
+						"type": "Indoor",
+						"date": "2025-02-16T11:30:00Z",
+						"teams_ids": [
+							56,
+							57,
+							58,
+							59
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 14,
+						"name": "Teletubby Tournament",
+						"type": "Indoor",
+						"date": "2025-03-23T11:30:00Z",
+						"teams_ids": [
+							60,
+							61,
+							62,
+							63
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Jaakko",
@@ -142,17 +627,96 @@
 					"name": "Smartest player"
 				}
 			],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": [
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 12,
+						"name": "Programming Tournament",
+						"type": "Indoor",
+						"date": "2025-01-12T11:30:00Z",
+						"teams_ids": [
+							52,
+							53,
+							54,
+							55
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 16,
+						"name": "MythicalCreatures Tournament",
+						"type": "Indoor",
+						"date": "2025-05-18T11:30:00Z",
+						"teams_ids": [
+							68,
+							69,
+							70,
+							71
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Janna",
 			"id": 12,
-			"participation": 9,
+			"participation": 10,
 			"gold": 3,
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": [
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 2,
+						"name": "Haikyuu Tournament",
+						"type": "Indoor",
+						"date": "2024-03-24T09:00:00Z",
+						"teams_ids": [
+							5,
+							6,
+							7,
+							8
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 3,
+						"name": "StarWars Tournament",
+						"type": "Indoor",
+						"date": "2024-04-28T09:00:00Z",
+						"teams_ids": [
+							9,
+							10,
+							11,
+							12
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 4,
+						"name": "Ghibli Tournament",
+						"type": "Indoor",
+						"date": "2024-05-26T09:00:00Z",
+						"teams_ids": [
+							13,
+							14,
+							15,
+							16
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Julia",
@@ -167,12 +731,29 @@
 					"name": "Wildest animal"
 				}
 			],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": [
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 13,
+						"name": "AmazingAnimals Tournament",
+						"type": "Indoor",
+						"date": "2025-02-16T11:30:00Z",
+						"teams_ids": [
+							56,
+							57,
+							58,
+							59
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Kasperi",
 			"id": 14,
-			"participation": 9,
+			"participation": 10,
 			"gold": 2,
 			"silver": 0,
 			"bronze": 0,
@@ -182,7 +763,39 @@
 					"name": "Wall of Ba Sing Se"
 				}
 			],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": [
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 2,
+						"name": "Haikyuu Tournament",
+						"type": "Indoor",
+						"date": "2024-03-24T09:00:00Z",
+						"teams_ids": [
+							5,
+							6,
+							7,
+							8
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 15,
+						"name": "HaikyuuRematch Tournament",
+						"type": "Indoor",
+						"date": "2025-04-13T11:30:00Z",
+						"teams_ids": [
+							64,
+							65,
+							66,
+							67
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Leonard",
@@ -192,7 +805,24 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": [
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 1,
+						"name": "Pokemon Tournament",
+						"type": "Indoor",
+						"date": "2024-02-25T09:00:00Z",
+						"teams_ids": [
+							1,
+							2,
+							3,
+							4
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Makreta",
@@ -202,7 +832,69 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Makreta P"
+			"nickname": "Makreta P",
+			"placements": [
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 9,
+						"name": "Pirate Tournament",
+						"type": "Indoor",
+						"date": "2024-10-06T11:30:00Z",
+						"teams_ids": [
+							41,
+							42,
+							43,
+							78
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 11,
+						"name": "HarryPotter Tournament",
+						"type": "Indoor",
+						"date": "2024-12-01T11:30:00Z",
+						"teams_ids": [
+							48,
+							49,
+							50,
+							51
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 14,
+						"name": "Teletubby Tournament",
+						"type": "Indoor",
+						"date": "2025-03-23T11:30:00Z",
+						"teams_ids": [
+							60,
+							61,
+							62,
+							63
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 15,
+						"name": "HaikyuuRematch Tournament",
+						"type": "Indoor",
+						"date": "2025-04-13T11:30:00Z",
+						"teams_ids": [
+							64,
+							65,
+							66,
+							67
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Malla",
@@ -212,17 +904,35 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": []
 		},
 		{
 			"name": "Markus",
 			"id": 18,
-			"participation": 7,
+			"participation": 8,
 			"gold": 1,
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": [
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 10,
+						"name": "ATLA Tournament",
+						"type": "Indoor",
+						"date": "2024-11-03T11:30:00Z",
+						"teams_ids": [
+							44,
+							45,
+							46,
+							47
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Mathis",
@@ -232,17 +942,37 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": []
 		},
 		{
 			"name": "Matti",
 			"id": 20,
-			"participation": 7,
+			"participation": 8,
 			"gold": 0,
 			"silver": 1,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": [
+				{
+					"medaltype": "Silver_Beach",
+					"tournament": {
+						"id": 17,
+						"name": "Gods of Ragnarök Tournament",
+						"type": "Beach",
+						"date": "2025-06-22T11:30:00Z",
+						"teams_ids": [
+							72,
+							73,
+							74,
+							75,
+							76,
+							77
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Moona",
@@ -252,7 +982,8 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": []
 		},
 		{
 			"name": "Niko E",
@@ -262,7 +993,71 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": [
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 4,
+						"name": "Ghibli Tournament",
+						"type": "Indoor",
+						"date": "2024-05-26T09:00:00Z",
+						"teams_ids": [
+							13,
+							14,
+							15,
+							16
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Beach",
+					"tournament": {
+						"id": 6,
+						"name": "HungerGames Tournament",
+						"type": "Beach",
+						"date": "2024-08-25T09:00:00Z",
+						"teams_ids": [
+							23,
+							24,
+							25,
+							26,
+							27,
+							28
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 9,
+						"name": "Pirate Tournament",
+						"type": "Indoor",
+						"date": "2024-10-06T11:30:00Z",
+						"teams_ids": [
+							41,
+							42,
+							43,
+							78
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 10,
+						"name": "ATLA Tournament",
+						"type": "Indoor",
+						"date": "2024-11-03T11:30:00Z",
+						"teams_ids": [
+							44,
+							45,
+							46,
+							47
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Quoc",
@@ -272,7 +1067,69 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": [
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 11,
+						"name": "HarryPotter Tournament",
+						"type": "Indoor",
+						"date": "2024-12-01T11:30:00Z",
+						"teams_ids": [
+							48,
+							49,
+							50,
+							51
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 12,
+						"name": "Programming Tournament",
+						"type": "Indoor",
+						"date": "2025-01-12T11:30:00Z",
+						"teams_ids": [
+							52,
+							53,
+							54,
+							55
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 13,
+						"name": "AmazingAnimals Tournament",
+						"type": "Indoor",
+						"date": "2025-02-16T11:30:00Z",
+						"teams_ids": [
+							56,
+							57,
+							58,
+							59
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 16,
+						"name": "MythicalCreatures Tournament",
+						"type": "Indoor",
+						"date": "2025-05-18T11:30:00Z",
+						"teams_ids": [
+							68,
+							69,
+							70,
+							71
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Raul",
@@ -282,7 +1139,56 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": [
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 10,
+						"name": "ATLA Tournament",
+						"type": "Indoor",
+						"date": "2024-11-03T11:30:00Z",
+						"teams_ids": [
+							44,
+							45,
+							46,
+							47
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 15,
+						"name": "HaikyuuRematch Tournament",
+						"type": "Indoor",
+						"date": "2025-04-13T11:30:00Z",
+						"teams_ids": [
+							64,
+							65,
+							66,
+							67
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Beach",
+					"tournament": {
+						"id": 17,
+						"name": "Gods of Ragnarök Tournament",
+						"type": "Beach",
+						"date": "2025-06-22T11:30:00Z",
+						"teams_ids": [
+							72,
+							73,
+							74,
+							75,
+							76,
+							77
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Saga",
@@ -292,12 +1198,13 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": []
 		},
 		{
 			"name": "Sara",
 			"id": 26,
-			"participation": 17,
+			"participation": 18,
 			"gold": 4,
 			"silver": 1,
 			"bronze": 1,
@@ -311,7 +1218,105 @@
 					"name": "Best team spirit"
 				}
 			],
-			"nickname": "Sara L"
+			"nickname": "Sara L",
+			"placements": [
+				{
+					"medaltype": "Silver_Beach",
+					"tournament": {
+						"id": 7,
+						"name": "Moomin Tournament",
+						"type": "Beach",
+						"date": "2024-08-04T09:00:00Z",
+						"teams_ids": [
+							29,
+							30,
+							31,
+							32,
+							33,
+							34,
+							35
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Beach",
+					"tournament": {
+						"id": 8,
+						"name": "Disney Tournament",
+						"type": "Beach",
+						"date": "2024-09-08T09:00:00Z",
+						"teams_ids": [
+							36,
+							37,
+							38,
+							39,
+							40
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 10,
+						"name": "ATLA Tournament",
+						"type": "Indoor",
+						"date": "2024-11-03T11:30:00Z",
+						"teams_ids": [
+							44,
+							45,
+							46,
+							47
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 12,
+						"name": "Programming Tournament",
+						"type": "Indoor",
+						"date": "2025-01-12T11:30:00Z",
+						"teams_ids": [
+							52,
+							53,
+							54,
+							55
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 14,
+						"name": "Teletubby Tournament",
+						"type": "Indoor",
+						"date": "2025-03-23T11:30:00Z",
+						"teams_ids": [
+							60,
+							61,
+							62,
+							63
+						]
+					}
+				},
+				{
+					"medaltype": "Bronze_Beach",
+					"tournament": {
+						"id": 17,
+						"name": "Gods of Ragnarök Tournament",
+						"type": "Beach",
+						"date": "2025-06-22T11:30:00Z",
+						"teams_ids": [
+							72,
+							73,
+							74,
+							75,
+							76,
+							77
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Sean",
@@ -321,22 +1326,138 @@
 			"silver": 1,
 			"bronze": 2,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": [
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 3,
+						"name": "StarWars Tournament",
+						"type": "Indoor",
+						"date": "2024-04-28T09:00:00Z",
+						"teams_ids": [
+							9,
+							10,
+							11,
+							12
+						]
+					}
+				},
+				{
+					"medaltype": "Silver_Beach",
+					"tournament": {
+						"id": 6,
+						"name": "HungerGames Tournament",
+						"type": "Beach",
+						"date": "2024-08-25T09:00:00Z",
+						"teams_ids": [
+							23,
+							24,
+							25,
+							26,
+							27,
+							28
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Beach",
+					"tournament": {
+						"id": 7,
+						"name": "Moomin Tournament",
+						"type": "Beach",
+						"date": "2024-08-04T09:00:00Z",
+						"teams_ids": [
+							29,
+							30,
+							31,
+							32,
+							33,
+							34,
+							35
+						]
+					}
+				},
+				{
+					"medaltype": "Bronze_Beach",
+					"tournament": {
+						"id": 8,
+						"name": "Disney Tournament",
+						"type": "Beach",
+						"date": "2024-09-08T09:00:00Z",
+						"teams_ids": [
+							36,
+							37,
+							38,
+							39,
+							40
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 9,
+						"name": "Pirate Tournament",
+						"type": "Indoor",
+						"date": "2024-10-06T11:30:00Z",
+						"teams_ids": [
+							41,
+							42,
+							43,
+							78
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 16,
+						"name": "MythicalCreatures Tournament",
+						"type": "Indoor",
+						"date": "2025-05-18T11:30:00Z",
+						"teams_ids": [
+							68,
+							69,
+							70,
+							71
+						]
+					}
+				},
+				{
+					"medaltype": "Bronze_Beach",
+					"tournament": {
+						"id": 17,
+						"name": "Gods of Ragnarök Tournament",
+						"type": "Beach",
+						"date": "2025-06-22T11:30:00Z",
+						"teams_ids": [
+							72,
+							73,
+							74,
+							75,
+							76,
+							77
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Sebastian",
 			"id": 28,
-			"participation": 5,
+			"participation": 6,
 			"gold": 0,
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": []
 		},
 		{
 			"name": "Sheri",
 			"id": 29,
-			"participation": 16,
+			"participation": 17,
 			"gold": 5,
 			"silver": 2,
 			"bronze": 0,
@@ -346,12 +1467,129 @@
 					"name": "Best serve"
 				}
 			],
-			"nickname": "Sheri A"
+			"nickname": "Sheri A",
+			"placements": [
+				{
+					"medaltype": "Silver_Beach",
+					"tournament": {
+						"id": 5,
+						"name": "Cat Tournament",
+						"type": "Beach",
+						"date": "2024-07-06T09:00:00Z",
+						"teams_ids": [
+							17,
+							18,
+							19,
+							20,
+							21,
+							22
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Beach",
+					"tournament": {
+						"id": 6,
+						"name": "HungerGames Tournament",
+						"type": "Beach",
+						"date": "2024-08-25T09:00:00Z",
+						"teams_ids": [
+							23,
+							24,
+							25,
+							26,
+							27,
+							28
+						]
+					}
+				},
+				{
+					"medaltype": "Silver_Beach",
+					"tournament": {
+						"id": 7,
+						"name": "Moomin Tournament",
+						"type": "Beach",
+						"date": "2024-08-04T09:00:00Z",
+						"teams_ids": [
+							29,
+							30,
+							31,
+							32,
+							33,
+							34,
+							35
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Beach",
+					"tournament": {
+						"id": 8,
+						"name": "Disney Tournament",
+						"type": "Beach",
+						"date": "2024-09-08T09:00:00Z",
+						"teams_ids": [
+							36,
+							37,
+							38,
+							39,
+							40
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 11,
+						"name": "HarryPotter Tournament",
+						"type": "Indoor",
+						"date": "2024-12-01T11:30:00Z",
+						"teams_ids": [
+							48,
+							49,
+							50,
+							51
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 12,
+						"name": "Programming Tournament",
+						"type": "Indoor",
+						"date": "2025-01-12T11:30:00Z",
+						"teams_ids": [
+							52,
+							53,
+							54,
+							55
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Beach",
+					"tournament": {
+						"id": 17,
+						"name": "Gods of Ragnarök Tournament",
+						"type": "Beach",
+						"date": "2025-06-22T11:30:00Z",
+						"teams_ids": [
+							72,
+							73,
+							74,
+							75,
+							76,
+							77
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Simo",
 			"id": 30,
-			"participation": 5,
+			"participation": 6,
 			"gold": 0,
 			"silver": 0,
 			"bronze": 0,
@@ -361,17 +1599,35 @@
 					"name": "Wildest animal"
 				}
 			],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": []
 		},
 		{
 			"name": "Tomi",
 			"id": 31,
-			"participation": 3,
+			"participation": 4,
 			"gold": 1,
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": [
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 4,
+						"name": "Ghibli Tournament",
+						"type": "Indoor",
+						"date": "2024-05-26T09:00:00Z",
+						"teams_ids": [
+							13,
+							14,
+							15,
+							16
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Tomppa",
@@ -390,7 +1646,41 @@
 					"name": "Least bugs"
 				}
 			],
-			"nickname": "Tomppeli"
+			"nickname": "Tomppeli",
+			"placements": [
+				{
+					"medaltype": "Gold_Beach",
+					"tournament": {
+						"id": 5,
+						"name": "Cat Tournament",
+						"type": "Beach",
+						"date": "2024-07-06T09:00:00Z",
+						"teams_ids": [
+							17,
+							18,
+							19,
+							20,
+							21,
+							22
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 10,
+						"name": "ATLA Tournament",
+						"type": "Indoor",
+						"date": "2024-11-03T11:30:00Z",
+						"teams_ids": [
+							44,
+							45,
+							46,
+							47
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Veikka",
@@ -400,7 +1690,44 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": [
+				{
+					"medaltype": "Gold_Beach",
+					"tournament": {
+						"id": 5,
+						"name": "Cat Tournament",
+						"type": "Beach",
+						"date": "2024-07-06T09:00:00Z",
+						"teams_ids": [
+							17,
+							18,
+							19,
+							20,
+							21,
+							22
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Beach",
+					"tournament": {
+						"id": 7,
+						"name": "Moomin Tournament",
+						"type": "Beach",
+						"date": "2024-08-04T09:00:00Z",
+						"teams_ids": [
+							29,
+							30,
+							31,
+							32,
+							33,
+							34,
+							35
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Verneri",
@@ -410,7 +1737,39 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": [
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 14,
+						"name": "Teletubby Tournament",
+						"type": "Indoor",
+						"date": "2025-03-23T11:30:00Z",
+						"teams_ids": [
+							60,
+							61,
+							62,
+							63
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 15,
+						"name": "HaikyuuRematch Tournament",
+						"type": "Indoor",
+						"date": "2025-04-13T11:30:00Z",
+						"teams_ids": [
+							64,
+							65,
+							66,
+							67
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Victor",
@@ -420,7 +1779,57 @@
 			"silver": 1,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": [
+				{
+					"medaltype": "Silver_Beach",
+					"tournament": {
+						"id": 7,
+						"name": "Moomin Tournament",
+						"type": "Beach",
+						"date": "2024-08-04T09:00:00Z",
+						"teams_ids": [
+							29,
+							30,
+							31,
+							32,
+							33,
+							34,
+							35
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 9,
+						"name": "Pirate Tournament",
+						"type": "Indoor",
+						"date": "2024-10-06T11:30:00Z",
+						"teams_ids": [
+							41,
+							42,
+							43,
+							78
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 13,
+						"name": "AmazingAnimals Tournament",
+						"type": "Indoor",
+						"date": "2025-02-16T11:30:00Z",
+						"teams_ids": [
+							56,
+							57,
+							58,
+							59
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Wiltsu",
@@ -435,17 +1844,53 @@
 					"name": "Wizard"
 				}
 			],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": [
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 11,
+						"name": "HarryPotter Tournament",
+						"type": "Indoor",
+						"date": "2024-12-01T11:30:00Z",
+						"teams_ids": [
+							48,
+							49,
+							50,
+							51
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Yomi",
 			"id": 37,
-			"participation": 7,
+			"participation": 8,
 			"gold": 0,
 			"silver": 1,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": [
+				{
+					"medaltype": "Silver_Beach",
+					"tournament": {
+						"id": 17,
+						"name": "Gods of Ragnarök Tournament",
+						"type": "Beach",
+						"date": "2025-06-22T11:30:00Z",
+						"teams_ids": [
+							72,
+							73,
+							74,
+							75,
+							76,
+							77
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Zane",
@@ -460,7 +1905,57 @@
 					"name": "Team that never gave up"
 				}
 			],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": [
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 1,
+						"name": "Pokemon Tournament",
+						"type": "Indoor",
+						"date": "2024-02-25T09:00:00Z",
+						"teams_ids": [
+							1,
+							2,
+							3,
+							4
+						]
+					}
+				},
+				{
+					"medaltype": "Bronze_Beach",
+					"tournament": {
+						"id": 6,
+						"name": "HungerGames Tournament",
+						"type": "Beach",
+						"date": "2024-08-25T09:00:00Z",
+						"teams_ids": [
+							23,
+							24,
+							25,
+							26,
+							27,
+							28
+						]
+					}
+				},
+				{
+					"medaltype": "Bronze_Beach",
+					"tournament": {
+						"id": 8,
+						"name": "Disney Tournament",
+						"type": "Beach",
+						"date": "2024-09-08T09:00:00Z",
+						"teams_ids": [
+							36,
+							37,
+							38,
+							39,
+							40
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Jaakko Lammintausta",
@@ -470,17 +1965,68 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": [
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 4,
+						"name": "Ghibli Tournament",
+						"type": "Indoor",
+						"date": "2024-05-26T09:00:00Z",
+						"teams_ids": [
+							13,
+							14,
+							15,
+							16
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Sanna",
 			"id": 40,
-			"participation": 6,
+			"participation": 7,
 			"gold": 2,
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": [
+				{
+					"medaltype": "Gold_Beach",
+					"tournament": {
+						"id": 5,
+						"name": "Cat Tournament",
+						"type": "Beach",
+						"date": "2024-07-06T09:00:00Z",
+						"teams_ids": [
+							17,
+							18,
+							19,
+							20,
+							21,
+							22
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 13,
+						"name": "AmazingAnimals Tournament",
+						"type": "Indoor",
+						"date": "2025-02-16T11:30:00Z",
+						"teams_ids": [
+							56,
+							57,
+							58,
+							59
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Joonas",
@@ -490,7 +2036,8 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": []
 		},
 		{
 			"name": "Henna",
@@ -500,7 +2047,8 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": []
 		},
 		{
 			"name": "Riza",
@@ -510,7 +2058,8 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": []
 		},
 		{
 			"name": "Simeon",
@@ -520,7 +2069,8 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": []
 		},
 		{
 			"name": "Matu",
@@ -530,7 +2080,8 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": []
 		},
 		{
 			"name": "Samuli",
@@ -540,7 +2091,8 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": []
 		},
 		{
 			"name": "Emmi-Julia",
@@ -550,7 +2102,24 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": [
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 1,
+						"name": "Pokemon Tournament",
+						"type": "Indoor",
+						"date": "2024-02-25T09:00:00Z",
+						"teams_ids": [
+							1,
+							2,
+							3,
+							4
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Stephen",
@@ -560,7 +2129,24 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": [
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 1,
+						"name": "Pokemon Tournament",
+						"type": "Indoor",
+						"date": "2024-02-25T09:00:00Z",
+						"teams_ids": [
+							1,
+							2,
+							3,
+							4
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Bienvenu",
@@ -570,7 +2156,106 @@
 			"silver": 1,
 			"bronze": 2,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": [
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 1,
+						"name": "Pokemon Tournament",
+						"type": "Indoor",
+						"date": "2024-02-25T09:00:00Z",
+						"teams_ids": [
+							1,
+							2,
+							3,
+							4
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 2,
+						"name": "Haikyuu Tournament",
+						"type": "Indoor",
+						"date": "2024-03-24T09:00:00Z",
+						"teams_ids": [
+							5,
+							6,
+							7,
+							8
+						]
+					}
+				},
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 4,
+						"name": "Ghibli Tournament",
+						"type": "Indoor",
+						"date": "2024-05-26T09:00:00Z",
+						"teams_ids": [
+							13,
+							14,
+							15,
+							16
+						]
+					}
+				},
+				{
+					"medaltype": "Silver_Beach",
+					"tournament": {
+						"id": 5,
+						"name": "Cat Tournament",
+						"type": "Beach",
+						"date": "2024-07-06T09:00:00Z",
+						"teams_ids": [
+							17,
+							18,
+							19,
+							20,
+							21,
+							22
+						]
+					}
+				},
+				{
+					"medaltype": "Bronze_Beach",
+					"tournament": {
+						"id": 6,
+						"name": "HungerGames Tournament",
+						"type": "Beach",
+						"date": "2024-08-25T09:00:00Z",
+						"teams_ids": [
+							23,
+							24,
+							25,
+							26,
+							27,
+							28
+						]
+					}
+				},
+				{
+					"medaltype": "Bronze_Beach",
+					"tournament": {
+						"id": 7,
+						"name": "Moomin Tournament",
+						"type": "Beach",
+						"date": "2024-08-04T09:00:00Z",
+						"teams_ids": [
+							29,
+							30,
+							31,
+							32,
+							33,
+							34,
+							35
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Anri",
@@ -580,7 +2265,24 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": [
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 1,
+						"name": "Pokemon Tournament",
+						"type": "Indoor",
+						"date": "2024-02-25T09:00:00Z",
+						"teams_ids": [
+							1,
+							2,
+							3,
+							4
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Troung",
@@ -590,12 +2292,13 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": []
 		},
 		{
 			"name": "Sini",
 			"id": 52,
-			"participation": 7,
+			"participation": 8,
 			"gold": 1,
 			"silver": 0,
 			"bronze": 1,
@@ -605,7 +2308,41 @@
 					"name": "Best team spirit"
 				}
 			],
-			"nickname": "Sini T"
+			"nickname": "Sini T",
+			"placements": [
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 2,
+						"name": "Haikyuu Tournament",
+						"type": "Indoor",
+						"date": "2024-03-24T09:00:00Z",
+						"teams_ids": [
+							5,
+							6,
+							7,
+							8
+						]
+					}
+				},
+				{
+					"medaltype": "Bronze_Beach",
+					"tournament": {
+						"id": 5,
+						"name": "Cat Tournament",
+						"type": "Beach",
+						"date": "2024-07-06T09:00:00Z",
+						"teams_ids": [
+							17,
+							18,
+							19,
+							20,
+							21,
+							22
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Sarp",
@@ -615,7 +2352,24 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": [
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 2,
+						"name": "Haikyuu Tournament",
+						"type": "Indoor",
+						"date": "2024-03-24T09:00:00Z",
+						"teams_ids": [
+							5,
+							6,
+							7,
+							8
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Ziang",
@@ -625,7 +2379,24 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": [
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 14,
+						"name": "Teletubby Tournament",
+						"type": "Indoor",
+						"date": "2025-03-23T11:30:00Z",
+						"teams_ids": [
+							60,
+							61,
+							62,
+							63
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Sungmin",
@@ -635,7 +2406,24 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": [
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 3,
+						"name": "StarWars Tournament",
+						"type": "Indoor",
+						"date": "2024-04-28T09:00:00Z",
+						"teams_ids": [
+							9,
+							10,
+							11,
+							12
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Miia",
@@ -645,7 +2433,8 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": []
 		},
 		{
 			"name": "Loik",
@@ -655,7 +2444,8 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": []
 		},
 		{
 			"name": "Louis",
@@ -665,7 +2455,24 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": [
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 16,
+						"name": "MythicalCreatures Tournament",
+						"type": "Indoor",
+						"date": "2025-05-18T11:30:00Z",
+						"teams_ids": [
+							68,
+							69,
+							70,
+							71
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Annamiina",
@@ -675,7 +2482,8 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": []
 		},
 		{
 			"name": "Maria",
@@ -685,7 +2493,8 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": []
 		},
 		{
 			"name": "Anton",
@@ -695,7 +2504,8 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": []
 		},
 		{
 			"name": "Ali",
@@ -705,7 +2515,24 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": [
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 9,
+						"name": "Pirate Tournament",
+						"type": "Indoor",
+						"date": "2024-10-06T11:30:00Z",
+						"teams_ids": [
+							41,
+							42,
+							43,
+							78
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Lassi",
@@ -715,7 +2542,8 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": []
 		},
 		{
 			"name": "Heikki",
@@ -725,17 +2553,19 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": []
 		},
 		{
 			"name": "Jani",
 			"id": 65,
-			"participation": 1,
+			"participation": 2,
 			"gold": 0,
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": []
 		},
 		{
 			"name": "Timothy",
@@ -745,7 +2575,8 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": []
 		},
 		{
 			"name": "Joonas Saga",
@@ -755,7 +2586,8 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": []
 		},
 		{
 			"name": "Kalle",
@@ -765,7 +2597,8 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": []
 		},
 		{
 			"name": "Anttoni",
@@ -775,7 +2608,24 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": [
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 12,
+						"name": "Programming Tournament",
+						"type": "Indoor",
+						"date": "2025-01-12T11:30:00Z",
+						"teams_ids": [
+							52,
+							53,
+							54,
+							55
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Louise",
@@ -785,7 +2635,8 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": []
 		},
 		{
 			"name": "Elis",
@@ -795,7 +2646,8 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": []
 		},
 		{
 			"name": "Maelle",
@@ -805,7 +2657,26 @@
 			"silver": 1,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": [
+				{
+					"medaltype": "Silver_Beach",
+					"tournament": {
+						"id": 17,
+						"name": "Gods of Ragnarök Tournament",
+						"type": "Beach",
+						"date": "2025-06-22T11:30:00Z",
+						"teams_ids": [
+							72,
+							73,
+							74,
+							75,
+							76,
+							77
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Juha",
@@ -815,7 +2686,8 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": []
 		},
 		{
 			"name": "Pierre",
@@ -825,7 +2697,8 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": []
 		},
 		{
 			"name": "Jan",
@@ -835,7 +2708,24 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": [
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 14,
+						"name": "Teletubby Tournament",
+						"type": "Indoor",
+						"date": "2025-03-23T11:30:00Z",
+						"teams_ids": [
+							60,
+							61,
+							62,
+							63
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Antonio",
@@ -845,7 +2735,24 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": [
+				{
+					"medaltype": "Gold_Indoor",
+					"tournament": {
+						"id": 15,
+						"name": "HaikyuuRematch Tournament",
+						"type": "Indoor",
+						"date": "2025-04-13T11:30:00Z",
+						"teams_ids": [
+							64,
+							65,
+							66,
+							67
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Veeti",
@@ -855,7 +2762,8 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": []
 		},
 		{
 			"name": "Takala",
@@ -865,7 +2773,8 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": []
 		},
 		{
 			"name": "Kaho",
@@ -875,7 +2784,19 @@
 			"silver": 0,
 			"bronze": 0,
 			"extra_awards": [],
-			"nickname": "Hidden"
+			"nickname": "Hidden",
+			"placements": []
+		},
+		{
+			"name": "Juho",
+			"id": 80,
+			"participation": 0,
+			"gold": 0,
+			"silver": 0,
+			"bronze": 0,
+			"extra_awards": [],
+			"nickname": "Hidden",
+			"placements": []
 		}
 	],
 	"Extra_Awards": [
@@ -1768,6 +3689,60 @@
 				60,
 				23
 			]
+		},
+		{
+			"id": 79,
+			"name": "Team 1",
+			"players_ids": [
+				18,
+				12,
+				3
+			]
+		},
+		{
+			"id": 80,
+			"name": "Superman",
+			"players_ids": [
+				29,
+				20,
+				1
+			]
+		},
+		{
+			"id": 81,
+			"name": "Batman",
+			"players_ids": [
+				30,
+				28,
+				8
+			]
+		},
+		{
+			"id": 82,
+			"name": "Joker",
+			"players_ids": [
+				9,
+				14,
+				52
+			]
+		},
+		{
+			"id": 83,
+			"name": "Team 5",
+			"players_ids": [
+				10,
+				65,
+				40
+			]
+		},
+		{
+			"id": 84,
+			"name": "Harley Quinn",
+			"players_ids": [
+				31,
+				37,
+				26
+			]
 		}
 	],
 	"Tournaments": [
@@ -1800,7 +3775,12 @@
 			"name": "StarWars Tournament",
 			"type": "Indoor",
 			"date": "2024-04-28T09:00:00Z",
-			"teams_ids": []
+			"teams_ids": [
+				9,
+				10,
+				11,
+				12
+			]
 		},
 		{
 			"id": 4,
@@ -1820,10 +3800,6 @@
 			"type": "Beach",
 			"date": "2024-07-06T09:00:00Z",
 			"teams_ids": [
-				9,
-				10,
-				11,
-				12,
 				17,
 				18,
 				19,
