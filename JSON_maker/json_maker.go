@@ -53,8 +53,8 @@ type Placement struct {
 }
 
 type PlacementJSON struct {
-	MedalType_id int         `json:"medaltype_id"`
-	Tournament   *Tournament `json:"tournament"`
+	MedalType  string      `json:"medaltype"`
+	Tournament *Tournament `json:"tournament"`
 }
 
 type DB struct {
@@ -137,9 +137,9 @@ func new_placement(team_id int, tournament_id int, medaltype_id int) *Placement 
 	return pl
 }
 
-func new_PlacementJSON(medaltype_id int, tournament *Tournament) *PlacementJSON {
+func new_PlacementJSON(medaltype string, tournament *Tournament) *PlacementJSON {
 	plj := new(PlacementJSON)
-	plj.MedalType_id = medaltype_id
+	plj.MedalType = medaltype
 	plj.Tournament = tournament
 	return plj
 }
@@ -325,6 +325,27 @@ func get_tournament(db *sql.DB, tournament_id int) *Tournament {
 	return tournament[0]
 }
 
+func get_medaltype_name(db *sql.DB, medaltype_id int) string {
+
+	medal_name := []string{}
+
+	medal_data, err := db.Query("select name from MedalType where medaltype_id=?", medaltype_id)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for medal_data.Next() {
+
+		var name string
+
+		medal_data.Scan(&name)
+
+		medal_name = append(medal_name, name)
+	}
+
+	return medal_name[0]
+}
+
 func get_player_placements(db *sql.DB, player_id int) []*PlacementJSON {
 
 	player_placements := []*PlacementJSON{}
@@ -340,7 +361,8 @@ func get_player_placements(db *sql.DB, player_id int) []*PlacementJSON {
 
 		placement_data.Scan(&tournament_id, &medaltype_id)
 		tournament := get_tournament(db, tournament_id)
-		player_placements = append(player_placements, new_PlacementJSON(medaltype_id, tournament))
+		medal_name := get_medaltype_name(db, medaltype_id)
+		player_placements = append(player_placements, new_PlacementJSON(medal_name, tournament))
 	}
 	return player_placements
 }
