@@ -16,14 +16,15 @@ type Player struct {
 }
 
 type PlayerJSON struct {
-	Name          string         `json:"name"`
-	Player_Id     int            `json:"id"`
-	Participation int            `json:"participation"`
-	Gold          int            `json:"gold"`
-	Silver        int            `json:"silver"`
-	Bronze        int            `json:"bronze"`
-	Extras        []*Extra_Award `json:"extra_awards"`
-	Nickname      string         `json:"nickname"`
+	Name          string           `json:"name"`
+	Player_Id     int              `json:"id"`
+	Participation int              `json:"participation"`
+	Gold          int              `json:"gold"`
+	Silver        int              `json:"silver"`
+	Bronze        int              `json:"bronze"`
+	Extras        []*Extra_Award   `json:"extra_awards"`
+	Nickname      string           `json:"nickname"`
+	Placements    []*PlacementJSON `json:"placements"`
 }
 
 type Extra_Award struct {
@@ -51,6 +52,11 @@ type Placement struct {
 	MedalType_id  int `json:"medaltype_id"`
 }
 
+type PlacementJSON struct {
+	MedalType_id int         `json:"medaltype_id"`
+	Tournament   *Tournament `json:"tournament"`
+}
+
 type DB struct {
 	Players      []*PlayerJSON
 	Extra_Awards []*Extra_Award
@@ -75,7 +81,7 @@ func new_player(id int, name string) *Player {
 	return p
 }
 
-func new_playerJSON(name string, id int, participation int, gold int, silver int, bronze int, nickname string, extras []*Extra_Award) *PlayerJSON {
+func new_playerJSON(name string, id int, participation int, gold int, silver int, bronze int, nickname string, extras []*Extra_Award, placements []*PlacementJSON) *PlayerJSON {
 	pj := new(PlayerJSON)
 	pj.Name = name
 	pj.Player_Id = id
@@ -85,6 +91,7 @@ func new_playerJSON(name string, id int, participation int, gold int, silver int
 	pj.Bronze = bronze
 	pj.Extras = extras
 	pj.Nickname = nickname
+	pj.Placements = placements
 	return pj
 }
 
@@ -128,6 +135,13 @@ func new_placement(team_id int, tournament_id int, medaltype_id int) *Placement 
 	pl.Tournament_id = tournament_id
 	pl.MedalType_id = medaltype_id
 	return pl
+}
+
+func new_PlacementJSON(medaltype_id int, tournament *Tournament) *PlacementJSON {
+	plj := new(PlacementJSON)
+	plj.MedalType_id = medaltype_id
+	plj.Tournament = tournament
+	return plj
 }
 
 func new_DB(extras []*Extra_Award, players []*PlayerJSON, teams []*Team, tournaments []*Tournament, placements []*Placement) *DB {
@@ -206,11 +220,11 @@ func get_tournaments(db *sql.DB) []*Tournament {
 	return tournaments
 }
 
-func get_tournament_teams(db *sql.DB, tournament *Tournament) []int {
+func get_tournament_teams(db *sql.DB, tournament_id int) []int {
 
 	tournament_ids := []int{}
 
-	tournament_id_data, err := db.Query("SELECT team_id FROM TournamentTeam WHERE tournament_id=?", tournament.Id)
+	tournament_id_data, err := db.Query("SELECT team_id FROM TournamentTeam WHERE tournament_id=?", tournament_id)
 
 	if err != nil {
 		log.Fatal(err)
@@ -284,6 +298,51 @@ func get_placements(db *sql.DB) []*Placement {
 	}
 
 	return placements
+}
+
+func get_tournament(db *sql.DB, tournament_id int) *Tournament {
+
+	tournament := []*Tournament{}
+	team_ids := []int{}
+
+	tournament_data, err := db.Query("select * from tournament where tournament_id=?", tournament_id)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for tournament_data.Next() {
+		var tournament_id int
+		var tournament_type string
+		var tournament_name string
+		var tournament_date string
+
+		tournament_data.Scan(&tournament_id, &tournament_type, &tournament_name, &tournament_date)
+		team_ids = get_tournament_teams(db, tournament_id)
+
+		tournament = append(tournament, new_tournamentJSON(tournament_name, tournament_id, tournament_type, tournament_date, team_ids))
+	}
+
+	return tournament[0]
+}
+
+func get_player_placements(db *sql.DB, player_id int) []*PlacementJSON {
+
+	player_placements := []*PlacementJSON{}
+
+	placement_data, err := db.Query("select tournament_id, medaltype_id from placement where team_id in (select team_id from PlayerTeam where player_id=?)", player_id)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for placement_data.Next() {
+		var tournament_id int
+		var medaltype_id int
+
+		placement_data.Scan(&tournament_id, &medaltype_id)
+		tournament := get_tournament(db, tournament_id)
+		player_placements = append(player_placements, new_PlacementJSON(medaltype_id, tournament))
+	}
+	return player_placements
 }
 
 //---------- Gets stuff for players -----------------------------------------------------------------------
@@ -409,6 +468,7 @@ func get_player_stats(players []*Player, db *sql.DB) []*PlayerJSON {
 	bronze := 0
 	nickname := ""
 	var extras = []*Extra_Award{}
+	var placements = []*PlacementJSON{}
 
 	for _, player := range players {
 		participation = get_participation(player, db)
@@ -417,8 +477,9 @@ func get_player_stats(players []*Player, db *sql.DB) []*PlayerJSON {
 		bronze = get_bronze_count(player, db)
 		nickname = get_nickname(player, db)
 		extras = get_player_extras(player, db)
+		placements = get_player_placements(db, player.Player_Id)
 
-		playersJSON = append(playersJSON, new_playerJSON(player.Name, player.Player_Id, participation, gold, silver, bronze, nickname, extras))
+		playersJSON = append(playersJSON, new_playerJSON(player.Name, player.Player_Id, participation, gold, silver, bronze, nickname, extras, placements))
 	}
 
 	return playersJSON
@@ -467,7 +528,7 @@ func get_tournament_stats(tournaments []*Tournament, db *sql.DB) []*Tournament {
 	tournamentsJSON := []*Tournament{}
 
 	for _, tournament := range tournaments {
-		team_ids := get_tournament_teams(db, tournament)
+		team_ids := get_tournament_teams(db, tournament.Id)
 		tournamentsJSON = append(tournamentsJSON, new_tournamentJSON(tournament.Name, tournament.Id, tournament.Type, tournament.Date, team_ids))
 	}
 
@@ -503,3 +564,5 @@ func main() {
 }
 
 //go run JSON_maker/json_maker.go ../Sundays_Clean_DB/SundaysDatabase.db > SundaysData.json
+
+//select tournament_id, medaltype_id from * placement where team_id in (select team_id from PlayerTeam where player_id=1);
