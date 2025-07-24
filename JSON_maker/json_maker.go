@@ -612,14 +612,3 @@ func main() {
 }
 
 //go run JSON_maker/json_maker.go ../Sundays_Clean_DB/SundaysDatabase.db > SundaysData.json
-
-//select tournament_id, medaltype_id from * placement where team_id in (select team_id from PlayerTeam where player_id=1);
-
-//SELECT COUNT(player_id) FROM PlayerTeam WHERE player_id = ?
-//AND team_id IN (SELECT * FROM Tournament WHERE type='Beach')
-
-/*
-SELECT COUNT(p.player_id) FROM Player p
-    INNER JOIN PlayerTeam pt ON pt.player_id = p.player_id
-    INNER JOIN TournamentTeam tt ON tt.team_id = pt.team_id
-    INNER JOIN Tournament t on t.tournament_id = tt.tournament_id AND t.type = "Beach" AND p.player_id = 1;*/
