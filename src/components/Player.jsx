@@ -8,8 +8,8 @@ const Player = ({player}) => {
             <p>Bronze: {player.bronze}</p>
             <p>Participation Indoor: {player.participation_indoor}</p>
             <p>Participation Beach: {player.participation_beach}</p>
-            <p>Winning Ratio Indoor: {((player.gold / player.participation_indoor)*100).toFixed(2)+'%'}</p>
-            <p>Winning Ratio Beach: {((player.gold / player.participation_beach)*100).toFixed(2)+'%'}</p>
+            <p>Winning Ratio Indoor: {((player.placements.filter((placement) => (placement.medaltype === 'Gold_Indoor')).length / player.participation_indoor)*100).toFixed(2)+'%'}</p>
+            <p>Winning Ratio Beach: {((player.placements.filter((placement) => (placement.medaltype === 'Gold_Beach')).length / player.participation_beach)*100).toFixed(2)+'%'}</p>
             <p>Medals: {player.gold+player.silver+player.bronze}</p>
             <p>Extra Awards: {player.extra_awards.length}</p>
         </div>
@@ -17,5 +17,3 @@ const Player = ({player}) => {
 }
 
 export default Player
-
-//Players.filter((player) => (player.gold+player.silver+player.bronze != 0)))

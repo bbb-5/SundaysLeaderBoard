@@ -5,7 +5,7 @@ const BottomBar = ({sortHandler}) => {
     const sort = (func) => {
         return () => sortHandler(func)
     }
-
+    
     return (
         <div>
             <Button onClick={sort((a, b) => b.gold - a.gold)} label='Gold'> </Button>

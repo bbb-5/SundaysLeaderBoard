@@ -37,9 +37,8 @@ function App() {
   const handleFilter = (e) => {
     console.log(e)
     setFilter({filter_by: e.target.value})
-    console.log(e.target.value)
+    console.log(e.target.value)    
   }
-
 
   return (
     <>
