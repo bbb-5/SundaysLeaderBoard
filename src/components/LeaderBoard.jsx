@@ -3,7 +3,6 @@ import RankBox from "./RankBox"
 import PlayerBox from './PlayerBox'
 
 const Leaderboard = ({players}) => {
-    console.log(players)
 
     return (
         <div className="leaderboard">

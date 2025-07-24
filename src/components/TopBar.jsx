@@ -1,6 +1,6 @@
 import Button from "./Button"
 
-const TopBar = ({reverseHandler, filterHandler}) => {
+const TopBar = ({reverseHandler, filterHandler, filter_by}) => {
     
     /*
     return (
@@ -14,11 +14,11 @@ const TopBar = ({reverseHandler, filterHandler}) => {
 
     return (
         <div>
-            <input type="radio" id="indoor" name="tournament_type"></input>
+            <input type="radio" id="indoor" name="tournament_type" value="Indoor" checked={filter_by === "Indoor"} onChange={(e) => filterHandler(e)}></input>
             <label>Indoor</label>
-            <input type="radio" id="beach" name="tournament_type"></input>
+            <input type="radio" id="beach" name="tournament_type" value="Beach" checked={filter_by === "Beach"} onChange={(e) => filterHandler(e)}></input>
             <label>Beach</label>
-            <input type="radio" id="both" name="tournament_type" defaultChecked></input>
+            <input type="radio" id="both" name="tournament_type" value="Both" checked={filter_by === "Both"} onChange={(e) => filterHandler(e)}></input>
             <label>Both</label>
             <Button onClick={reverseHandler} label='Reverse'> </Button>
         </div>

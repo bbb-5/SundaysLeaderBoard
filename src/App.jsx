@@ -13,6 +13,7 @@ function App() {
   const [players, setPlayers] = useState([])
   const [tournaments, setTournaments] = useState([])
   const [data, setData] = useState([])
+  const [filter, setFilter] = useState({filter_by: "Both"})
   
   useEffect(() => {
     dataService.getData().then((jsonData) => {
@@ -22,8 +23,6 @@ function App() {
       setTournaments(jsonData.data.Tournaments)
     })
   }, [])
-
-  useEffect 
 
   const handleSort = (sortFunction) => {
     const newPlayers = [...players].sort(sortFunction)
@@ -35,15 +34,17 @@ function App() {
     setPlayers(newPlayers)
   }
 
-  const handleFilter = (tournament_type) => {
-    const filteredTournaments = [...tournaments].filter( (tournament) => tournament.type == tournament_type)
-    setTournaments(filteredTournaments)
+  const handleFilter = (e) => {
+    console.log(e)
+    setFilter({filter_by: e.target.value})
+    console.log(e.target.value)
   }
+
 
   return (
     <>
     <h1>Sunday's Leaderboard</h1>
-    <TopBar reverseHandler={handleReverse} filterHandler={handleFilter}></TopBar>
+    <TopBar reverseHandler={handleReverse} filterHandler={handleFilter} filter_by={filter.filter_by}></TopBar>
     <LeaderBoard players={players}></LeaderBoard>
     <BottomBar sortHandler={handleSort}/>
     </>
