@@ -3,7 +3,8 @@
 		{
 			"name": "Alex",
 			"id": 0,
-			"participation": 5,
+			"participation_indoor": 1,
+			"participation_beach": 4,
 			"gold": 1,
 			"silver": 0,
 			"bronze": 0,
@@ -35,7 +36,8 @@
 		{
 			"name": "Aliisa",
 			"id": 1,
-			"participation": 18,
+			"participation_indoor": 12,
+			"participation_beach": 5,
 			"gold": 2,
 			"silver": 3,
 			"bronze": 0,
@@ -127,7 +129,8 @@
 		{
 			"name": "Ayaz",
 			"id": 2,
-			"participation": 7,
+			"participation_indoor": 6,
+			"participation_beach": 1,
 			"gold": 1,
 			"silver": 0,
 			"bronze": 0,
@@ -154,7 +157,8 @@
 		{
 			"name": "DJ",
 			"id": 3,
-			"participation": 12,
+			"participation_indoor": 8,
+			"participation_beach": 3,
 			"gold": 3,
 			"silver": 0,
 			"bronze": 1,
@@ -228,7 +232,8 @@
 		{
 			"name": "Edu",
 			"id": 4,
-			"participation": 2,
+			"participation_indoor": 2,
+			"participation_beach": 0,
 			"gold": 0,
 			"silver": 0,
 			"bronze": 0,
@@ -239,7 +244,8 @@
 		{
 			"name": "Ella",
 			"id": 5,
-			"participation": 9,
+			"participation_indoor": 5,
+			"participation_beach": 4,
 			"gold": 4,
 			"silver": 0,
 			"bronze": 0,
@@ -327,7 +333,8 @@
 		{
 			"name": "Eve",
 			"id": 6,
-			"participation": 8,
+			"participation_indoor": 5,
+			"participation_beach": 3,
 			"gold": 0,
 			"silver": 0,
 			"bronze": 1,
@@ -357,7 +364,8 @@
 		{
 			"name": "Gray",
 			"id": 7,
-			"participation": 12,
+			"participation_indoor": 8,
+			"participation_beach": 4,
 			"gold": 1,
 			"silver": 0,
 			"bronze": 1,
@@ -401,7 +409,8 @@
 		{
 			"name": "Hanna-Mari",
 			"id": 8,
-			"participation": 6,
+			"participation_indoor": 5,
+			"participation_beach": 0,
 			"gold": 1,
 			"silver": 0,
 			"bronze": 0,
@@ -428,7 +437,8 @@
 		{
 			"name": "Ilari",
 			"id": 9,
-			"participation": 17,
+			"participation_indoor": 12,
+			"participation_beach": 4,
 			"gold": 1,
 			"silver": 1,
 			"bronze": 2,
@@ -511,7 +521,8 @@
 		{
 			"name": "Ismo",
 			"id": 10,
-			"participation": 15,
+			"participation_indoor": 11,
+			"participation_beach": 3,
 			"gold": 4,
 			"silver": 1,
 			"bronze": 1,
@@ -617,7 +628,8 @@
 		{
 			"name": "Jaakko",
 			"id": 11,
-			"participation": 5,
+			"participation_indoor": 5,
+			"participation_beach": 0,
 			"gold": 2,
 			"silver": 0,
 			"bronze": 0,
@@ -664,7 +676,8 @@
 		{
 			"name": "Janna",
 			"id": 12,
-			"participation": 10,
+			"participation_indoor": 8,
+			"participation_beach": 1,
 			"gold": 3,
 			"silver": 0,
 			"bronze": 0,
@@ -721,7 +734,8 @@
 		{
 			"name": "Julia",
 			"id": 13,
-			"participation": 2,
+			"participation_indoor": 2,
+			"participation_beach": 0,
 			"gold": 1,
 			"silver": 0,
 			"bronze": 0,
@@ -753,7 +767,8 @@
 		{
 			"name": "Kasperi",
 			"id": 14,
-			"participation": 10,
+			"participation_indoor": 8,
+			"participation_beach": 1,
 			"gold": 2,
 			"silver": 0,
 			"bronze": 0,
@@ -800,7 +815,8 @@
 		{
 			"name": "Leonard",
 			"id": 15,
-			"participation": 7,
+			"participation_indoor": 7,
+			"participation_beach": 0,
 			"gold": 1,
 			"silver": 0,
 			"bronze": 0,
@@ -827,7 +843,8 @@
 		{
 			"name": "Makreta",
 			"id": 16,
-			"participation": 12,
+			"participation_indoor": 11,
+			"participation_beach": 1,
 			"gold": 4,
 			"silver": 0,
 			"bronze": 0,
@@ -899,7 +916,8 @@
 		{
 			"name": "Malla",
 			"id": 17,
-			"participation": 2,
+			"participation_indoor": 2,
+			"participation_beach": 0,
 			"gold": 0,
 			"silver": 0,
 			"bronze": 0,
@@ -910,7 +928,8 @@
 		{
 			"name": "Markus",
 			"id": 18,
-			"participation": 8,
+			"participation_indoor": 5,
+			"participation_beach": 2,
 			"gold": 1,
 			"silver": 0,
 			"bronze": 0,
@@ -937,7 +956,8 @@
 		{
 			"name": "Mathis",
 			"id": 19,
-			"participation": 2,
+			"participation_indoor": 2,
+			"participation_beach": 0,
 			"gold": 0,
 			"silver": 0,
 			"bronze": 0,
@@ -948,7 +968,8 @@
 		{
 			"name": "Matti",
 			"id": 20,
-			"participation": 8,
+			"participation_indoor": 6,
+			"participation_beach": 1,
 			"gold": 0,
 			"silver": 1,
 			"bronze": 0,
@@ -977,7 +998,8 @@
 		{
 			"name": "Moona",
 			"id": 21,
-			"participation": 2,
+			"participation_indoor": 2,
+			"participation_beach": 0,
 			"gold": 0,
 			"silver": 0,
 			"bronze": 0,
@@ -988,7 +1010,8 @@
 		{
 			"name": "Niko E",
 			"id": 22,
-			"participation": 8,
+			"participation_indoor": 7,
+			"participation_beach": 1,
 			"gold": 4,
 			"silver": 0,
 			"bronze": 0,
@@ -1062,7 +1085,8 @@
 		{
 			"name": "Quoc",
 			"id": 23,
-			"participation": 7,
+			"participation_indoor": 7,
+			"participation_beach": 0,
 			"gold": 4,
 			"silver": 0,
 			"bronze": 0,
@@ -1134,7 +1158,8 @@
 		{
 			"name": "Raul",
 			"id": 24,
-			"participation": 5,
+			"participation_indoor": 4,
+			"participation_beach": 1,
 			"gold": 3,
 			"silver": 0,
 			"bronze": 0,
@@ -1193,7 +1218,8 @@
 		{
 			"name": "Saga",
 			"id": 25,
-			"participation": 1,
+			"participation_indoor": 1,
+			"participation_beach": 0,
 			"gold": 0,
 			"silver": 0,
 			"bronze": 0,
@@ -1204,7 +1230,8 @@
 		{
 			"name": "Sara",
 			"id": 26,
-			"participation": 18,
+			"participation_indoor": 12,
+			"participation_beach": 5,
 			"gold": 4,
 			"silver": 1,
 			"bronze": 1,
@@ -1321,7 +1348,8 @@
 		{
 			"name": "Sean",
 			"id": 27,
-			"participation": 13,
+			"participation_indoor": 8,
+			"participation_beach": 5,
 			"gold": 4,
 			"silver": 1,
 			"bronze": 2,
@@ -1446,7 +1474,8 @@
 		{
 			"name": "Sebastian",
 			"id": 28,
-			"participation": 6,
+			"participation_indoor": 2,
+			"participation_beach": 3,
 			"gold": 0,
 			"silver": 0,
 			"bronze": 0,
@@ -1457,7 +1486,8 @@
 		{
 			"name": "Sheri",
 			"id": 29,
-			"participation": 17,
+			"participation_indoor": 11,
+			"participation_beach": 5,
 			"gold": 5,
 			"silver": 2,
 			"bronze": 0,
@@ -1589,7 +1619,8 @@
 		{
 			"name": "Simo",
 			"id": 30,
-			"participation": 6,
+			"participation_indoor": 4,
+			"participation_beach": 1,
 			"gold": 0,
 			"silver": 0,
 			"bronze": 0,
@@ -1605,7 +1636,8 @@
 		{
 			"name": "Tomi",
 			"id": 31,
-			"participation": 4,
+			"participation_indoor": 3,
+			"participation_beach": 0,
 			"gold": 1,
 			"silver": 0,
 			"bronze": 0,
@@ -1632,7 +1664,8 @@
 		{
 			"name": "Tomppa",
 			"id": 32,
-			"participation": 4,
+			"participation_indoor": 3,
+			"participation_beach": 1,
 			"gold": 2,
 			"silver": 0,
 			"bronze": 0,
@@ -1685,7 +1718,8 @@
 		{
 			"name": "Veikka",
 			"id": 33,
-			"participation": 2,
+			"participation_indoor": 0,
+			"participation_beach": 2,
 			"gold": 2,
 			"silver": 0,
 			"bronze": 0,
@@ -1732,7 +1766,8 @@
 		{
 			"name": "Verneri",
 			"id": 34,
-			"participation": 6,
+			"participation_indoor": 6,
+			"participation_beach": 0,
 			"gold": 2,
 			"silver": 0,
 			"bronze": 0,
@@ -1774,7 +1809,8 @@
 		{
 			"name": "Victor",
 			"id": 35,
-			"participation": 7,
+			"participation_indoor": 5,
+			"participation_beach": 2,
 			"gold": 2,
 			"silver": 1,
 			"bronze": 0,
@@ -1834,7 +1870,8 @@
 		{
 			"name": "Wiltsu",
 			"id": 36,
-			"participation": 4,
+			"participation_indoor": 3,
+			"participation_beach": 1,
 			"gold": 1,
 			"silver": 0,
 			"bronze": 0,
@@ -1866,7 +1903,8 @@
 		{
 			"name": "Yomi",
 			"id": 37,
-			"participation": 8,
+			"participation_indoor": 6,
+			"participation_beach": 1,
 			"gold": 0,
 			"silver": 1,
 			"bronze": 0,
@@ -1895,7 +1933,8 @@
 		{
 			"name": "Zane",
 			"id": 38,
-			"participation": 7,
+			"participation_indoor": 4,
+			"participation_beach": 3,
 			"gold": 1,
 			"silver": 0,
 			"bronze": 2,
@@ -1960,7 +1999,8 @@
 		{
 			"name": "Jaakko Lammintausta",
 			"id": 39,
-			"participation": 2,
+			"participation_indoor": 2,
+			"participation_beach": 0,
 			"gold": 1,
 			"silver": 0,
 			"bronze": 0,
@@ -1987,7 +2027,8 @@
 		{
 			"name": "Sanna",
 			"id": 40,
-			"participation": 7,
+			"participation_indoor": 4,
+			"participation_beach": 2,
 			"gold": 2,
 			"silver": 0,
 			"bronze": 0,
@@ -2031,7 +2072,8 @@
 		{
 			"name": "Joonas",
 			"id": 41,
-			"participation": 2,
+			"participation_indoor": 2,
+			"participation_beach": 0,
 			"gold": 0,
 			"silver": 0,
 			"bronze": 0,
@@ -2042,7 +2084,8 @@
 		{
 			"name": "Henna",
 			"id": 42,
-			"participation": 1,
+			"participation_indoor": 1,
+			"participation_beach": 0,
 			"gold": 0,
 			"silver": 0,
 			"bronze": 0,
@@ -2053,7 +2096,8 @@
 		{
 			"name": "Riza",
 			"id": 43,
-			"participation": 1,
+			"participation_indoor": 1,
+			"participation_beach": 0,
 			"gold": 0,
 			"silver": 0,
 			"bronze": 0,
@@ -2064,7 +2108,8 @@
 		{
 			"name": "Simeon",
 			"id": 44,
-			"participation": 3,
+			"participation_indoor": 3,
+			"participation_beach": 0,
 			"gold": 0,
 			"silver": 0,
 			"bronze": 0,
@@ -2075,7 +2120,8 @@
 		{
 			"name": "Matu",
 			"id": 45,
-			"participation": 1,
+			"participation_indoor": 1,
+			"participation_beach": 0,
 			"gold": 0,
 			"silver": 0,
 			"bronze": 0,
@@ -2086,7 +2132,8 @@
 		{
 			"name": "Samuli",
 			"id": 46,
-			"participation": 2,
+			"participation_indoor": 2,
+			"participation_beach": 0,
 			"gold": 0,
 			"silver": 0,
 			"bronze": 0,
@@ -2097,7 +2144,8 @@
 		{
 			"name": "Emmi-Julia",
 			"id": 47,
-			"participation": 1,
+			"participation_indoor": 1,
+			"participation_beach": 0,
 			"gold": 1,
 			"silver": 0,
 			"bronze": 0,
@@ -2124,7 +2172,8 @@
 		{
 			"name": "Stephen",
 			"id": 48,
-			"participation": 1,
+			"participation_indoor": 1,
+			"participation_beach": 0,
 			"gold": 1,
 			"silver": 0,
 			"bronze": 0,
@@ -2151,7 +2200,8 @@
 		{
 			"name": "Bienvenu",
 			"id": 49,
-			"participation": 8,
+			"participation_indoor": 5,
+			"participation_beach": 3,
 			"gold": 3,
 			"silver": 1,
 			"bronze": 2,
@@ -2260,7 +2310,8 @@
 		{
 			"name": "Anri",
 			"id": 50,
-			"participation": 4,
+			"participation_indoor": 4,
+			"participation_beach": 0,
 			"gold": 1,
 			"silver": 0,
 			"bronze": 0,
@@ -2287,7 +2338,8 @@
 		{
 			"name": "Troung",
 			"id": 51,
-			"participation": 1,
+			"participation_indoor": 1,
+			"participation_beach": 0,
 			"gold": 0,
 			"silver": 0,
 			"bronze": 0,
@@ -2298,7 +2350,8 @@
 		{
 			"name": "Sini",
 			"id": 52,
-			"participation": 8,
+			"participation_indoor": 5,
+			"participation_beach": 2,
 			"gold": 1,
 			"silver": 0,
 			"bronze": 1,
@@ -2347,7 +2400,8 @@
 		{
 			"name": "Sarp",
 			"id": 53,
-			"participation": 1,
+			"participation_indoor": 1,
+			"participation_beach": 0,
 			"gold": 1,
 			"silver": 0,
 			"bronze": 0,
@@ -2374,7 +2428,8 @@
 		{
 			"name": "Ziang",
 			"id": 54,
-			"participation": 9,
+			"participation_indoor": 8,
+			"participation_beach": 1,
 			"gold": 1,
 			"silver": 0,
 			"bronze": 0,
@@ -2401,7 +2456,8 @@
 		{
 			"name": "Sungmin",
 			"id": 55,
-			"participation": 2,
+			"participation_indoor": 2,
+			"participation_beach": 0,
 			"gold": 1,
 			"silver": 0,
 			"bronze": 0,
@@ -2428,7 +2484,8 @@
 		{
 			"name": "Miia",
 			"id": 56,
-			"participation": 3,
+			"participation_indoor": 3,
+			"participation_beach": 0,
 			"gold": 0,
 			"silver": 0,
 			"bronze": 0,
@@ -2439,7 +2496,8 @@
 		{
 			"name": "Loik",
 			"id": 57,
-			"participation": 1,
+			"participation_indoor": 1,
+			"participation_beach": 0,
 			"gold": 0,
 			"silver": 0,
 			"bronze": 0,
@@ -2450,7 +2508,8 @@
 		{
 			"name": "Louis",
 			"id": 58,
-			"participation": 3,
+			"participation_indoor": 3,
+			"participation_beach": 0,
 			"gold": 1,
 			"silver": 0,
 			"bronze": 0,
@@ -2477,7 +2536,8 @@
 		{
 			"name": "Annamiina",
 			"id": 59,
-			"participation": 1,
+			"participation_indoor": 0,
+			"participation_beach": 1,
 			"gold": 0,
 			"silver": 0,
 			"bronze": 0,
@@ -2488,7 +2548,8 @@
 		{
 			"name": "Maria",
 			"id": 60,
-			"participation": 2,
+			"participation_indoor": 1,
+			"participation_beach": 1,
 			"gold": 0,
 			"silver": 0,
 			"bronze": 0,
@@ -2499,7 +2560,8 @@
 		{
 			"name": "Anton",
 			"id": 61,
-			"participation": 1,
+			"participation_indoor": 0,
+			"participation_beach": 1,
 			"gold": 0,
 			"silver": 0,
 			"bronze": 0,
@@ -2510,7 +2572,8 @@
 		{
 			"name": "Ali",
 			"id": 62,
-			"participation": 2,
+			"participation_indoor": 2,
+			"participation_beach": 0,
 			"gold": 1,
 			"silver": 0,
 			"bronze": 0,
@@ -2537,7 +2600,8 @@
 		{
 			"name": "Lassi",
 			"id": 63,
-			"participation": 1,
+			"participation_indoor": 0,
+			"participation_beach": 1,
 			"gold": 0,
 			"silver": 0,
 			"bronze": 0,
@@ -2548,7 +2612,8 @@
 		{
 			"name": "Heikki",
 			"id": 64,
-			"participation": 1,
+			"participation_indoor": 0,
+			"participation_beach": 1,
 			"gold": 0,
 			"silver": 0,
 			"bronze": 0,
@@ -2559,7 +2624,8 @@
 		{
 			"name": "Jani",
 			"id": 65,
-			"participation": 2,
+			"participation_indoor": 0,
+			"participation_beach": 1,
 			"gold": 0,
 			"silver": 0,
 			"bronze": 0,
@@ -2570,7 +2636,8 @@
 		{
 			"name": "Timothy",
 			"id": 66,
-			"participation": 0,
+			"participation_indoor": 0,
+			"participation_beach": 0,
 			"gold": 0,
 			"silver": 0,
 			"bronze": 0,
@@ -2581,7 +2648,8 @@
 		{
 			"name": "Joonas Saga",
 			"id": 67,
-			"participation": 1,
+			"participation_indoor": 1,
+			"participation_beach": 0,
 			"gold": 0,
 			"silver": 0,
 			"bronze": 0,
@@ -2592,7 +2660,8 @@
 		{
 			"name": "Kalle",
 			"id": 68,
-			"participation": 2,
+			"participation_indoor": 1,
+			"participation_beach": 1,
 			"gold": 0,
 			"silver": 0,
 			"bronze": 0,
@@ -2603,7 +2672,8 @@
 		{
 			"name": "Anttoni",
 			"id": 69,
-			"participation": 2,
+			"participation_indoor": 2,
+			"participation_beach": 0,
 			"gold": 1,
 			"silver": 0,
 			"bronze": 0,
@@ -2630,7 +2700,8 @@
 		{
 			"name": "Louise",
 			"id": 70,
-			"participation": 1,
+			"participation_indoor": 1,
+			"participation_beach": 0,
 			"gold": 0,
 			"silver": 0,
 			"bronze": 0,
@@ -2641,7 +2712,8 @@
 		{
 			"name": "Elis",
 			"id": 71,
-			"participation": 3,
+			"participation_indoor": 2,
+			"participation_beach": 1,
 			"gold": 0,
 			"silver": 0,
 			"bronze": 0,
@@ -2652,7 +2724,8 @@
 		{
 			"name": "Maelle",
 			"id": 72,
-			"participation": 1,
+			"participation_indoor": 0,
+			"participation_beach": 1,
 			"gold": 0,
 			"silver": 1,
 			"bronze": 0,
@@ -2681,7 +2754,8 @@
 		{
 			"name": "Juha",
 			"id": 73,
-			"participation": 1,
+			"participation_indoor": 1,
+			"participation_beach": 0,
 			"gold": 0,
 			"silver": 0,
 			"bronze": 0,
@@ -2692,7 +2766,8 @@
 		{
 			"name": "Pierre",
 			"id": 74,
-			"participation": 1,
+			"participation_indoor": 1,
+			"participation_beach": 0,
 			"gold": 0,
 			"silver": 0,
 			"bronze": 0,
@@ -2703,7 +2778,8 @@
 		{
 			"name": "Jan",
 			"id": 75,
-			"participation": 1,
+			"participation_indoor": 1,
+			"participation_beach": 0,
 			"gold": 1,
 			"silver": 0,
 			"bronze": 0,
@@ -2730,7 +2806,8 @@
 		{
 			"name": "Antonio",
 			"id": 76,
-			"participation": 1,
+			"participation_indoor": 1,
+			"participation_beach": 0,
 			"gold": 1,
 			"silver": 0,
 			"bronze": 0,
@@ -2757,7 +2834,8 @@
 		{
 			"name": "Veeti",
 			"id": 77,
-			"participation": 1,
+			"participation_indoor": 1,
+			"participation_beach": 0,
 			"gold": 0,
 			"silver": 0,
 			"bronze": 0,
@@ -2768,7 +2846,8 @@
 		{
 			"name": "Takala",
 			"id": 78,
-			"participation": 1,
+			"participation_indoor": 1,
+			"participation_beach": 0,
 			"gold": 0,
 			"silver": 0,
 			"bronze": 0,
@@ -2779,7 +2858,8 @@
 		{
 			"name": "Kaho",
 			"id": 79,
-			"participation": 1,
+			"participation_indoor": 1,
+			"participation_beach": 0,
 			"gold": 0,
 			"silver": 0,
 			"bronze": 0,
@@ -2790,7 +2870,8 @@
 		{
 			"name": "Juho",
 			"id": 80,
-			"participation": 0,
+			"participation_indoor": 0,
+			"participation_beach": 0,
 			"gold": 0,
 			"silver": 0,
 			"bronze": 0,
@@ -3692,7 +3773,7 @@
 		},
 		{
 			"id": 79,
-			"name": "Team 1",
+			"name": "Poison Ivy",
 			"players_ids": [
 				18,
 				12,
@@ -3728,7 +3809,7 @@
 		},
 		{
 			"id": 83,
-			"name": "Team 5",
+			"name": "Superman",
 			"players_ids": [
 				10,
 				65,

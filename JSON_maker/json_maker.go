@@ -16,15 +16,16 @@ type Player struct {
 }
 
 type PlayerJSON struct {
-	Name          string           `json:"name"`
-	Player_Id     int              `json:"id"`
-	Participation int              `json:"participation"`
-	Gold          int              `json:"gold"`
-	Silver        int              `json:"silver"`
-	Bronze        int              `json:"bronze"`
-	Extras        []*Extra_Award   `json:"extra_awards"`
-	Nickname      string           `json:"nickname"`
-	Placements    []*PlacementJSON `json:"placements"`
+	Name       string           `json:"name"`
+	Player_Id  int              `json:"id"`
+	Indoor     int              `json:"participation_indoor"`
+	Beach      int              `json:"participation_beach"`
+	Gold       int              `json:"gold"`
+	Silver     int              `json:"silver"`
+	Bronze     int              `json:"bronze"`
+	Extras     []*Extra_Award   `json:"extra_awards"`
+	Nickname   string           `json:"nickname"`
+	Placements []*PlacementJSON `json:"placements"`
 }
 
 type Extra_Award struct {
@@ -81,11 +82,12 @@ func new_player(id int, name string) *Player {
 	return p
 }
 
-func new_playerJSON(name string, id int, participation int, gold int, silver int, bronze int, nickname string, extras []*Extra_Award, placements []*PlacementJSON) *PlayerJSON {
+func new_playerJSON(name string, id int, indoor int, beach int, gold int, silver int, bronze int, nickname string, extras []*Extra_Award, placements []*PlacementJSON) *PlayerJSON {
 	pj := new(PlayerJSON)
 	pj.Name = name
 	pj.Player_Id = id
-	pj.Participation = participation
+	pj.Indoor = indoor
+	pj.Beach = beach
 	pj.Gold = gold
 	pj.Silver = silver
 	pj.Bronze = bronze
@@ -417,11 +419,33 @@ func get_bronze_count(player *Player, db *sql.DB) int {
 	return bronze
 }
 
-func get_participation(player *Player, db *sql.DB) int {
+func get_participation_indoor(player *Player, db *sql.DB) int {
 
 	participated := 0
 
-	participations, err := db.Query("SELECT COUNT(player_id) FROM PlayerTeam WHERE player_id = ?", player.Player_Id)
+	participations, err := db.Query(`SELECT COUNT(p.player_id) FROM Player p
+    INNER JOIN PlayerTeam pt ON pt.player_id = p.player_id
+    INNER JOIN TournamentTeam tt ON tt.team_id = pt.team_id
+    INNER JOIN Tournament t on t.tournament_id = tt.tournament_id AND t.type = 'Indoor' AND p.player_id = ?`, player.Player_Id)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for participations.Next() {
+		participations.Scan(&participated)
+	}
+
+	return participated
+}
+
+func get_participation_beach(player *Player, db *sql.DB) int {
+
+	participated := 0
+
+	participations, err := db.Query(`SELECT COUNT(p.player_id) FROM Player p
+    INNER JOIN PlayerTeam pt ON pt.player_id = p.player_id
+    INNER JOIN TournamentTeam tt ON tt.team_id = pt.team_id
+    INNER JOIN Tournament t on t.tournament_id = tt.tournament_id AND t.type = 'Beach' AND p.player_id = ?`, player.Player_Id)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -484,7 +508,8 @@ func encode_json(extra_awards []*Extra_Award) {
 func get_player_stats(players []*Player, db *sql.DB) []*PlayerJSON {
 
 	playersJSON := []*PlayerJSON{}
-	participation := 0
+	indoor := 0
+	beach := 0
 	gold := 0
 	silver := 0
 	bronze := 0
@@ -493,7 +518,8 @@ func get_player_stats(players []*Player, db *sql.DB) []*PlayerJSON {
 	var placements = []*PlacementJSON{}
 
 	for _, player := range players {
-		participation = get_participation(player, db)
+		indoor = get_participation_indoor(player, db)
+		beach = get_participation_beach(player, db)
 		gold = get_gold_count(player, db)
 		silver = get_silver_count(player, db)
 		bronze = get_bronze_count(player, db)
@@ -501,7 +527,7 @@ func get_player_stats(players []*Player, db *sql.DB) []*PlayerJSON {
 		extras = get_player_extras(player, db)
 		placements = get_player_placements(db, player.Player_Id)
 
-		playersJSON = append(playersJSON, new_playerJSON(player.Name, player.Player_Id, participation, gold, silver, bronze, nickname, extras, placements))
+		playersJSON = append(playersJSON, new_playerJSON(player.Name, player.Player_Id, indoor, beach, gold, silver, bronze, nickname, extras, placements))
 	}
 
 	return playersJSON
@@ -588,3 +614,12 @@ func main() {
 //go run JSON_maker/json_maker.go ../Sundays_Clean_DB/SundaysDatabase.db > SundaysData.json
 
 //select tournament_id, medaltype_id from * placement where team_id in (select team_id from PlayerTeam where player_id=1);
+
+//SELECT COUNT(player_id) FROM PlayerTeam WHERE player_id = ?
+//AND team_id IN (SELECT * FROM Tournament WHERE type='Beach')
+
+/*
+SELECT COUNT(p.player_id) FROM Player p
+    INNER JOIN PlayerTeam pt ON pt.player_id = p.player_id
+    INNER JOIN TournamentTeam tt ON tt.team_id = pt.team_id
+    INNER JOIN Tournament t on t.tournament_id = tt.tournament_id AND t.type = "Beach" AND p.player_id = 1;*/
