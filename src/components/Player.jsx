@@ -1,5 +1,9 @@
 const Player = ({player}) => {
 
+    function percentage(medaltype, player){
+
+    }
+
     return (
         <div>
             <p>{player.name}</p>
