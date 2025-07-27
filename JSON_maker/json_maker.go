@@ -58,6 +58,11 @@ type PlacementJSON struct {
 	Tournament *Tournament `json:"tournament"`
 }
 
+type MedalType struct {
+	Location string `json:"location"`
+	Medal    string `json:"medaltype"`
+}
+
 type DB struct {
 	Players      []*PlayerJSON
 	Extra_Awards []*Extra_Award

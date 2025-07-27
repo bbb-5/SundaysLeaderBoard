@@ -17,7 +17,7 @@
 			"nickname": "Hidden",
 			"placements": [
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 10,
 						"name": "ATLA Tournament",
@@ -45,7 +45,7 @@
 			"nickname": "Aliisa T",
 			"placements": [
 				{
-					"medaltype": "Silver_Beach",
+					"medaltype": "Silver",
 					"tournament": {
 						"id": 5,
 						"name": "Cat Tournament",
@@ -62,7 +62,7 @@
 					}
 				},
 				{
-					"medaltype": "Silver_Beach",
+					"medaltype": "Silver",
 					"tournament": {
 						"id": 6,
 						"name": "HungerGames Tournament",
@@ -79,7 +79,7 @@
 					}
 				},
 				{
-					"medaltype": "Silver_Beach",
+					"medaltype": "Silver",
 					"tournament": {
 						"id": 8,
 						"name": "Disney Tournament",
@@ -95,7 +95,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 9,
 						"name": "Pirate Tournament",
@@ -110,7 +110,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 15,
 						"name": "HaikyuuRematch Tournament",
@@ -138,7 +138,7 @@
 			"nickname": "Hidden",
 			"placements": [
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 16,
 						"name": "MythicalCreatures Tournament",
@@ -166,7 +166,7 @@
 			"nickname": "Hidden",
 			"placements": [
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 2,
 						"name": "Haikyuu Tournament",
@@ -181,7 +181,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 4,
 						"name": "Ghibli Tournament",
@@ -196,7 +196,7 @@
 					}
 				},
 				{
-					"medaltype": "Bronze_Beach",
+					"medaltype": "Bronze",
 					"tournament": {
 						"id": 6,
 						"name": "HungerGames Tournament",
@@ -213,7 +213,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 13,
 						"name": "AmazingAnimals Tournament",
@@ -262,7 +262,7 @@
 			"nickname": "Hidden",
 			"placements": [
 				{
-					"medaltype": "Gold_Beach",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 6,
 						"name": "HungerGames Tournament",
@@ -279,7 +279,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Beach",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 7,
 						"name": "Moomin Tournament",
@@ -297,7 +297,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 12,
 						"name": "Programming Tournament",
@@ -312,7 +312,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Beach",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 17,
 						"name": "Gods of Ragnarök Tournament",
@@ -342,7 +342,7 @@
 			"nickname": "Hidden",
 			"placements": [
 				{
-					"medaltype": "Bronze_Beach",
+					"medaltype": "Bronze",
 					"tournament": {
 						"id": 7,
 						"name": "Moomin Tournament",
@@ -373,7 +373,7 @@
 			"nickname": "Hidden",
 			"placements": [
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 3,
 						"name": "StarWars Tournament",
@@ -388,7 +388,7 @@
 					}
 				},
 				{
-					"medaltype": "Bronze_Beach",
+					"medaltype": "Bronze",
 					"tournament": {
 						"id": 5,
 						"name": "Cat Tournament",
@@ -418,7 +418,7 @@
 			"nickname": "Hidden",
 			"placements": [
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 16,
 						"name": "MythicalCreatures Tournament",
@@ -451,7 +451,7 @@
 			"nickname": "Ilari K",
 			"placements": [
 				{
-					"medaltype": "Bronze_Beach",
+					"medaltype": "Bronze",
 					"tournament": {
 						"id": 7,
 						"name": "Moomin Tournament",
@@ -469,7 +469,7 @@
 					}
 				},
 				{
-					"medaltype": "Silver_Beach",
+					"medaltype": "Silver",
 					"tournament": {
 						"id": 8,
 						"name": "Disney Tournament",
@@ -485,7 +485,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 11,
 						"name": "HarryPotter Tournament",
@@ -500,7 +500,7 @@
 					}
 				},
 				{
-					"medaltype": "Bronze_Beach",
+					"medaltype": "Bronze",
 					"tournament": {
 						"id": 17,
 						"name": "Gods of Ragnarök Tournament",
@@ -530,7 +530,7 @@
 			"nickname": "Ismo P",
 			"placements": [
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 3,
 						"name": "StarWars Tournament",
@@ -545,7 +545,7 @@
 					}
 				},
 				{
-					"medaltype": "Bronze_Beach",
+					"medaltype": "Bronze",
 					"tournament": {
 						"id": 5,
 						"name": "Cat Tournament",
@@ -562,7 +562,7 @@
 					}
 				},
 				{
-					"medaltype": "Silver_Beach",
+					"medaltype": "Silver",
 					"tournament": {
 						"id": 6,
 						"name": "HungerGames Tournament",
@@ -579,7 +579,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 11,
 						"name": "HarryPotter Tournament",
@@ -594,7 +594,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 13,
 						"name": "AmazingAnimals Tournament",
@@ -609,7 +609,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 14,
 						"name": "Teletubby Tournament",
@@ -642,7 +642,7 @@
 			"nickname": "Hidden",
 			"placements": [
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 12,
 						"name": "Programming Tournament",
@@ -657,7 +657,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 16,
 						"name": "MythicalCreatures Tournament",
@@ -685,7 +685,7 @@
 			"nickname": "Hidden",
 			"placements": [
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 2,
 						"name": "Haikyuu Tournament",
@@ -700,7 +700,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 3,
 						"name": "StarWars Tournament",
@@ -715,7 +715,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 4,
 						"name": "Ghibli Tournament",
@@ -748,7 +748,7 @@
 			"nickname": "Hidden",
 			"placements": [
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 13,
 						"name": "AmazingAnimals Tournament",
@@ -781,7 +781,7 @@
 			"nickname": "Hidden",
 			"placements": [
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 2,
 						"name": "Haikyuu Tournament",
@@ -796,7 +796,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 15,
 						"name": "HaikyuuRematch Tournament",
@@ -824,7 +824,7 @@
 			"nickname": "Hidden",
 			"placements": [
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 1,
 						"name": "Pokemon Tournament",
@@ -852,7 +852,7 @@
 			"nickname": "Makreta P",
 			"placements": [
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 9,
 						"name": "Pirate Tournament",
@@ -867,7 +867,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 11,
 						"name": "HarryPotter Tournament",
@@ -882,7 +882,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 14,
 						"name": "Teletubby Tournament",
@@ -897,7 +897,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 15,
 						"name": "HaikyuuRematch Tournament",
@@ -937,7 +937,7 @@
 			"nickname": "Hidden",
 			"placements": [
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 10,
 						"name": "ATLA Tournament",
@@ -977,7 +977,7 @@
 			"nickname": "Hidden",
 			"placements": [
 				{
-					"medaltype": "Silver_Beach",
+					"medaltype": "Silver",
 					"tournament": {
 						"id": 17,
 						"name": "Gods of Ragnarök Tournament",
@@ -1019,7 +1019,7 @@
 			"nickname": "Hidden",
 			"placements": [
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 4,
 						"name": "Ghibli Tournament",
@@ -1034,7 +1034,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Beach",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 6,
 						"name": "HungerGames Tournament",
@@ -1051,7 +1051,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 9,
 						"name": "Pirate Tournament",
@@ -1066,7 +1066,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 10,
 						"name": "ATLA Tournament",
@@ -1094,7 +1094,7 @@
 			"nickname": "Hidden",
 			"placements": [
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 11,
 						"name": "HarryPotter Tournament",
@@ -1109,7 +1109,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 12,
 						"name": "Programming Tournament",
@@ -1124,7 +1124,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 13,
 						"name": "AmazingAnimals Tournament",
@@ -1139,7 +1139,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 16,
 						"name": "MythicalCreatures Tournament",
@@ -1167,7 +1167,7 @@
 			"nickname": "Hidden",
 			"placements": [
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 10,
 						"name": "ATLA Tournament",
@@ -1182,7 +1182,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 15,
 						"name": "HaikyuuRematch Tournament",
@@ -1197,7 +1197,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Beach",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 17,
 						"name": "Gods of Ragnarök Tournament",
@@ -1248,7 +1248,7 @@
 			"nickname": "Sara L",
 			"placements": [
 				{
-					"medaltype": "Silver_Beach",
+					"medaltype": "Silver",
 					"tournament": {
 						"id": 7,
 						"name": "Moomin Tournament",
@@ -1266,7 +1266,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Beach",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 8,
 						"name": "Disney Tournament",
@@ -1282,7 +1282,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 10,
 						"name": "ATLA Tournament",
@@ -1297,7 +1297,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 12,
 						"name": "Programming Tournament",
@@ -1312,7 +1312,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 14,
 						"name": "Teletubby Tournament",
@@ -1327,7 +1327,7 @@
 					}
 				},
 				{
-					"medaltype": "Bronze_Beach",
+					"medaltype": "Bronze",
 					"tournament": {
 						"id": 17,
 						"name": "Gods of Ragnarök Tournament",
@@ -1357,7 +1357,7 @@
 			"nickname": "Hidden",
 			"placements": [
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 3,
 						"name": "StarWars Tournament",
@@ -1372,7 +1372,7 @@
 					}
 				},
 				{
-					"medaltype": "Silver_Beach",
+					"medaltype": "Silver",
 					"tournament": {
 						"id": 6,
 						"name": "HungerGames Tournament",
@@ -1389,7 +1389,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Beach",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 7,
 						"name": "Moomin Tournament",
@@ -1407,7 +1407,7 @@
 					}
 				},
 				{
-					"medaltype": "Bronze_Beach",
+					"medaltype": "Bronze",
 					"tournament": {
 						"id": 8,
 						"name": "Disney Tournament",
@@ -1423,7 +1423,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 9,
 						"name": "Pirate Tournament",
@@ -1438,7 +1438,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 16,
 						"name": "MythicalCreatures Tournament",
@@ -1453,7 +1453,7 @@
 					}
 				},
 				{
-					"medaltype": "Bronze_Beach",
+					"medaltype": "Bronze",
 					"tournament": {
 						"id": 17,
 						"name": "Gods of Ragnarök Tournament",
@@ -1500,7 +1500,7 @@
 			"nickname": "Sheri A",
 			"placements": [
 				{
-					"medaltype": "Silver_Beach",
+					"medaltype": "Silver",
 					"tournament": {
 						"id": 5,
 						"name": "Cat Tournament",
@@ -1517,7 +1517,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Beach",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 6,
 						"name": "HungerGames Tournament",
@@ -1534,7 +1534,7 @@
 					}
 				},
 				{
-					"medaltype": "Silver_Beach",
+					"medaltype": "Silver",
 					"tournament": {
 						"id": 7,
 						"name": "Moomin Tournament",
@@ -1552,7 +1552,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Beach",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 8,
 						"name": "Disney Tournament",
@@ -1568,7 +1568,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 11,
 						"name": "HarryPotter Tournament",
@@ -1583,7 +1583,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 12,
 						"name": "Programming Tournament",
@@ -1598,7 +1598,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Beach",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 17,
 						"name": "Gods of Ragnarök Tournament",
@@ -1645,7 +1645,7 @@
 			"nickname": "Hidden",
 			"placements": [
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 4,
 						"name": "Ghibli Tournament",
@@ -1682,7 +1682,7 @@
 			"nickname": "Tomppeli",
 			"placements": [
 				{
-					"medaltype": "Gold_Beach",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 5,
 						"name": "Cat Tournament",
@@ -1699,7 +1699,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 10,
 						"name": "ATLA Tournament",
@@ -1727,7 +1727,7 @@
 			"nickname": "Hidden",
 			"placements": [
 				{
-					"medaltype": "Gold_Beach",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 5,
 						"name": "Cat Tournament",
@@ -1744,7 +1744,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Beach",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 7,
 						"name": "Moomin Tournament",
@@ -1775,7 +1775,7 @@
 			"nickname": "Hidden",
 			"placements": [
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 14,
 						"name": "Teletubby Tournament",
@@ -1790,7 +1790,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 15,
 						"name": "HaikyuuRematch Tournament",
@@ -1818,7 +1818,7 @@
 			"nickname": "Hidden",
 			"placements": [
 				{
-					"medaltype": "Silver_Beach",
+					"medaltype": "Silver",
 					"tournament": {
 						"id": 7,
 						"name": "Moomin Tournament",
@@ -1836,7 +1836,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 9,
 						"name": "Pirate Tournament",
@@ -1851,7 +1851,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 13,
 						"name": "AmazingAnimals Tournament",
@@ -1884,7 +1884,7 @@
 			"nickname": "Hidden",
 			"placements": [
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 11,
 						"name": "HarryPotter Tournament",
@@ -1912,7 +1912,7 @@
 			"nickname": "Hidden",
 			"placements": [
 				{
-					"medaltype": "Silver_Beach",
+					"medaltype": "Silver",
 					"tournament": {
 						"id": 17,
 						"name": "Gods of Ragnarök Tournament",
@@ -1947,7 +1947,7 @@
 			"nickname": "Hidden",
 			"placements": [
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 1,
 						"name": "Pokemon Tournament",
@@ -1962,7 +1962,7 @@
 					}
 				},
 				{
-					"medaltype": "Bronze_Beach",
+					"medaltype": "Bronze",
 					"tournament": {
 						"id": 6,
 						"name": "HungerGames Tournament",
@@ -1979,7 +1979,7 @@
 					}
 				},
 				{
-					"medaltype": "Bronze_Beach",
+					"medaltype": "Bronze",
 					"tournament": {
 						"id": 8,
 						"name": "Disney Tournament",
@@ -2008,7 +2008,7 @@
 			"nickname": "Hidden",
 			"placements": [
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 4,
 						"name": "Ghibli Tournament",
@@ -2036,7 +2036,7 @@
 			"nickname": "Hidden",
 			"placements": [
 				{
-					"medaltype": "Gold_Beach",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 5,
 						"name": "Cat Tournament",
@@ -2053,7 +2053,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 13,
 						"name": "AmazingAnimals Tournament",
@@ -2153,7 +2153,7 @@
 			"nickname": "Hidden",
 			"placements": [
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 1,
 						"name": "Pokemon Tournament",
@@ -2181,7 +2181,7 @@
 			"nickname": "Hidden",
 			"placements": [
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 1,
 						"name": "Pokemon Tournament",
@@ -2209,7 +2209,7 @@
 			"nickname": "Hidden",
 			"placements": [
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 1,
 						"name": "Pokemon Tournament",
@@ -2224,7 +2224,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 2,
 						"name": "Haikyuu Tournament",
@@ -2239,7 +2239,7 @@
 					}
 				},
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 4,
 						"name": "Ghibli Tournament",
@@ -2254,7 +2254,7 @@
 					}
 				},
 				{
-					"medaltype": "Silver_Beach",
+					"medaltype": "Silver",
 					"tournament": {
 						"id": 5,
 						"name": "Cat Tournament",
@@ -2271,7 +2271,7 @@
 					}
 				},
 				{
-					"medaltype": "Bronze_Beach",
+					"medaltype": "Bronze",
 					"tournament": {
 						"id": 6,
 						"name": "HungerGames Tournament",
@@ -2288,7 +2288,7 @@
 					}
 				},
 				{
-					"medaltype": "Bronze_Beach",
+					"medaltype": "Bronze",
 					"tournament": {
 						"id": 7,
 						"name": "Moomin Tournament",
@@ -2319,7 +2319,7 @@
 			"nickname": "Hidden",
 			"placements": [
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 1,
 						"name": "Pokemon Tournament",
@@ -2364,7 +2364,7 @@
 			"nickname": "Sini T",
 			"placements": [
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 2,
 						"name": "Haikyuu Tournament",
@@ -2379,7 +2379,7 @@
 					}
 				},
 				{
-					"medaltype": "Bronze_Beach",
+					"medaltype": "Bronze",
 					"tournament": {
 						"id": 5,
 						"name": "Cat Tournament",
@@ -2409,7 +2409,7 @@
 			"nickname": "Hidden",
 			"placements": [
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 2,
 						"name": "Haikyuu Tournament",
@@ -2437,7 +2437,7 @@
 			"nickname": "Hidden",
 			"placements": [
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 14,
 						"name": "Teletubby Tournament",
@@ -2465,7 +2465,7 @@
 			"nickname": "Hidden",
 			"placements": [
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 3,
 						"name": "StarWars Tournament",
@@ -2517,7 +2517,7 @@
 			"nickname": "Hidden",
 			"placements": [
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 16,
 						"name": "MythicalCreatures Tournament",
@@ -2581,7 +2581,7 @@
 			"nickname": "Hidden",
 			"placements": [
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 9,
 						"name": "Pirate Tournament",
@@ -2681,7 +2681,7 @@
 			"nickname": "Hidden",
 			"placements": [
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 12,
 						"name": "Programming Tournament",
@@ -2733,7 +2733,7 @@
 			"nickname": "Hidden",
 			"placements": [
 				{
-					"medaltype": "Silver_Beach",
+					"medaltype": "Silver",
 					"tournament": {
 						"id": 17,
 						"name": "Gods of Ragnarök Tournament",
@@ -2787,7 +2787,7 @@
 			"nickname": "Hidden",
 			"placements": [
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 14,
 						"name": "Teletubby Tournament",
@@ -2815,7 +2815,7 @@
 			"nickname": "Hidden",
 			"placements": [
 				{
-					"medaltype": "Gold_Indoor",
+					"medaltype": "Gold",
 					"tournament": {
 						"id": 15,
 						"name": "HaikyuuRematch Tournament",
