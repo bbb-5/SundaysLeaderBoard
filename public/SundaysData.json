@@ -1,4 +1,6 @@
-[
+
+{
+	 "Players": [
 	{
 		"name": "Alex",
 		"id": 0,
@@ -2323,3 +2325,4 @@
 		"placements": []
 	}
 ]
+}
