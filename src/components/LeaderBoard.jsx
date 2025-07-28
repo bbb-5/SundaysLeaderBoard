@@ -1,5 +1,3 @@
-import Player from "./Player"
-import RankBox from "./RankBox"
 import PlayerBox from './PlayerBox'
 
 const Leaderboard = ({players}) => {

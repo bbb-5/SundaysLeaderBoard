@@ -1,4 +1,4 @@
-const Player = ({player, filter_by}) => {
+const Player = ({player}) => {
 
     return (
         <div>
