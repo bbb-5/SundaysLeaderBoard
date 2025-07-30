@@ -17,13 +17,13 @@ const BottomBar = ({sortHandler, filter_by, players}) => {
         
         switch(filter_by){
             case "Beach":
-                console.log('There')   
+                console.log('There')
                 b_ratio = (b.placements.filter((placement) => (placement.medaltype.medal==='Gold'))).length/(b.participation_beach)
                 a_ratio = (a.placements.filter((placement) => (placement.medaltype.medal==='Gold'))).length/(a.participation_beach)
                 return (b_ratio - a_ratio)
             
             case "Indoor":
-                console.log('Now')   
+                console.log('Now')
                 b_ratio = ((b.placements.filter((placement) => (placement.medaltype.medal==='Gold'))).length/(b.participation_indoor))
                 a_ratio = ((a.placements.filter((placement) => (placement.medaltype.medal==='Gold'))).length/(a.participation_indoor))
                 return (b_ratio - a_ratio)

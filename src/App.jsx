@@ -38,11 +38,21 @@ function App() {
   const filterPlayers = (filter) => {
     console.log(filter)
     if (filter === 'Both') {
-      const newPlayers = [...players].filter((player) => player.placements.some((placements) => placements.medaltype.location === 'Beach' || 'Indoor'))
+      const newPlayers = [...players]
+        .map((player) => (
+          { ...player, placements: player.placements.filter(placement => placement.medaltype.location === 'Beach' || placement.medaltype.location === 'Indoor')}
+        ))
+        .filter(player => player.placements.some((placements) => placements.medaltype.location === 'Beach' || 'Indoor'))
+
       setPlayersShow(newPlayers)
       console.log(newPlayers)
     } else {
-      const newPlayers = [...players].filter((player) => player.placements.some((placements) => placements.medaltype.location === filter))
+      const newPlayers = [...players]
+        .map((player) => (
+          { ...player, placements: player.placements.filter(placement => placement.medaltype.location === filter)}
+        ))  
+        .filter((player) => player.placements.some((placements) => placements.medaltype.location === filter))
+
       setPlayersShow(newPlayers)
       console.log(newPlayers)
     }
