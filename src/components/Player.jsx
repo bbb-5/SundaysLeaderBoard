@@ -14,20 +14,26 @@ const Player = ({player}) => {
                 if (player.participation_indoor === 0){
                     return 0
                 } else {
-                    return (player.placements.filter((placement) => (placement.medaltype.location === 'Indoor' && placement.medaltype.medal ==='Gold')).length / player.participation_indoor)
+                    return (player.placements.filter((placement) => 
+                    (placement.medaltype.location === 'Indoor' && placement.medaltype.medal ==='Gold')).length /
+                     player.participation_indoor)
                 }
             case Filters.Beach:
                 if (player.participation_beach === 0){
                     return 0
                 } else {
-                    return (player.placements.filter((placement) => (placement.medaltype.location === 'Beach' && placement.medaltype.medal ==='Gold')).length / player.participation_beach)
+                    return (player.placements.filter((placement) => 
+                    (placement.medaltype.location === 'Beach' && placement.medaltype.medal ==='Gold')).length /
+                     player.participation_beach)
                 }
         
             default:
                 if (player.participation_beach === 0){
                     return 0
                 } else {
-                    return (player.placements.filter((placement) => (placement.medaltype.medal ==='Gold')).length / (player.participation_beach + player.participation_indoor))
+                    return (player.placements.filter((placement) =>
+                        (placement.medaltype.medal ==='Gold')).length /
+                     (player.participation_beach + player.participation_indoor))
                 }
         }
     }
