@@ -9,7 +9,7 @@ function App() {
   const [players, setPlayers] = useState([])
   const [playersShow, setPlayersShow] = useState([])
   const [filter, setFilter] = useState({filter_by: "Both"})
-  const [sorter, setSorter] = useState({sort_by: "Over all"})
+  const [sorter, setSorter] = useState({sort_by: "Total"})
 
   const Medals = {
     Gold: "Gold",
@@ -64,7 +64,7 @@ function App() {
     'Silver': (a, b) => medal_sort(a,b,Medals.Silver),
     'Bronze': (a, b) => medal_sort(a,b,Medals.Bronze),
     'Percentage': (a, b) => ratio(a,b,filter_by),
-    'Over all': (a, b) => b.placements.length - a.placements.length,
+    'Total': (a, b) => b.placements.length - a.placements.length,
     'Extra Award':  (a, b) => b.extra_awards.length - a.extra_awards.length
   };
   
