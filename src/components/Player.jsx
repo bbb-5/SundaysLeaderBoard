@@ -50,7 +50,3 @@ const Player = ({player}) => {
 }
 
 export default Player
-
-//<p>Winning Ratio Indoor: {percen(player.placements.filter((placement) => (placement.medaltype.location === 'Indoor' && placement.medaltype.medal ==='Gold')).length / player.participation_indoor)}</p>
-//<p>Winning Ratio Beach: {percen(player.placements.filter((placement) => (placement.medaltype.location === 'Beach' && placement.medaltype.medal ==='Gold')).length / player.participation_beach)}</p>
-//<p>Winning Ratio Both: {percen(player.placements.filter((placement) => (placement.medaltype.medal ==='Gold')).length / (player.participation_beach + player.participation_indoor))}</p>
