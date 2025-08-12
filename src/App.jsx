@@ -4,7 +4,6 @@ import TopBar from './components/TopBar'
 import LeaderBoard from './components/LeaderBoard'
 import BottomBar from './components/BottomBar'
 import dataService from './services/data'
-import { useCallback } from 'react'
 
 function App() {
   const [players, setPlayers] = useState([])
@@ -16,6 +15,12 @@ function App() {
     Gold: "Gold",
     Silver: "Silver",
     Bronze: "Bronze"
+  }
+
+  const Filters = {
+    Indoor: "Indoor",
+    Beach: "Beach",
+    Both: "Both"
   }
 
   const sort = (func) => {
@@ -72,8 +77,9 @@ function App() {
   useEffect(() => {
     dataService.getData().then((jsonData) => {
       console.log(jsonData.data)
-      setPlayers(jsonData.data.Players.filter((player) => (player.placements.length != 0)))
-      setPlayersShow(jsonData.data.Players.filter((player) => (player.placements.length != 0)))
+      const filtered = jsonData.data.Players.filter((player) => (player.placements.length != 0))
+      setPlayers(filtered)
+      setPlayersShow(filtered)
     })
   }, [])
 
@@ -111,21 +117,24 @@ function App() {
     console.log(sorter.sort_by)
     let newPlayers = undefined
 
-    if (filter === 'Both') {
-      newPlayers = [...players].map((player) => (
-          { ...player, placements: player.placements.filter(placement => placement.medaltype.location === 'Beach' || placement.medaltype.location === 'Indoor')}
-        ))
-        .filter(player => player.placements.some((placements) => placements.medaltype.location === 'Beach' || 'Indoor'))
-      setPlayersShow(newPlayers)
-      console.log(newPlayers)
-    } else {
-        newPlayers = [...players].map((player) => (
-          { ...player, placements: player.placements.filter(placement => placement.medaltype.location === filter)}
-        ))  
-        .filter((player) => player.placements.some((placements) => placements.medaltype.location === filter))
-      console.log(newPlayers)
-    }
     console.log("filter", filter)
+
+    switch(filter){
+      case Filters.Beach:
+        newPlayers = [...players].filter((player) => (player.placements.some((placements) => placements.medaltype.location === Filters.Beach)))
+        console.log(newPlayers)
+        break
+
+      case Filters.Indoor:
+        newPlayers = [...players].filter((player) => (player.placements.some((placements) => placements.medaltype.location === Filters.Indoor)))
+        console.log(newPlayers)
+        break
+
+      default: 
+        newPlayers = [...players]
+        console.log(newPlayers)
+        break
+    }
     setPlayersShow(newPlayers.sort(func_map[sorter.sort_by]))
   }
 
@@ -134,8 +143,8 @@ function App() {
     <>
     <h1>Sunday's Leaderboard</h1>
     <TopBar reverseHandler={handleReverse} filterHandler={handleFilter} filter_by={filter.filter_by}></TopBar>
-    <LeaderBoard players={playersShow}></LeaderBoard>
-    <BottomBar sortHandler={handleSort} filter_by={filter.filter_by} handleSelected={handleSelected}sort_by={sorter.sort_by}/>
+    <LeaderBoard players={playersShow} sort_by={sorter.sort_by} filter_by={filter.filter_by}></LeaderBoard>
+    <BottomBar handleSelected={handleSelected} sort_by={sorter.sort_by}/>
     </>
   )
 }
