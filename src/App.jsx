@@ -4,6 +4,7 @@ import TopBar from './components/TopBar'
 import LeaderBoard from './components/LeaderBoard'
 import BottomBar from './components/BottomBar'
 import dataService from './services/data'
+import { useCallback } from 'react'
 
 function App() {
   const [players, setPlayers] = useState([])
@@ -63,9 +64,9 @@ function App() {
     'Gold': (a, b) => medal_sort(a,b,Medals.Gold),
     'Silver': (a, b) => medal_sort(a,b,Medals.Silver),
     'Bronze': (a, b) => medal_sort(a,b,Medals.Bronze),
-    'Percentage': (a, b) => ratio(a,b,filter_by),
+    'Percentage': (a, b) => ratio(a,b,filter.filter_by),
     'Total': (a, b) => b.placements.length - a.placements.length,
-    'Extra Award':  (a, b) => b.extra_awards.length - a.extra_awards.length
+    'Extra':  (a, b) => b.extra_awards.length - a.extra_awards.length
   };
   
   useEffect(() => {
@@ -94,11 +95,15 @@ function App() {
     console.log(func_map[e.target.value])
   }
 
-  const handleFilter = (e) => {
-    console.log(e)
+  useEffect(() => {
+    filterPlayers(filter.filter_by) 
+    console.log('Updated: ', filter.filter_by)
+  }, [filter.filter_by])
+
+  const handleFilter = (e) => { 
     setFilter({filter_by: e.target.value})
     console.log(e.target.value)
-    filterPlayers(e.target.value) 
+
   }
 
   const filterPlayers = (filter) => {
@@ -120,6 +125,7 @@ function App() {
         .filter((player) => player.placements.some((placements) => placements.medaltype.location === filter))
       console.log(newPlayers)
     }
+    console.log("filter", filter)
     setPlayersShow(newPlayers.sort(func_map[sorter.sort_by]))
   }
 
