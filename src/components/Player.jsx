@@ -1,10 +1,25 @@
-const Player = ({player}) => {
+const Player = ({player, filter_by, sort_by}) => {
 
     const Filters = {
         Indoor: "Indoor",
         Beach: "Beach",
         Both: "Both"
     }
+
+    const Sorters = {
+        Gold: "Gold",
+        Silver: "Silver",
+        Bronze: "Bronze",
+        Percentage: "Percentage",
+        Total: "Total",
+        Extra: "Extra"
+    }
+
+    const Medals = {
+        Gold: "Gold",
+        Silver: "Silver",
+        Bronze: "Bronze"
+      }
 
     const percen = (n) => (n * 100).toFixed(2) + '%'
 
@@ -28,7 +43,7 @@ const Player = ({player}) => {
                 }
         
             default:
-                if (player.participation_beach === 0){
+                if (player.participation_beach+player.participation_indoor === 0){
                     return 0
                 } else {
                     return (player.placements.filter((placement) =>
@@ -38,21 +53,103 @@ const Player = ({player}) => {
         }
     }
 
+    const count_medals = (medal, filter, player) => {
+
+        if(filter != Filters.Both){
+            return (player.placements.filter((placement) => (placement.medaltype.medal === medal &&
+                placement.medaltype.location === filter)).length)
+        }
+
+        return (player.placements.filter((placement) => (placement.medaltype.medal === medal)).length)
+    }
+
+    const count_total = (filter, player) => {
+
+        if(filter != Filters.Both){
+            return (player.placements.filter((placement) => (placement.medaltype.location === filter_by)).length)
+        }
+
+        return (player.placements.length)
+    }
+
+
+    const count_participation = (filter, player) => {
+
+        switch(filter){
+            case Filters.Beach:
+                return player.participation_beach
+            case Filters.Indoor:
+                return player.participation_indoor
+            default: 
+                return (player.participation_beach + player.participation_indoor)
+        }
+    }
+
+    const count_ratio = (filter, player) => {
+
+        switch(filter){
+            case Filters.Beach:
+                return percen(ratio(player,Filters.Beach))
+            case Filters.Indoor:
+                return percen(ratio(player,Filters.Indoor))
+            default: 
+                return (percen(ratio(player,Filters.Both)))
+        }
+    }
+
+
+  const player_div_map = {
+    'Gold':
+    <div>
+        <p>{player.name}</p>
+        <p>Gold: {count_medals(Medals.Gold, filter_by, player)}</p>
+    </div>,
+
+    'Silver':
+    <div>
+        <p>{player.name}</p>
+        <p>Silver: {count_medals(Medals.Silver, filter_by, player)}</p>
+    </div>,
+
+    'Bronze':
+    <div>
+        <p>{player.name}</p>
+        <p>Bronze: {count_medals(Medals.Bronze, filter_by, player)}</p>
+    </div>,
+
+    'Percentage':
+    <div>
+        <p>{player.name}</p>
+        <p>Participation: {count_participation(filter_by, player)}</p>
+        <p>Winning Ratio: {count_ratio(filter_by, player)}</p>
+    </div>,
+
+    'Total':
+    <div>
+        <p>{player.name}</p>
+        <p>Medals: {count_total(filter_by, player)}</p>
+        <p>Gold: {count_medals(Medals.Gold, filter_by, player)}</p>
+        <p>Silver: {count_medals(Medals.Silver, filter_by, player)}</p>
+        <p>Bronze: {count_medals(Medals.Bronze, filter_by, player)}</p>
+    </div>,
+
+    'Extra':  
+    <div>
+        <p>{player.name}</p>
+        <p>Extra Awards: {player.extra_awards.length}</p>
+    </div>
+  };
+
     return (
-        <div>
-            <p>{player.name}</p>
-            <p>Gold: {player.placements.filter((placement) => (placement.medaltype.medal === 'Gold')).length}</p>
-            <p>Silver: {player.placements.filter((placement) => (placement.medaltype.medal === 'Silver')).length}</p>
-            <p>Bronze: {player.placements.filter((placement) => (placement.medaltype.medal === 'Bronze')).length}</p>
-            <p>Medals: {player.placements.length}</p>
-            <p>Participation Indoor: {player.participation_indoor}</p>
-            <p>Participation Beach: {player.participation_beach}</p>
-            <p>Winning Ratio Indoor: {percen(ratio(player,Filters.Indoor))}</p>
-            <p>Winning Ratio Beach: {percen(ratio(player,Filters.Beach))}</p>
-            <p>Winning Ratio Both: {percen(ratio(player,Filters.Both))}</p>
-            <p>Extra Awards: {player.extra_awards.length}</p>
-        </div>
+        player_div_map[sort_by]
     )
 }
 
 export default Player
+
+/*
+        <p>Participation Indoor: {player.participation_indoor}</p>
+        <p>Participation Beach: {player.participation_beach}</p>
+        <p>Winning Ratio Indoor: {percen(ratio(player,Filters.Indoor))}</p>
+        <p>Winning Ratio Beach: {percen(ratio(player,Filters.Beach))}</p>
+        <p>Winning Ratio Both: {percen(ratio(player,Filters.Both))}</p>*/

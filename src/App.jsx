@@ -121,12 +121,14 @@ function App() {
 
     switch(filter){
       case Filters.Beach:
-        newPlayers = [...players].filter((player) => (player.placements.some((placements) => placements.medaltype.location === Filters.Beach)))
+        newPlayers = [...players].filter((player) => (player.placements.some((placements) => 
+          placements.medaltype.location === Filters.Beach)))
         console.log(newPlayers)
         break
 
       case Filters.Indoor:
-        newPlayers = [...players].filter((player) => (player.placements.some((placements) => placements.medaltype.location === Filters.Indoor)))
+        newPlayers = [...players].filter((player) => (player.placements.some((placements) =>
+           placements.medaltype.location === Filters.Indoor)))
         console.log(newPlayers)
         break
 
@@ -137,7 +139,6 @@ function App() {
     }
     setPlayersShow(newPlayers.sort(func_map[sorter.sort_by]))
   }
-
   
   return (
     <>

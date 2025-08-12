@@ -1,7 +1,7 @@
 import { useState } from "react"
 import Button from "./Button"
 
-const BottomBar = ({sortHandler, filter_by, handleSelected, sort_by}) => {
+const BottomBar = ({handleSelected, sort_by}) => {
 
     
     const Selected = {
@@ -10,7 +10,7 @@ const BottomBar = ({sortHandler, filter_by, handleSelected, sort_by}) => {
         Bronze: "Bronze",
         Percentage: "Percentage",
         Total: "Total",
-        Extra: "Extra Award"
+        Extra: "Extra"
     } 
 
     return (
@@ -22,8 +22,13 @@ const BottomBar = ({sortHandler, filter_by, handleSelected, sort_by}) => {
             <label>Silver</label>
             <input type="radio" id="bronze" name="icon" value="Bronze" checked={sort_by === Selected.Bronze} onChange={(e) => handleSelected(e)}></input>
             <label>Bronze</label>
+            <input type="radio" id="percentage" name="icon" value="Percentage" checked={sort_by === Selected.Percentage} onChange={(e) => handleSelected(e)}></input>
+            <label>Percentage</label>
             <input type="radio" id="total" name="icon" value="Total" checked={sort_by === Selected.Total} onChange={(e) => handleSelected(e)}></input>
             <label>Total</label>
+            <input type="radio" id="extra" name="icon" value="Extra" checked={sort_by === Selected.Extra} onChange={(e) => handleSelected(e)}></input>
+            <label>Extra Award</label>
+            
         </div>
     )
 }
