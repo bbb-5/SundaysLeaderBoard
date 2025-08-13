@@ -97,7 +97,6 @@ const Player = ({player, filter_by, sort_by}) => {
         }
     }
 
-
   const player_div_map = {
     'Gold':
     <div>

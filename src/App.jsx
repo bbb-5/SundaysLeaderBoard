@@ -54,21 +54,27 @@ function App() {
     }
   }
 
-  const medal_sort = (a,b,medal) => {
+  const medal_sort = (a,b,medal, filter) => {
 
     let b_medals = 0
     let a_medals = 0
     
-    b_medals = (b.placements.filter((placement) => (placement.medaltype.medal === medal))).length
-    a_medals = (a.placements.filter((placement) => (placement.medaltype.medal === medal))).length
-
+    if(filter != Filters.Both){
+    b_medals = (b.placements.filter((placement) => 
+      ((placement.medaltype.medal === medal) && (placement.medaltype.location === filter)))).length
+    a_medals = (a.placements.filter((placement) => 
+      ((placement.medaltype.medal === medal) && (placement.medaltype.location === filter)))).length
+    } else {
+      b_medals = (b.placements.filter((placement) => ((placement.medaltype.medal === medal)))).length
+      a_medals = (a.placements.filter((placement) => ((placement.medaltype.medal === medal)))).length
+    }
     return (b_medals - a_medals)
   }
 
   const func_map = {
-    'Gold': (a, b) => medal_sort(a,b,Medals.Gold),
-    'Silver': (a, b) => medal_sort(a,b,Medals.Silver),
-    'Bronze': (a, b) => medal_sort(a,b,Medals.Bronze),
+    'Gold': (a, b) => medal_sort(a,b,Medals.Gold, filter.filter_by),
+    'Silver': (a, b) => medal_sort(a,b,Medals.Silver, filter.filter_by),
+    'Bronze': (a, b) => medal_sort(a,b,Medals.Bronze, filter.filter_by),
     'Percentage': (a, b) => ratio(a,b,filter.filter_by),
     'Total': (a, b) => b.placements.length - a.placements.length,
     'Extra':  (a, b) => b.extra_awards.length - a.extra_awards.length
