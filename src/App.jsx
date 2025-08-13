@@ -84,12 +84,29 @@ function App() {
     return (b_medals - a_medals)
   }
 
+  const total_sort = (a,b,filter) => {
+
+    let b_medals = 0
+    let a_medals = 0
+    
+    if(filter != Filters.Both){
+      b_medals = (b.placements.filter((placement) => 
+        (placement.medaltype.location === filter))).length
+      a_medals = (a.placements.filter((placement) => 
+        (placement.medaltype.location === filter))).length
+    } else {
+      b_medals = b.placements.length
+      a_medals = a.placements.length
+    }
+    return (b_medals - a_medals)
+  }
+
   const func_map = {
     'Gold': (a, b) => medal_sort(a,b,Medals.Gold, filter.filter_by),
     'Silver': (a, b) => medal_sort(a,b,Medals.Silver, filter.filter_by),
     'Bronze': (a, b) => medal_sort(a,b,Medals.Bronze, filter.filter_by),
     'Percentage': (a, b) => ratio(a,b,filter.filter_by),
-    'Total': (a, b) => b.placements.length - a.placements.length,
+    'Total': (a, b) => total_sort(a,b,filter.filter_by),
     'Extra':  (a, b) => b.extra_awards.length - a.extra_awards.length
   };
   
