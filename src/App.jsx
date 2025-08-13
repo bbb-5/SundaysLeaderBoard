@@ -27,22 +27,35 @@ function App() {
     return () => handleSort(func)
   }
 
-  const ratio = (a,b,filter_by) => {
+  const ratio = (a,b,filter) => {
 
     let b_ratio = 0
     let a_ratio = 0
-    
-    let b_gold = (b.placements.filter((placement) => (placement.medaltype.medal===Medals.Gold))).length
-    let a_gold = (a.placements.filter((placement) => (placement.medaltype.medal===Medals.Gold))).length
 
+    let b_gold = 0
+    let a_gold = 0
     
-    switch(filter_by){
-        case "Beach":
+    if(filter != Filters.Both){
+      b_gold = (b.placements.filter((placement) => 
+        ((placement.medaltype.medal === Medals.Gold) && (placement.medaltype.location === filter)))).length
+
+      a_gold = (a.placements.filter((placement) => 
+        ((placement.medaltype.medal === Medals.Gold) && (placement.medaltype.location === filter)))).length
+    } else {
+      b_gold = (b.placements.filter((placement) => 
+        ((placement.medaltype.medal === Medals.Gold)))).length
+  
+      a_gold = (a.placements.filter((placement) => 
+        ((placement.medaltype.medal === Medals.Gold)))).length
+    } 
+    
+    switch(filter){
+        case Filters.Beach:
             b_ratio = b_gold /(b.participation_beach)
             a_ratio = a_gold /(a.participation_beach)
             return (b_ratio - a_ratio)
         
-        case "Indoor":
+        case Filters.Indoor:
             b_ratio = b_gold /(b.participation_indoor)
             a_ratio = a_gold /(a.participation_indoor)
             return (b_ratio - a_ratio)
