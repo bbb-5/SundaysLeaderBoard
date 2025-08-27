@@ -9,7 +9,7 @@ function App() {
   const [players, setPlayers] = useState([])
   const [playersShow, setPlayersShow] = useState([])
   const [filter, setFilter] = useState({filter_by: "Both"})
-  const [sorter, setSorter] = useState({sort_by: "Total"})
+  const [sorter, setSorter] = useState({sort_by: "Default"})
 
   const Medals = {
     Gold: "Gold",
@@ -107,13 +107,15 @@ function App() {
     'Bronze': (a, b) => medal_sort(a,b,Medals.Bronze, filter.filter_by),
     'Percentage': (a, b) => ratio(a,b,filter.filter_by),
     'Total': (a, b) => total_sort(a,b,filter.filter_by),
-    'Extra':  (a, b) => b.extra_awards.length - a.extra_awards.length
+    'Extra':  (a, b) => b.extra_awards.length - a.extra_awards.length,
+    'Default':  (a, b) => medal_sort(a,b,Medals.Gold, filter.filter_by)
   };
   
   useEffect(() => {
     dataService.getData().then((jsonData) => {
       console.log(jsonData.data)
-      const filtered = jsonData.data.Players.filter((player) => (player.placements.length != 0))
+      let filtered = jsonData.data.Players.filter((player) => (player.placements.length != 0))
+      filtered = [...filtered].sort(func_map[sorter.sort_by])
       setPlayers(filtered)
       setPlayersShow(filtered)
     })
@@ -145,7 +147,6 @@ function App() {
   const handleFilter = (e) => { 
     setFilter({filter_by: e.target.value})
     console.log(e.target.value)
-
   }
 
   const filterPlayers = (filter) => {

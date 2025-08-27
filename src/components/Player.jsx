@@ -12,7 +12,8 @@ const Player = ({player, filter_by, sort_by}) => {
         Bronze: "Bronze",
         Percentage: "Percentage",
         Total: "Total",
-        Extra: "Extra"
+        Extra: "Extra",
+        Default: "Default"
     }
 
     const Medals = {
@@ -136,6 +137,15 @@ const Player = ({player, filter_by, sort_by}) => {
     <div>
         <p>{player.name}</p>
         <p>Extra Awards: {player.extra_awards.length}</p>
+    </div>,
+
+    'Default':  
+    <div>
+        <p>{player.name}</p>
+        <p>Medals: {count_total(filter_by, player)}</p>
+        <p>Gold: {count_medals(Medals.Gold, filter_by, player)}</p>
+        <p>Silver: {count_medals(Medals.Silver, filter_by, player)}</p>
+        <p>Bronze: {count_medals(Medals.Bronze, filter_by, player)}</p>
     </div>
   };
 
