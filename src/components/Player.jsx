@@ -1,3 +1,5 @@
+import {useCollapse} from 'react-collapsed'
+
 const Player = ({player, filter_by, sort_by}) => {
 
     const Filters = {
@@ -21,6 +23,8 @@ const Player = ({player, filter_by, sort_by}) => {
         Silver: "Silver",
         Bronze: "Bronze"
       }
+
+    const { getCollapseProps, getToggleProps, isExpanded } = useCollapse()
 
     const percen = (n) => (n * 100).toFixed(2) + '%'
 
@@ -98,59 +102,56 @@ const Player = ({player, filter_by, sort_by}) => {
         }
     }
 
-  const player_div_map = {
+  const player_default_map = {
     'Gold':
     <div>
-        <p>{player.name}</p>
-        <p>Gold: {count_medals(Medals.Gold, filter_by, player)}</p>
+        <p>{player.name} Gold: {count_medals(Medals.Gold, filter_by, player)}</p>
     </div>,
 
     'Silver':
     <div>
-        <p>{player.name}</p>
-        <p>Silver: {count_medals(Medals.Silver, filter_by, player)}</p>
+        <p>{player.name} Silver: {count_medals(Medals.Silver, filter_by, player)}</p>
     </div>,
 
     'Bronze':
     <div>
-        <p>{player.name}</p>
-        <p>Bronze: {count_medals(Medals.Bronze, filter_by, player)}</p>
+        <p>{player.name} Bronze: {count_medals(Medals.Bronze, filter_by, player)}</p>
     </div>,
 
     'Percentage':
     <div>
-        <p>{player.name}</p>
-        <p>Participation: {count_participation(filter_by, player)}</p>
-        <p>Winning Ratio: {count_ratio(filter_by, player)}</p>
+        <p>{player.name} Participated: {count_participation(filter_by, player)} W Ratio: {count_ratio(filter_by, player)}</p>
     </div>,
 
     'Total':
     <div>
-        <p>{player.name}</p>
-        <p>Medals: {count_total(filter_by, player)}</p>
-        <p>Gold: {count_medals(Medals.Gold, filter_by, player)}</p>
-        <p>Silver: {count_medals(Medals.Silver, filter_by, player)}</p>
-        <p>Bronze: {count_medals(Medals.Bronze, filter_by, player)}</p>
+        <p>{player.name} Medals: {count_total(filter_by, player)}</p>
     </div>,
 
     'Extra':  
     <div>
-        <p>{player.name}</p>
-        <p>Extra Awards: {player.extra_awards.length}</p>
+        <p>{player.name} Extra Awards: {player.extra_awards.length}</p>
     </div>,
 
     'Default':  
     <div>
-        <p>{player.name}</p>
-        <p>Medals: {count_total(filter_by, player)}</p>
-        <p>Gold: {count_medals(Medals.Gold, filter_by, player)}</p>
-        <p>Silver: {count_medals(Medals.Silver, filter_by, player)}</p>
-        <p>Bronze: {count_medals(Medals.Bronze, filter_by, player)}</p>
+        <p>{player.name} M: {count_total(filter_by, player)} G: {count_medals(Medals.Gold, filter_by, player)}
+             S: {count_medals(Medals.Silver, filter_by, player)} B: {count_medals(Medals.Bronze, filter_by, player)}</p>
     </div>
   };
 
     return (
-        player_div_map[sort_by]
+        <div className="collapsible">
+            <div className="header" {...getToggleProps()}>
+                {isExpanded ? player_default_map[sort_by] : player_default_map[sort_by]}
+            </div>
+            <div {...getCollapseProps()}>
+                <div className="content">
+                    Now you can see the hidden content. <br/><br/>
+                    Click again to hide...
+                </div>
+            </div>
+        </div>
     )
 }
 
@@ -161,4 +162,8 @@ export default Player
         <p>Participation Beach: {player.participation_beach}</p>
         <p>Winning Ratio Indoor: {percen(ratio(player,Filters.Indoor))}</p>
         <p>Winning Ratio Beach: {percen(ratio(player,Filters.Beach))}</p>
-        <p>Winning Ratio Both: {percen(ratio(player,Filters.Both))}</p>*/
+        <p>Winning Ratio Both: {percen(ratio(player,Filters.Both))}</p>
+        
+        <p>Gold: {count_medals(Medals.Gold, filter_by, player)}</p>
+        <p>Silver: {count_medals(Medals.Silver, filter_by, player)}</p>
+        <p>Bronze: {count_medals(Medals.Bronze, filter_by, player)}</p>*/
