@@ -102,6 +102,47 @@ const Player = ({player, filter_by, sort_by}) => {
         }
     }
 
+    const get_player_placements = (filter, player) => {
+
+        let placements = {}
+
+        if(filter != Filters.Both){
+            placements = (player.placements.filter((placement) => 
+                (placement.medaltype.location === filter)))
+        } else {
+            placements = player.placements
+        }
+
+        return (
+            <ul>
+                {placements.map((placement) =>
+                    <li key={placement.tournament.id}>{placement.medaltype.medal} {placement.tournament.name} {placement.tournament.date}</li>
+                )}
+            </ul>)
+    }
+
+    
+    const get_player_extras = (player) => {
+        return (
+            <ul>
+                {player.extra_awards.map((extra_award) =>
+                    <li key={extra_award.id}> EXTRA {extra_award.name}</li>
+                )}
+            </ul>)
+    }
+
+    const get_player_golds = (filter, player) => {
+        let golds = (player.placements.filter((placement) => 
+            ((placement.medaltype.medal === Sorters.Gold) && (placement.medaltype.location === filter)))) 
+
+        return (
+            <ul>
+                {golds.map((placement) =>
+                    <li key={placement.tournament.id}>{placement.tournament.name} {placement.tournament.date}</li>
+                )}
+            </ul>)
+    }
+
   const player_default_map = {
     'Gold':
     <div>
@@ -140,6 +181,49 @@ const Player = ({player, filter_by, sort_by}) => {
     </div>
   };
 
+  const player_pressed_map = {
+    'Gold':
+    <div>
+        {get_player_placements(filter_by,player)}
+    </div>,
+
+    'Silver':
+    <div>
+        {get_player_placements(filter_by,player)}
+    </div>,
+
+    'Bronze':
+    <div>
+        {get_player_placements(filter_by,player)}
+    </div>,
+
+    'Percentage':
+    <div>
+        <p>INDOOR {count_medals(Medals.Gold,Filters.Indoor,player)}/{count_participation(Filters.Indoor, player)}  {count_ratio(Filters.Indoor, player)}  </p>
+        {get_player_golds(Filters.Indoor,player)}
+        <p>BEACH  {count_medals(Medals.Gold,Filters.Beach,player)}/{count_participation(Filters.Beach, player)}   {count_ratio(Filters.Beach, player)}   </p>
+        {get_player_golds(Filters.Beach,player)}
+        <p>BOTH   {count_medals(Medals.Gold,Filters.Both,player)}/{count_participation(Filters.Both, player)}    {count_ratio(Filters.Both, player)}    </p>
+    </div>,
+
+    'Total':
+    <div>
+        {get_player_placements(filter_by,player)}
+    </div>,
+
+    'Extra':  
+    <div>
+        {get_player_extras(player)}
+    </div>,
+
+    'Default':  
+    <div>
+        {get_player_placements(filter_by,player)}
+        {get_player_extras(player)}
+    </div>
+  };
+
+
     return (
         <div className="collapsible">
             <div className="header" {...getToggleProps()}>
@@ -147,8 +231,7 @@ const Player = ({player, filter_by, sort_by}) => {
             </div>
             <div {...getCollapseProps()}>
                 <div className="content">
-                    Now you can see the hidden content. <br/><br/>
-                    Click again to hide...
+                    {player_pressed_map[sort_by]}
                 </div>
             </div>
         </div>

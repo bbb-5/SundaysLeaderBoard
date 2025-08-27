@@ -33,7 +33,7 @@ const BottomBar = ({handleSelected, sort_by}) => {
             <input type="radio" id="extra" name="icon" value="Extra" checked={sort_by === Selected.Extra} onChange={(e) => handleSelected(e)}></input>
             <label>Extra Award</label>
             <input type="radio" id="default" name="icon" value="Default" checked={sort_by === Selected.Default} onChange={(e) => handleSelected(e)}></input>
-            <label>Default</label>
+            <label>Refresh</label>
             
         </div>
     )
