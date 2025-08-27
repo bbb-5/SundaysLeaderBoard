@@ -16,9 +16,12 @@ const BottomBar = ({handleSelected, sort_by}) => {
 
     return (
         <div>
+            <label>
+            <input type="radio" className="gold" id="gold" name="icon" value="Gold" checked={sort_by === Selected.Gold} onChange={(e) => handleSelected(e)}></input>
+            <img src="./static/icons/36x36.png" width={35} height={35}/>
+            </label>
 
-            <input type="radio" id="gold" name="icon" value="Gold" checked={sort_by === Selected.Gold} onChange={(e) => handleSelected(e)}></input>
-            <label>Gold</label>
+
             <input type="radio" id="silver" name="icon" value="Silver" checked={sort_by === Selected.Silver} onChange={(e) => handleSelected(e)}></input>
             <label>Silver</label>
             <input type="radio" id="bronze" name="icon" value="Bronze" checked={sort_by === Selected.Bronze} onChange={(e) => handleSelected(e)}></input>
