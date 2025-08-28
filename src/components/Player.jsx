@@ -104,15 +104,19 @@ const Player = ({player, filter_by, sort_by}) => {
 
     const get_player_placements = (filter, player) => {
 
-        let placements = {}
+        let placements = []
 
         if(filter != Filters.Both){
-            placements = (player.placements.filter((placement) => 
-                (placement.medaltype.location === filter)))
+            placements = player.placements.filter((placement) => 
+                (placement.medaltype.location === filter))
         } else {
             placements = player.placements
         }
 
+        return placements
+    }
+
+    const list_placements = (placements) => {
         return (
             <ul>
                 {placements.map((placement) =>
@@ -120,8 +124,7 @@ const Player = ({player, filter_by, sort_by}) => {
                 )}
             </ul>)
     }
-
-    
+  
     const get_player_extras = (player) => {
         return (
             <ul>
@@ -142,6 +145,15 @@ const Player = ({player, filter_by, sort_by}) => {
                 )}
             </ul>)
     }
+
+    
+    const sort_by_medal = (medal, placements) => {
+        
+        const ps = [...placements].sort((a, b) => {return (a.medaltype.medal == medal) ? ((b.medaltype.medal == medal) ? 0 : 1) : ((b.medaltype.medal == medal) ? -1 : 0)})
+        console.log("placements", ps)
+        return placements
+    }
+
 
   const player_default_map = {
     'Gold':
@@ -184,17 +196,17 @@ const Player = ({player, filter_by, sort_by}) => {
   const player_pressed_map = {
     'Gold':
     <div>
-        {get_player_placements(filter_by,player)}
+        {list_placements(sort_by_medal(Medals.Gold, get_player_placements(filter_by,player)))}
     </div>,
 
     'Silver':
     <div>
-        {get_player_placements(filter_by,player)}
+        {list_placements(sort_by_medal(Medals.Silver,get_player_placements(filter_by,player)))}
     </div>,
 
     'Bronze':
     <div>
-        {get_player_placements(filter_by,player)}
+        {list_placements(sort_by_medal(Medals.Bronze,get_player_placements(filter_by,player)))}
     </div>,
 
     'Percentage':
