@@ -11,24 +11,20 @@ import (
 )
 
 type Player struct {
-	Name       string         `json:"name"`
-	Player_Id  int            `json:"id"`
-	Indoor     int            `json:"participation_indoor"`
-	Beach      int            `json:"participation_beach"`
-	Extras     []*Extra_Award `json:"extra_awards"`
-	Nickname   string         `json:"nickname"`
-	Placements []*Placement   `json:"placements"`
-}
-
-type Extra_Award struct {
-	Id   int    `json:"id"`
-	Name string `json:"name"`
+	Name       string             `json:"name"`
+	Player_Id  int                `json:"id"`
+	Indoor     int                `json:"participation_indoor"`
+	Beach      int                `json:"participation_beach"`
+	Extras     []*Extra_AwardJSON `json:"extra_awards"`
+	Nickname   string             `json:"nickname"`
+	Placements []*Placement       `json:"placements"`
 }
 
 type Extra_AwardJSON struct {
 	Id         int    `json:"id"`
 	Name       string `json:"name"`
 	Tournament string `json:"tournament_name"`
+	Filter     string `json:"location"`
 	Date       string `json:"tournament_date"`
 }
 
@@ -59,7 +55,7 @@ func new_player(id int, name string) *Player {
 	return p
 }
 
-func new_playerJSON(name string, id int, indoor int, beach int, nickname string, extras []*Extra_Award, placements []*Placement) *Player {
+func new_playerJSON(name string, id int, indoor int, beach int, nickname string, extras []*Extra_AwardJSON, placements []*Placement) *Player {
 	p := new(Player)
 	p.Name = name
 	p.Player_Id = id
@@ -71,18 +67,12 @@ func new_playerJSON(name string, id int, indoor int, beach int, nickname string,
 	return p
 }
 
-func new_extra(id int, name string) *Extra_Award {
-	e := new(Extra_Award)
-	e.Id = id
-	e.Name = name
-	return e
-}
-
-func new_extraJSON(id int, name string, tournament string, date string) *Extra_AwardJSON {
+func new_extraJSON(id int, name string, tournament string, filter string, date string) *Extra_AwardJSON {
 	ej := new(Extra_AwardJSON)
 	ej.Id = id
 	ej.Name = name
 	ej.Tournament = tournament
+	ej.Filter = filter
 	ej.Date = date
 	return ej
 }
@@ -196,9 +186,9 @@ func get_nickname(player *Player, db *sql.DB) string {
 	return nickname
 }
 
-func get_player_extras(player *Player, db *sql.DB) []*Extra_Award {
+func get_player_extras(player *Player, db *sql.DB) []*Extra_AwardJSON {
 
-	extras := []*Extra_Award{}
+	extras := []*Extra_AwardJSON{}
 
 	extra_data, err := db.Query("SELECT * FROM ExtraAward WHERE extra_award_id IN (SELECT extra_award_id FROM PlayerExtraAward WHERE player_id=?)", player.Player_Id)
 	if err != nil {
@@ -206,14 +196,42 @@ func get_player_extras(player *Player, db *sql.DB) []*Extra_Award {
 	}
 
 	for extra_data.Next() {
-		var name string
-		var extras_id int
+		var id int
 		var tournament_id int
-		extra_data.Scan(&name, &id)
-		extras = append(extras, new_extra(id, name))
+		var name string
+		var tournament_info []string
+
+		extra_data.Scan(&id, &tournament_id, &name)
+		tournament_info = get_tournament_info(db, tournament_id)
+
+		extras = append(extras, new_extraJSON(id, name, tournament_info[0], tournament_info[1], tournament_info[2]))
 	}
 
 	return extras
+}
+
+func get_tournament_info(db *sql.DB, tournament_id int) []string {
+
+	info := []string{}
+
+	tournament_data, err := db.Query("SELECT name,type,date FROM Tournament WHERE tournament_id=?", tournament_id)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for tournament_data.Next() {
+		var name string
+		var tournament_type string
+		var date string
+
+		tournament_data.Scan(&name, &tournament_type, &date)
+
+		info = append(info, name)
+		info = append(info, tournament_type)
+		info = append(info, date)
+	}
+
+	return info
 }
 
 func get_tournament(db *sql.DB, tournament_id int) *Tournament {
@@ -311,7 +329,7 @@ func get_player_stats(players []*Player, db *sql.DB) []*Player {
 	indoor := 0
 	beach := 0
 	nickname := ""
-	var extras = []*Extra_Award{}
+	var extras = []*Extra_AwardJSON{}
 	var placements = []*Placement{}
 
 	for _, player := range players {
