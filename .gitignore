@@ -1,2 +1,4 @@
 *.db
 launch.json
+node_modules
+dist

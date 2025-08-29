@@ -25,6 +25,13 @@ type Extra_Award struct {
 	Name string `json:"name"`
 }
 
+type Extra_AwardJSON struct {
+	Id         int    `json:"id"`
+	Name       string `json:"name"`
+	Tournament string `json:"tournament_name"`
+	Date       string `json:"tournament_date"`
+}
+
 type Tournament struct {
 	Id   int    `json:"id"`
 	Name string `json:"name"`
@@ -69,6 +76,15 @@ func new_extra(id int, name string) *Extra_Award {
 	e.Id = id
 	e.Name = name
 	return e
+}
+
+func new_extraJSON(id int, name string, tournament string, date string) *Extra_AwardJSON {
+	ej := new(Extra_AwardJSON)
+	ej.Id = id
+	ej.Name = name
+	ej.Tournament = tournament
+	ej.Date = date
+	return ej
 }
 
 func new_tournament(name string, id int, tournament_type string, date string) *Tournament {
@@ -184,14 +200,15 @@ func get_player_extras(player *Player, db *sql.DB) []*Extra_Award {
 
 	extras := []*Extra_Award{}
 
-	extra_data, err := db.Query("SELECT name, extra_award_id FROM ExtraAward WHERE extra_award_id IN (SELECT extra_award_id FROM PlayerExtraAward WHERE player_id=?)", player.Player_Id)
+	extra_data, err := db.Query("SELECT * FROM ExtraAward WHERE extra_award_id IN (SELECT extra_award_id FROM PlayerExtraAward WHERE player_id=?)", player.Player_Id)
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	for extra_data.Next() {
 		var name string
-		var id int
+		var extras_id int
+		var tournament_id int
 		extra_data.Scan(&name, &id)
 		extras = append(extras, new_extra(id, name))
 	}
