@@ -123,7 +123,25 @@ const Player = ({player, filter_by, sort_by}) => {
         return placements
     }
 
-    
+    const nested_placement = (medal, placements) => {
+
+        filtered = [...placements].filter((placement) => (placement.medaltype.medal === medal))
+
+        return (
+        <div className="inner_collapsible">
+            <div className="header" {...getToggleProps()}>
+                {isExpanded ? medal : medal}
+            </div>
+            <div {...getCollapseProps()}>
+                <div className="content">
+                    {list_placements(filtered)}
+                </div>
+            </div>
+        </div>    
+        )
+    }
+
+
     const list_placements = (placements) => {
         return (
             <ul>
@@ -219,7 +237,7 @@ const Player = ({player, filter_by, sort_by}) => {
   };
 
   const player_pressed_map = {
-    'Gold':
+    'Gold': 
     <div>
         {list_placements(sort_by_medal(Medals.Gold, get_player_placements(filter_by,player)))}
     </div>,
