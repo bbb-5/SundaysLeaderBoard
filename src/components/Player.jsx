@@ -24,6 +24,12 @@ const Player = ({player, filter_by, sort_by}) => {
         Bronze: "Bronze"
       }
 
+    const Medal_Priority = {
+        Gold:   0,
+        Silver: 0,
+        Bronze: 0
+    }
+
     const { getCollapseProps, getToggleProps, isExpanded } = useCollapse()
 
     const percen = (n) => (n * 100).toFixed(2) + '%'
@@ -148,14 +154,31 @@ const Player = ({player, filter_by, sort_by}) => {
             </ul>)
     }
 
-    /*
-    const sort_by_medal = (medal, placements) => {
-        
-        const ps = [...placements].sort((a, b) => {return (a.medaltype.medal == medal) ? ((b.medaltype.medal == medal) ? 0 : 1) : ((b.medaltype.medal == medal) ? -1 : 0)})
-        console.log("placements", ps)
-        return placements
-    }*/
+    const get_medal_value = (medaltype,current) => {
+        switch(medaltype){
+            case current:
+                return 3
+            case Medals.Gold:
+                return 2            
+            case Medals.Silver:
+                return 1
+            case Medals.Bronze:
+                return 0
+        }
+        return 0
+    }
 
+    const compare_medals = (a,b,current) => {
+        
+        let a_value = get_medal_value(a.medaltype.medal,current)
+        let b_value = get_medal_value(b.medaltype.medal,current)
+
+         return b_value-a_value
+    }
+
+    const sort_by_medal = (medal, placements) => {
+        return [...placements].sort((a,b) => compare_medals(a,b,medal))
+    }
 
   const player_default_map = {
     'Gold':
@@ -198,17 +221,17 @@ const Player = ({player, filter_by, sort_by}) => {
   const player_pressed_map = {
     'Gold':
     <div>
-        {list_placements(get_player_placements(filter_by,player))}
+        {list_placements(sort_by_medal(Medals.Gold, get_player_placements(filter_by,player)))}
     </div>,
 
     'Silver':
     <div>
-        
+        {list_placements(sort_by_medal(Medals.Silver, get_player_placements(filter_by,player)))}
     </div>,
 
     'Bronze':
     <div>
-         
+         {list_placements(sort_by_medal(Medals.Bronze, get_player_placements(filter_by,player)))}
     </div>,
 
     'Percentage':
@@ -253,8 +276,3 @@ const Player = ({player, filter_by, sort_by}) => {
 }
 
 export default Player
-
-/*
-        {list_placements(sort_by_medal(Medals.Gold, get_player_placements(filter_by,player)))}
-        
-        {player_pressed_map[sort_by]}*/
