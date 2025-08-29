@@ -131,7 +131,7 @@ const Player = ({player, filter_by, sort_by}) => {
         return (
             <ul>
                 {player.extra_awards.map((extra_award) =>
-                    <li key={extra_award.id}> EXTRA {extra_award.name}</li>
+                    <li key={extra_award.id}> EXTRA {extra_award.name} {extra_award.tournament_name} {extra_award.tournament_date}</li>
                 )}
             </ul>)
     }
@@ -198,7 +198,7 @@ const Player = ({player, filter_by, sort_by}) => {
   const player_pressed_map = {
     'Gold':
     <div>
-        
+        {list_placements(get_player_placements(filter_by,player))}
     </div>,
 
     'Silver':
