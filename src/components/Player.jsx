@@ -102,6 +102,7 @@ const Player = ({player, filter_by, sort_by}) => {
         }
     }
 
+    
     const get_player_placements = (filter, player) => {
 
         let placements = []
@@ -116,6 +117,7 @@ const Player = ({player, filter_by, sort_by}) => {
         return placements
     }
 
+    
     const list_placements = (placements) => {
         return (
             <ul>
@@ -146,13 +148,13 @@ const Player = ({player, filter_by, sort_by}) => {
             </ul>)
     }
 
-    
+    /*
     const sort_by_medal = (medal, placements) => {
         
         const ps = [...placements].sort((a, b) => {return (a.medaltype.medal == medal) ? ((b.medaltype.medal == medal) ? 0 : 1) : ((b.medaltype.medal == medal) ? -1 : 0)})
         console.log("placements", ps)
         return placements
-    }
+    }*/
 
 
   const player_default_map = {
@@ -196,17 +198,17 @@ const Player = ({player, filter_by, sort_by}) => {
   const player_pressed_map = {
     'Gold':
     <div>
-        {list_placements(sort_by_medal(Medals.Gold, get_player_placements(filter_by,player)))}
+        
     </div>,
 
     'Silver':
     <div>
-        {list_placements(sort_by_medal(Medals.Silver,get_player_placements(filter_by,player)))}
+        
     </div>,
 
     'Bronze':
     <div>
-        {list_placements(sort_by_medal(Medals.Bronze,get_player_placements(filter_by,player)))}
+         
     </div>,
 
     'Percentage':
@@ -220,7 +222,7 @@ const Player = ({player, filter_by, sort_by}) => {
 
     'Total':
     <div>
-        {get_player_placements(filter_by,player)}
+        {list_placements(get_player_placements(filter_by,player))}
     </div>,
 
     'Extra':  
@@ -230,7 +232,7 @@ const Player = ({player, filter_by, sort_by}) => {
 
     'Default':  
     <div>
-        {get_player_placements(filter_by,player)}
+        {list_placements(get_player_placements(filter_by,player))}
         {get_player_extras(player)}
     </div>
   };
@@ -243,7 +245,7 @@ const Player = ({player, filter_by, sort_by}) => {
             </div>
             <div {...getCollapseProps()}>
                 <div className="content">
-                    {player_pressed_map[sort_by]}
+                {player_pressed_map[sort_by]}
                 </div>
             </div>
         </div>
@@ -253,12 +255,6 @@ const Player = ({player, filter_by, sort_by}) => {
 export default Player
 
 /*
-        <p>Participation Indoor: {player.participation_indoor}</p>
-        <p>Participation Beach: {player.participation_beach}</p>
-        <p>Winning Ratio Indoor: {percen(ratio(player,Filters.Indoor))}</p>
-        <p>Winning Ratio Beach: {percen(ratio(player,Filters.Beach))}</p>
-        <p>Winning Ratio Both: {percen(ratio(player,Filters.Both))}</p>
+        {list_placements(sort_by_medal(Medals.Gold, get_player_placements(filter_by,player)))}
         
-        <p>Gold: {count_medals(Medals.Gold, filter_by, player)}</p>
-        <p>Silver: {count_medals(Medals.Silver, filter_by, player)}</p>
-        <p>Bronze: {count_medals(Medals.Bronze, filter_by, player)}</p>*/
+        {player_pressed_map[sort_by]}*/

@@ -1,6 +1,5 @@
-
 {
-	 "Players": [
+	"Players": [
 	{
 		"name": "Alex",
 		"id": 0,
@@ -9,7 +8,10 @@
 		"extra_awards": [
 			{
 				"id": 1,
-				"name": "Team that never gave up"
+				"name": "Team that never gave up",
+				"tournament_name": "Cat Tournament",
+				"location": "Beach",
+				"tournament_date": "2024-07-06T09:00:00Z"
 			}
 		],
 		"nickname": "Hidden",
@@ -206,11 +208,17 @@
 		"extra_awards": [
 			{
 				"id": 3,
-				"name": "Best saves"
+				"name": "Best saves",
+				"tournament_name": "Moomin Tournament",
+				"location": "Beach",
+				"tournament_date": "2024-08-04T09:00:00Z"
 			},
 			{
 				"id": 12,
-				"name": "Oracle Defender"
+				"name": "Oracle Defender",
+				"tournament_name": "MythicalCreatures Tournament",
+				"location": "Indoor",
+				"tournament_date": "2025-05-18T11:30:00Z"
 			}
 		],
 		"nickname": "Hidden",
@@ -359,7 +367,10 @@
 		"extra_awards": [
 			{
 				"id": 2,
-				"name": "Best team spirit"
+				"name": "Best team spirit",
+				"tournament_name": "HungerGames Tournament",
+				"location": "Beach",
+				"tournament_date": "2024-08-25T09:00:00Z"
 			}
 		],
 		"nickname": "Ilari K",
@@ -514,7 +525,10 @@
 		"extra_awards": [
 			{
 				"id": 10,
-				"name": "Smartest player"
+				"name": "Noo-noo brain",
+				"tournament_name": "Teletubby Tournament",
+				"location": "Indoor",
+				"tournament_date": "2025-03-23T11:30:00Z"
 			}
 		],
 		"nickname": "Hidden",
@@ -604,7 +618,10 @@
 		"extra_awards": [
 			{
 				"id": 9,
-				"name": "Wildest animal"
+				"name": "Wildest animal",
+				"tournament_name": "AmazingAnimals Tournament",
+				"location": "Indoor",
+				"tournament_date": "2025-02-16T11:30:00Z"
 			}
 		],
 		"nickname": "Hidden",
@@ -632,7 +649,10 @@
 		"extra_awards": [
 			{
 				"id": 6,
-				"name": "Wall of Ba Sing Se"
+				"name": "Wall of Ba Sing Se",
+				"tournament_name": "ATLA Tournament",
+				"location": "Indoor",
+				"tournament_date": "2024-11-03T11:30:00Z"
 			}
 		],
 		"nickname": "Hidden",
@@ -1013,11 +1033,17 @@
 		"extra_awards": [
 			{
 				"id": 1,
-				"name": "Team that never gave up"
+				"name": "Team that never gave up",
+				"tournament_name": "Cat Tournament",
+				"location": "Beach",
+				"tournament_date": "2024-07-06T09:00:00Z"
 			},
 			{
 				"id": 2,
-				"name": "Best team spirit"
+				"name": "Best team spirit",
+				"tournament_name": "HungerGames Tournament",
+				"location": "Beach",
+				"tournament_date": "2024-08-25T09:00:00Z"
 			}
 		],
 		"nickname": "Sara L",
@@ -1220,7 +1246,10 @@
 		"extra_awards": [
 			{
 				"id": 4,
-				"name": "Best serve"
+				"name": "Best serve",
+				"tournament_name": "Pirate Tournament",
+				"location": "Indoor",
+				"tournament_date": "2024-10-06T11:30:00Z"
 			}
 		],
 		"nickname": "Sheri A",
@@ -1326,7 +1355,10 @@
 		"extra_awards": [
 			{
 				"id": 9,
-				"name": "Wildest animal"
+				"name": "Wildest animal",
+				"tournament_name": "AmazingAnimals Tournament",
+				"location": "Indoor",
+				"tournament_date": "2025-02-16T11:30:00Z"
 			}
 		],
 		"nickname": "Hidden",
@@ -1363,11 +1395,17 @@
 		"extra_awards": [
 			{
 				"id": 5,
-				"name": "Last Volleyball Avatar"
+				"name": "Last Volleyball Avatar",
+				"tournament_name": "ATLA Tournament",
+				"location": "Indoor",
+				"tournament_date": "2024-11-03T11:30:00Z"
 			},
 			{
 				"id": 8,
-				"name": "Least bugs"
+				"name": "Least bugs",
+				"tournament_name": "Programming Tournament",
+				"location": "Indoor",
+				"tournament_date": "2025-01-12T11:30:00Z"
 			}
 		],
 		"nickname": "Tomppeli",
@@ -1529,7 +1567,10 @@
 		"extra_awards": [
 			{
 				"id": 7,
-				"name": "Wizard"
+				"name": "Wizard",
+				"tournament_name": "HarryPotter Tournament",
+				"location": "Indoor",
+				"tournament_date": "2024-12-01T11:30:00Z"
 			}
 		],
 		"nickname": "Hidden",
@@ -1580,7 +1621,10 @@
 		"extra_awards": [
 			{
 				"id": 1,
-				"name": "Team that never gave up"
+				"name": "Team that never gave up",
+				"tournament_name": "Cat Tournament",
+				"location": "Beach",
+				"tournament_date": "2024-07-06T09:00:00Z"
 			}
 		],
 		"nickname": "Hidden",
@@ -1913,7 +1957,10 @@
 		"extra_awards": [
 			{
 				"id": 2,
-				"name": "Best team spirit"
+				"name": "Best team spirit",
+				"tournament_name": "HungerGames Tournament",
+				"location": "Beach",
+				"tournament_date": "2024-08-25T09:00:00Z"
 			}
 		],
 		"nickname": "Sini T",
