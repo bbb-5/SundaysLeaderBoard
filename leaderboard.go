@@ -46,6 +46,11 @@ type MedalType struct {
 	Medal    string `json:"medal"`
 }
 
+type JSON_DB struct {
+	Players      []*Player
+	Tournaments  []*Tournament
+}
+
 //----------- Constructors-----------------------------------------------------------------------------
 
 func new_player(id int, name string) *Player {
@@ -108,6 +113,13 @@ func new_medaltype(medal string, location string) *MedalType {
 	m.Medal = medal
 	m.Location = location
 	return m
+}
+
+func new_JSON_DB(players []*Player, tournaments []*Tournament) *JSON_DB  {
+	db := new(JSON_DB)
+	db.Players = players
+	db.Tournaments = tournaments
+	return db
 }
 
 //-----------Getting data from db -----------------------------------------------------------------------
@@ -321,6 +333,33 @@ func get_player_placements(db *sql.DB, player_id int) []*Placement {
 	return player_placements
 }
 
+
+//---------- Getting and encoding tournaments --------------------------------------------------------------
+
+func get_tournaments(db *sql.DB) []*Tournament {
+
+	tournaments := []*Tournament{}
+
+	tournament_data, err := db.Query("SELECT * FROM Tournament")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for tournament_data.Next() {
+		var id int
+		var name string
+		var tournament_type string
+		var date string
+
+		tournament_data.Scan(&id, &tournament_type, &name, &date)
+
+		tournaments = append(tournaments, new_tournament(name, id, tournament_type, date))
+	}
+
+	return tournaments
+}
+
+
 //----------- Format player stats --------------------------------------------------------------------
 
 func get_player_stats(players []*Player, db *sql.DB) []*Player {
@@ -346,22 +385,26 @@ func get_player_stats(players []*Player, db *sql.DB) []*Player {
 
 }
 
-func form_json(db *sql.DB) []*Player {
+func form_json(db *sql.DB) *JSON_DB  {
 	players := get_players(db)
 	playersJSON := get_player_stats(players, db)
-	return playersJSON
+	tournaments := get_tournaments(db)
+
+	json_db := new_JSON_DB(playersJSON, tournaments)
+	return json_db
 }
 
 //---------- Encodes DB to JSON file -----------------------------------------------------------------------
 
-func encode_json(players []*Player) {
+func encode_json(db *JSON_DB) {
 
-	json_data, err := json.MarshalIndent(players, "", "\t")
+	json_data, err := json.MarshalIndent(db, "", "\t")
 	if err != nil {
 		log.Fatal(err)
 	}
 	fmt.Printf("%s\n", json_data)
 }
+
 
 //----------- Main, testing functions -----------------------------------------------------------------
 
@@ -380,4 +423,4 @@ func main() {
 	db.Close()
 }
 
-//go run JSON_maker/json_maker.go ../Sundays_Clean_DB/SundaysDatabase.db > PlayerData.json
+//go run leaderboard.go ../Sunday_Clean_DB/SundaysDatabase.db > PlayerData.json
