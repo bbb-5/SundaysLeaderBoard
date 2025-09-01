@@ -24,12 +24,6 @@ const Player = ({player, filter_by, sort_by}) => {
         Bronze: "Bronze"
       }
 
-    const Medal_Priority = {
-        Gold:   0,
-        Silver: 0,
-        Bronze: 0
-    }
-
     const { getCollapseProps, getToggleProps, isExpanded } = useCollapse()
 
     const percen = (n) => (n * 100).toFixed(2) + '%'
@@ -277,7 +271,6 @@ const Player = ({player, filter_by, sort_by}) => {
         {get_player_extras(player)}
     </div>
   };
-
 
     return (
         <div className="collapsible">

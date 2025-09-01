@@ -184,7 +184,7 @@ function App() {
   return (
     <>
     <h1>Sunday's Leaderboard</h1>
-    <TopBar reverseHandler={handleReverse} filterHandler={handleFilter} filter_by={filter.filter_by}></TopBar>
+    <TopBar reverseHandler={handleReverse} filterHandler={handleFilter} filter_by={filter.filter_by} tournaments={tournaments}></TopBar>
     <LeaderBoard players={playersShow} sort_by={sorter.sort_by} filter_by={filter.filter_by}></LeaderBoard>
     <BottomBar handleSelected={handleSelected} sort_by={sorter.sort_by} filter_by={filter.filter_by}/>
     </>
