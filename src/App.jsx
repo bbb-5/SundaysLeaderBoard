@@ -182,7 +182,7 @@ function App() {
     <h1>Sunday's Leaderboard</h1>
     <TopBar reverseHandler={handleReverse} filterHandler={handleFilter} filter_by={filter.filter_by}></TopBar>
     <LeaderBoard players={playersShow} sort_by={sorter.sort_by} filter_by={filter.filter_by}></LeaderBoard>
-    <BottomBar handleSelected={handleSelected} sort_by={sorter.sort_by}/>
+    <BottomBar handleSelected={handleSelected} sort_by={sorter.sort_by} filter_by={filter.filter_by}/>
     </>
   )
 }
