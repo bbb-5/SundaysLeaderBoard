@@ -7,6 +7,7 @@ import dataService from './services/data'
 
 function App() {
   const [players, setPlayers] = useState([])
+  const [tournaments, setTournaments] = useState([])
   const [playersShow, setPlayersShow] = useState([])
   const [filter, setFilter] = useState({filter_by: "Both"})
   const [sorter, setSorter] = useState({sort_by: "Default"})
@@ -116,6 +117,9 @@ function App() {
       console.log(jsonData.data)
       let filtered = jsonData.data.Players.filter((player) => (player.placements.length != 0))
       filtered = [...filtered].sort(func_map[sorter.sort_by])
+      let tournaments = jsonData.data.Tournaments
+      setTournaments(tournaments)
+      console.log("tournaments here!", tournaments)
       setPlayers(filtered)
       setPlayersShow(filtered)
     })
