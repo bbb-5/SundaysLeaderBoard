@@ -1,74 +1,88 @@
-import {useCollapse} from 'react-collapsed'
-import Button from "./Button"
+import { useCollapse } from 'react-collapsed'
+import { useState, useEffect } from 'react'
 
-const Calendar = ({tournaments}) => {
+const Nested_tournaments = ({tournaments, year}) => {
 
-const { getCollapseProps, getToggleProps, isExpanded } = useCollapse()
+    const [current_tournaments, setTournaments] = useState([])
+    const [current_year, setYear] = useState(0)
+    const { getCollapseProps, getToggleProps, isExpanded } = useCollapse()
 
-const list_years = (tournaments) => {
-
-    let years = []
-    
-    for (const tournament of tournaments) {
-        var year = (new Date(tournament.date)).getFullYear()
-
-        if (years.includes(year) === false) {
-            years.push(year)
-        }
-    }
+    useEffect(() => {
+        let filtered = [...tournaments].filter((tournament) => (tournament.date.includes(year)))
+        setYear(year)
+        setTournaments(filtered)
+    }, [year, tournaments])
 
     return (
-        <ul>
-            {years.map((year, index) =>
-                <li key={index}>{year}</li>
-            )}
-        </ul>)
-}
-
-const nested_tournament = (tournaments, year) => {
-
-    return (
-    <div className="inner_collapsible">
-        <div className="header" {...getToggleProps()}>
-            {isExpanded ? year : year}
-        </div>
-        <div {...getCollapseProps()}>
-            <div className="content">
-                {list_tournaments(tournaments,year)}
+        <div className="inner_collapsible">
+            <div className="header" {...getToggleProps()}>
+                {isExpanded ? current_year : current_year}
+            </div>
+            <div {...getCollapseProps()}>
+                <div className="content">
+                    {list_tournaments(current_tournaments)}
+                </div>
             </div>
         </div>
-    </div>    
     )
 }
 
-const list_tournaments = (tournaments, year) => {
-
-    let filtered = [...tournaments].filter((tournament) => (tournament.date.includes(year)))
+const list_tournaments = (tournaments) => {
 
     return (
         <ul>
-            {filtered.map((tournament) =>
-                <button key={tournament.id}> {tournament.date} {tournament.name}</button>
+            {tournaments.map((tournament) =>
+                <li key={tournament.id}> {tournament.date} {tournament.name}</li>
             )}
         </ul>)
 }
 
-return (
-    <div className="collapsible">
-        <div className="header" {...getToggleProps()}>
+const Calendar = ({ tournaments }) => {
+
+    const [tournament_years, setYears] = useState([])
+    const { getCollapseProps, getToggleProps, isExpanded } = useCollapse()
+
+    useEffect(() => {
+        let calendar_years = get_years(tournaments)
+        setYears(calendar_years)
+    }, [tournaments])
+
+    const get_years = (tournaments) => {
+
+        let years = []
+
+        for (const tournament of tournaments) {
+            var year = (new Date(tournament.date)).getFullYear()
+
+            if (years.includes(year) === false) {
+                years.push(year)
+            }
+        }
+        return years
+    }
+
+    const list_years = (tournaments, years) => {
+
+        return (
+            <div>
+                {years.map((year,index) => 
+                <Nested_tournaments key={index} tournaments={tournaments} year={year}/>
+                )}
+            </div>)
+    }
+
+    return (
+        <div className="collapsible">
+            <div className="header" {...getToggleProps()}>
                 {isExpanded ? "Choose year" : "Start date"}
             </div>
-                <div {...getCollapseProps()}>
-                    <div className="content">
-                         {list_years(tournaments)}
+            <div {...getCollapseProps()}>
+                <div className="content">
+                    {list_years(tournaments, tournament_years)}
+                </div>
             </div>
         </div>
-    </div>
-
-)
-
+    )
 }
-
-// {nested_tournament(tournaments,2025)}
 
 export default Calendar

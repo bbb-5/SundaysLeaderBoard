@@ -11,7 +11,7 @@ const TopBar = ({reverseHandler, filterHandler, filter_by, tournaments}) => {
 
     return (
         <div>
-            <Calendar tournaments={tournaments}></Calendar>
+            <Calendar tournaments={tournaments}/>
             <input type="radio" id="indoor" name="tournament_type" value="Indoor" checked={filter_by === "Indoor"} onChange={(e) => filterHandler(e)}></input>
             <label>Indoor</label>
             <input type="radio" id="beach" name="tournament_type" value="Beach" checked={filter_by === "Beach"} onChange={(e) => filterHandler(e)}></input>
