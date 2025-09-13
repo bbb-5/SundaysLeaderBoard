@@ -18,7 +18,7 @@ const TopBar = ({reverseHandler, filterHandler, filter_by, tournaments}) => {
             <label>Beach</label>
             <input type="radio" id="both" name="tournament_type" value="Both" checked={filter_by === "Both"} onChange={(e) => filterHandler(e)}></input>
             <label>Both</label>
-            <Button onClick={reverseHandler} label='Reverse'> </Button>
+            <Button onClick={reverseHandler} label='Reverse'/>
         </div>
     )
 }
