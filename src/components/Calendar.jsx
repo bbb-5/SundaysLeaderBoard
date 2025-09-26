@@ -30,16 +30,23 @@ const Nested_tournaments = ({tournaments, year}) => {
 const list_tournaments = (tournaments) => {
 
     return (
-        <ul>
+        <div>
             {tournaments.map((tournament) =>
-                <li key={tournament.id}> {tournament.date} {tournament.name}</li>
+                <div>
+                <label> 
+                <input type="radio" key={tournament.id} name="radio_tournament"/> {tournament.date} {tournament.name}
+                </label>
+                <br/><br/>
+                </div>
             )}
-        </ul>)
+            
+        </div>)
 }
 
 const Calendar = ({ tournaments }) => {
 
     const [tournament_years, setYears] = useState([])
+    const [selected, setSelected] = useState({selected_id: 1})
     const { getCollapseProps, getToggleProps, isExpanded } = useCollapse()
 
     useEffect(() => {
