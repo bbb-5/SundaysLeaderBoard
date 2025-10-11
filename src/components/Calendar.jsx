@@ -5,6 +5,7 @@ const Nested_tournaments = ({tournaments, year}) => {
 
     const [current_tournaments, setTournaments] = useState([])
     const [current_year, setYear] = useState(0)
+    const [selected_tournament, setSelected] = useState({selected_id: 1})
     const { getCollapseProps, getToggleProps, isExpanded } = useCollapse()
 
     useEffect(() => {
@@ -13,6 +14,27 @@ const Nested_tournaments = ({tournaments, year}) => {
         setTournaments(filtered)
     }, [year, tournaments])
 
+    const handleSelected = (e) => { 
+        setSelected({selected_id: e.target.id})
+        console.log("selected tournament: ",e.target.id)
+    }
+
+    const list_tournaments = () => {
+
+        return (
+            <div>
+                {current_tournaments.map((tournament) =>
+                    <div key={tournament.id}>
+                    <label> 
+                    <input type="radio" id={tournament.id} name="radio_tournament" checked={selected_tournament.selected_id == tournament.id} onChange={(e) => handleSelected(e)}/> {tournament.date} {tournament.name}
+                    </label>
+                    <br/><br/>
+                    </div>
+                )}
+                
+            </div>)
+    }
+
     return (
         <div className="inner_collapsible">
             <div className="header" {...getToggleProps()}>
@@ -20,33 +42,16 @@ const Nested_tournaments = ({tournaments, year}) => {
             </div>
             <div {...getCollapseProps()}>
                 <div className="content">
-                    {list_tournaments(current_tournaments)}
+                    {list_tournaments()}
                 </div>
             </div>
         </div>
     )
 }
 
-const list_tournaments = (tournaments) => {
-
-    return (
-        <div>
-            {tournaments.map((tournament) =>
-                <div>
-                <label> 
-                <input type="radio" key={tournament.id} name="radio_tournament"/> {tournament.date} {tournament.name}
-                </label>
-                <br/><br/>
-                </div>
-            )}
-            
-        </div>)
-}
-
 const Calendar = ({ tournaments }) => {
 
     const [tournament_years, setYears] = useState([])
-    const [selected, setSelected] = useState({selected_id: 1})
     const { getCollapseProps, getToggleProps, isExpanded } = useCollapse()
 
     useEffect(() => {
