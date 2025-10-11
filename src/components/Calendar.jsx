@@ -1,17 +1,30 @@
 import { useCollapse } from 'react-collapsed'
 import { useState, useEffect } from 'react'
 
-const Nested_tournaments = ({tournaments, year}) => {
+const Nested_tournaments = ({tournaments, year, header}) => {
 
     const [current_tournaments, setTournaments] = useState([])
     const [current_year, setYear] = useState(0)
     const [selected_tournament, setSelected] = useState({selected_id: 1})
     const { getCollapseProps, getToggleProps, isExpanded } = useCollapse()
 
+
+    const Calendar = {
+      Start: "Start date",
+      End: "End date"
+    }
+
     useEffect(() => {
         let filtered = [...tournaments].filter((tournament) => (tournament.date.includes(year)))
         setYear(year)
         setTournaments(filtered)
+
+        if(header === Calendar.Start){
+            setSelected({selected_id: 1})
+        } else {
+            setSelected({selected_id: 17})
+        }
+
     }, [year, tournaments])
 
     const handleSelected = (e) => { 
@@ -49,7 +62,7 @@ const Nested_tournaments = ({tournaments, year}) => {
     )
 }
 
-const Calendar = ({ tournaments }) => {
+const Calendar = ({ tournaments, header }) => {
 
     const [tournament_years, setYears] = useState([])
     const { getCollapseProps, getToggleProps, isExpanded } = useCollapse()
@@ -73,12 +86,12 @@ const Calendar = ({ tournaments }) => {
         return years
     }
 
-    const list_years = (tournaments, years) => {
+    const list_years = (tournaments, years, header) => {
 
         return (
             <div>
                 {years.map((year,index) => 
-                <Nested_tournaments key={index} tournaments={tournaments} year={year}/>
+                <Nested_tournaments key={index} tournaments={tournaments} year={year} header={header}/>
                 )}
             </div>)
     }
@@ -86,11 +99,11 @@ const Calendar = ({ tournaments }) => {
     return (
         <div className="collapsible">
             <div className="header" {...getToggleProps()}>
-                {isExpanded ? "Choose year" : "Start date"}
+                {isExpanded ? "Choose year" : header}
             </div>
             <div {...getCollapseProps()}>
                 <div className="content">
-                    {list_years(tournaments, tournament_years)}
+                    {list_years(tournaments, tournament_years, header)}
                 </div>
             </div>
         </div>
