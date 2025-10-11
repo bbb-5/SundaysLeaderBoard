@@ -14,7 +14,6 @@ const Nested_tournaments = ({tournaments, year, header}) => {
       End: "End date"
     }
 
-
   const Filters = {
     Indoor: "Indoor",
     Beach: "Beach",
@@ -29,7 +28,7 @@ const Nested_tournaments = ({tournaments, year, header}) => {
         setTournaments(filtered)
 
         if(header === Calendar.Start){
-            setSelected({selected_id: 1})
+            setSelected({selected_id: tournaments[0].id})
         } else {
             setSelected({selected_id: tournaments[tournaments.length-1].id})
         }
