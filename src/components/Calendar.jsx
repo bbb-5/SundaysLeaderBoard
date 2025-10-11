@@ -22,7 +22,7 @@ const Nested_tournaments = ({tournaments, year, header}) => {
         if(header === Calendar.Start){
             setSelected({selected_id: 1})
         } else {
-            setSelected({selected_id: 17})
+            setSelected({selected_id: tournaments[tournaments.length-1].id})
         }
 
     }, [year, tournaments])
