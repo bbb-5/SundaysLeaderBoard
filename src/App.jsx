@@ -8,6 +8,7 @@ import dataService from './services/data'
 function App() {
   const [players, setPlayers] = useState([])
   const [tournaments, setTournaments] = useState([])
+  const [all_tournaments, set_all_Tournaments] = useState([])
   const [playersShow, setPlayersShow] = useState([])
   const [filter, setFilter] = useState({filter_by: "Both"})
   const [sorter, setSorter] = useState({sort_by: "Default"})
@@ -119,7 +120,8 @@ function App() {
       filtered = [...filtered].sort(func_map[sorter.sort_by])
       let tournaments = jsonData.data.Tournaments
       setTournaments(tournaments)
-      console.log("tournaments here!", tournaments)
+      set_all_Tournaments(tournaments)
+      console.log("all tournaments here!", tournaments)
       setPlayers(filtered)
       setPlayersShow(filtered)
     })
@@ -151,6 +153,27 @@ function App() {
   const handleFilter = (e) => { 
     setFilter({filter_by: e.target.value})
     console.log(e.target.value)
+    filterTournaments(e.target.value)
+  }
+
+  const filterTournaments = (filter) => {
+    
+    let newTournaments = undefined
+
+    switch(filter){
+      case Filters.Beach:
+        newTournaments = [...all_tournaments].filter((tournament) => (tournament.type === Filters.Beach))
+        break
+
+      case Filters.Indoor:
+        newTournaments = [...all_tournaments].filter((tournament) => (tournament.type === Filters.Indoor))
+        break
+
+      default: 
+        newTournaments = [...all_tournaments].filter((tournament) => (tournament.type === Filters.Indoor || Filters.Beach))
+        break
+    }
+    setTournaments(newTournaments)
   }
 
   const filterPlayers = (filter) => {

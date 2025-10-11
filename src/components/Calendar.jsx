@@ -14,8 +14,17 @@ const Nested_tournaments = ({tournaments, year, header}) => {
       End: "End date"
     }
 
+
+  const Filters = {
+    Indoor: "Indoor",
+    Beach: "Beach",
+    Both: "Both"
+  }
+
     useEffect(() => {
+        
         let filtered = [...tournaments].filter((tournament) => (tournament.date.includes(year)))
+
         setYear(year)
         setTournaments(filtered)
 
@@ -62,7 +71,7 @@ const Nested_tournaments = ({tournaments, year, header}) => {
     )
 }
 
-const Calendar = ({ tournaments, header }) => {
+const Calendar = ({ tournaments, header}) => {
 
     const [tournament_years, setYears] = useState([])
     const { getCollapseProps, getToggleProps, isExpanded } = useCollapse()
@@ -86,12 +95,12 @@ const Calendar = ({ tournaments, header }) => {
         return years
     }
 
-    const list_years = (tournaments, years, header) => {
+    const list_years = (tournaments, years, header, filter) => {
 
         return (
             <div>
                 {years.map((year,index) => 
-                <Nested_tournaments key={index} tournaments={tournaments} year={year} header={header}/>
+                <Nested_tournaments key={index} tournaments={tournaments} year={year} header={header} filter={filter}/>
                 )}
             </div>)
     }
