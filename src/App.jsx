@@ -25,6 +25,20 @@ function App() {
     Both: "Both"
   }
 
+  /*
+  Dates = {
+    start_date: "",
+    end_date: "" 
+  }
+
+  handleCallback = (date) => {
+    setDate({...Dates,start_date: date})
+  }
+
+  handleCallback = (date) => {
+    setDate({...Dates,end_date: date})
+  }*/
+
   const sort = (func) => {
     return () => handleSort(func)
   }
@@ -157,7 +171,7 @@ function App() {
   }
 
   const filterTournaments = (filter) => {
-    
+
     let newTournaments = undefined
 
     switch(filter){
@@ -207,7 +221,7 @@ function App() {
   return (
     <>
     <h1>Sunday's Leaderboard</h1>
-    <TopBar reverseHandler={handleReverse} filterHandler={handleFilter} filter_by={filter.filter_by} tournaments={tournaments}></TopBar>
+    <TopBar reverseHandler={handleReverse} filterHandler={handleFilter} filter_by={filter.filter_by} tournaments={tournaments}> </TopBar>
     <LeaderBoard players={playersShow} sort_by={sorter.sort_by} filter_by={filter.filter_by}></LeaderBoard>
     <BottomBar handleSelected={handleSelected} sort_by={sorter.sort_by} filter_by={filter.filter_by}/>
     </>
