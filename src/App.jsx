@@ -12,7 +12,9 @@ function App() {
   const [playersShow, setPlayersShow] = useState([])
   const [filter, setFilter] = useState({filter_by: "Both"})
   const [sorter, setSorter] = useState({sort_by: "Default"})
-
+  const [start_date, setStart] = useState({start_date: "2024-02-25T09:00:00Z"})
+  const [end_date, setEnd] = useState({end_date: "2025-06-22T11:30:00Z"})
+  
   const Medals = {
     Gold: "Gold",
     Silver: "Silver",
@@ -25,19 +27,26 @@ function App() {
     Both: "Both"
   }
 
-  /*
-  Dates = {
-    start_date: "",
-    end_date: "" 
+  const Dates = {
+    Start: "Start date",
+    End: "End date"
   }
+  
+  const onDatesSelected = (head, date) => {
 
-  handleCallback = (date) => {
-    setDate({...Dates,start_date: date})
+      switch(head){
+
+        case Dates.Start: 
+          setStart({start_date: date})
+          console.log('start: ', date)
+          break
+
+        case Dates.End: 
+        setEnd({end_date: date})
+        console.log('end: ', date)
+        break
+      }
   }
-
-  handleCallback = (date) => {
-    setDate({...Dates,end_date: date})
-  }*/
 
   const sort = (func) => {
     return () => handleSort(func)
@@ -171,7 +180,7 @@ function App() {
   }
 
   const filterTournaments = (filter) => {
-
+    //debugger;
     let newTournaments = undefined
 
     switch(filter){
@@ -221,7 +230,7 @@ function App() {
   return (
     <>
     <h1>Sunday's Leaderboard</h1>
-    <TopBar reverseHandler={handleReverse} filterHandler={handleFilter} filter_by={filter.filter_by} tournaments={tournaments}> </TopBar>
+    <TopBar reverseHandler={handleReverse} filterHandler={handleFilter} filter_by={filter.filter_by} tournaments={tournaments} onDatesSelected={onDatesSelected}> </TopBar>
     <LeaderBoard players={playersShow} sort_by={sorter.sort_by} filter_by={filter.filter_by}></LeaderBoard>
     <BottomBar handleSelected={handleSelected} sort_by={sorter.sort_by} filter_by={filter.filter_by}/>
     </>

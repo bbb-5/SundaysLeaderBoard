@@ -1,13 +1,11 @@
 import { useCollapse } from 'react-collapsed'
 import { useState, useEffect } from 'react'
 
-const Nested_tournaments = ({tournaments, year, header}) => {
+const Nested_tournaments = ({tournaments, year, header, onDatesSelected, onTournamentSelected}) => {
 
     const [current_tournaments, setTournaments] = useState([])
     const [current_year, setYear] = useState(0)
-    const [selected_tournament, setSelected] = useState({selected_id: 1})
     const { getCollapseProps, getToggleProps, isExpanded } = useCollapse()
-
 
     const Calendar = {
       Start: "Start date",
@@ -26,34 +24,33 @@ const Nested_tournaments = ({tournaments, year, header}) => {
 
         setYear(year)
         setTournaments(filtered)
-
+     
+        /*
         if(header === Calendar.Start){
-            setSelected({selected_id: tournaments[0].id})
+            onTournamentSelected({current_id: tournaments[0].id})
         } else {
-            setSelected({selected_id: tournaments[tournaments.length-1].id})
-        }
+           onTournamentSelected({current_id: tournaments[tournaments.length-1].id})
+        }*/
 
     }, [year, tournaments])
 
-    const handleSelected = (e) => { 
-        setSelected({selected_id: e.target.id})
-        console.log("selected tournament: ",e.target.id)
-    }
+    const handleDate = (e) => {
 
-    const list_tournaments = () => {
 
-        return (
-            <div>
-                {current_tournaments.map((tournament) =>
-                    <div key={tournament.id}>
-                    <label> 
-                    <input type="radio" id={tournament.id} name="radio_tournament" checked={selected_tournament.selected_id == tournament.id} onChange={(e) => handleSelected(e)}/> {tournament.date} {tournament.name}
-                    </label>
-                    <br/><br/>
-                    </div>
-                )}
-                
-            </div>)
+      switch(header){
+
+        case Calendar.Start: 
+            onDatesSelected(header, e.target.attributes.date.value)
+            break
+
+        default: 
+            onDatesSelected(header,  e.target.attributes.date.value)
+            break
+      }
+
+      console.log("date at end: ",  e.target.attributes.date.value)
+
+       onTournamentSelected(e.target.id)
     }
 
     return (
@@ -63,17 +60,28 @@ const Nested_tournaments = ({tournaments, year, header}) => {
             </div>
             <div {...getCollapseProps()}>
                 <div className="content">
-                    {list_tournaments()}
+                  <div>
+                    {current_tournaments.map((tournament) =>
+                        <div key={tournament.id}>
+                        <label> 
+                        <input type="radio" id={tournament.id} name="radio_tournament" date={tournament.date}  
+                            onChange={(e) => handleDate(e)}/> {tournament.date} {tournament.name}
+                        </label>
+                        <br/><br/>
+                        </div>
+                )}
+                  </div>
                 </div>
             </div>
         </div>
     )
 }
 
-const Calendar = ({ tournaments, header}) => {
+const Calendar = ({ tournaments, header, onDatesSelected, filter}) => {
 
     const [tournament_years, setYears] = useState([])
     const { getCollapseProps, getToggleProps, isExpanded } = useCollapse()
+    const [selected_tournament, setSelected] = useState({selected_id: 1})
 
     useEffect(() => {
         let calendar_years = get_years(tournaments)
@@ -94,14 +102,9 @@ const Calendar = ({ tournaments, header}) => {
         return years
     }
 
-    const list_years = (tournaments, years, header, filter) => {
-
-        return (
-            <div>
-                {years.map((year,index) => 
-                <Nested_tournaments key={index} tournaments={tournaments} year={year} header={header} filter={filter}/>
-                )}
-            </div>)
+    const handleTournament = (id) => {
+        setSelected({selected_id: id})
+        console.log(id)
     }
 
     return (
@@ -111,7 +114,12 @@ const Calendar = ({ tournaments, header}) => {
             </div>
             <div {...getCollapseProps()}>
                 <div className="content">
-                    {list_years(tournaments, tournament_years, header)}
+                    <div>
+                        {tournament_years.map((year,index) => 
+                        <Nested_tournaments key={index} tournaments={tournaments} year={year} header={header}
+                             filter={filter} onDatesSelected={onDatesSelected} onTournamentSelected={handleTournament}></Nested_tournaments>
+                        )}
+                    </div>
                 </div>
             </div>
         </div>

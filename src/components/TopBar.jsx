@@ -1,12 +1,11 @@
 import Calendar from "./Calendar"
 import Button from "./Button"
 
-const TopBar = ({reverseHandler, filterHandler, filter_by, tournaments}) => {
+const TopBar = ({reverseHandler, filterHandler, filter_by, tournaments, onDatesSelected}) => {
 
     return (
         <div>
-            <Calendar tournaments={tournaments} header={"Start date"}/>
-            <Calendar tournaments={tournaments} header={"End date"}/>
+            <Calendar tournaments={tournaments} header={"Start date"} onDatesSelected={onDatesSelected} filter={filter_by}/>
             <input type="radio" id="indoor" name="tournament_type" value="Indoor" checked={filter_by === "Indoor"} onChange={(e) => filterHandler(e)}></input>
             <label>Indoor</label>
             <input type="radio" id="beach" name="tournament_type" value="Beach" checked={filter_by === "Beach"} onChange={(e) => filterHandler(e)}></input>
@@ -19,3 +18,5 @@ const TopBar = ({reverseHandler, filterHandler, filter_by, tournaments}) => {
 }
 
 export default TopBar
+
+//<Calendar tournaments={tournaments} header={"End date"} onDatesSelected={onDatesSelected}/>
