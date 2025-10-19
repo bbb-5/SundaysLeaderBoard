@@ -64,7 +64,7 @@ const Nested_tournaments = ({tournaments, year, header, onDatesSelected, onTourn
                     {current_tournaments.map((tournament) =>
                         <div key={tournament.id}>
                         <label> 
-                        <input type="radio" id={tournament.id} name="radio_tournament" date={tournament.date}  
+                        <input type="radio" id={tournament.id} name={header} date={tournament.date}  
                             onChange={(e) => handleDate(e)}/> {tournament.date} {tournament.name}
                         </label>
                         <br/><br/>
