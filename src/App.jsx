@@ -32,22 +32,6 @@ function App() {
     End: "End date"
   }
   
-  const onDatesSelected = (head, date) => {
-
-      switch(head){
-
-        case Dates.Start: 
-          setStart({start_date: date})
-          console.log('start: ', date)
-          break
-
-        case Dates.End: 
-        setEnd({end_date: date})
-        console.log('end: ', date)
-        break
-      }
-  }
-
   const sort = (func) => {
     return () => handleSort(func)
   }
@@ -230,7 +214,9 @@ function App() {
   return (
     <>
     <h1>Sunday's Leaderboard</h1>
-    <TopBar reverseHandler={handleReverse} filterHandler={handleFilter} filter_by={filter.filter_by} tournaments={tournaments} onDatesSelected={onDatesSelected}> </TopBar>
+    <TopBar reverseHandler={handleReverse} filterHandler={handleFilter} filter_by={filter.filter_by}
+        tournaments={tournaments} onStartDate={(d) => {setStart({start_date: d})}}
+        onEndDate={(d) => {setEnd({end_date: d})}} />
     <LeaderBoard players={playersShow} sort_by={sorter.sort_by} filter_by={filter.filter_by}></LeaderBoard>
     <BottomBar handleSelected={handleSelected} sort_by={sorter.sort_by} filter_by={filter.filter_by}/>
     </>

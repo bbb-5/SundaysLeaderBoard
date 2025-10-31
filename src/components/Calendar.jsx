@@ -1,7 +1,7 @@
 import { useCollapse } from 'react-collapsed'
 import { useState, useEffect } from 'react'
 
-const Nested_tournaments = ({ tournaments, year, header, onDatesSelected, onTournamentSelected, selected }) => {
+const Nested_tournaments = ({ tournaments, year,onDatesSelected, onTournamentSelected, selected }) => {
 
     const [current_tournaments, setTournaments] = useState([])
     const [current_year, setYear] = useState(0)
@@ -23,9 +23,10 @@ const Nested_tournaments = ({ tournaments, year, header, onDatesSelected, onTour
     }, [year, tournaments])
 
     const handleDate = (e) => {
-        onDatesSelected(header, e.target.attributes.date.value)
+        onDatesSelected(e.target.attributes.date.value)
         console.log("date at end: ", e.target.attributes.date.value)
-        onTournamentSelected(e.target.id)
+        onTournamentSelected(e.target.attributes.id.value, e.target.attributes.date.value)
+        console.log("clicked: ",e.target.attributes.id.value, e.target.attributes.date.value)
     }
 
     return (
@@ -39,8 +40,8 @@ const Nested_tournaments = ({ tournaments, year, header, onDatesSelected, onTour
                         {current_tournaments.map((tournament) =>
                             <div key={tournament.id}>
                                 <label>
-                                    <input type="radio" checked={selected.selected_id == tournament.id} id={tournament.id} name={header} date={tournament.date}
-                                        onChange={(e) => handleDate(e)} /> {tournament.date} {tournament.name}
+                                    <input type="radio" checked={selected.id == tournament.id} id={tournament.id} date={tournament.date}
+                                        onChange={(e) => handleDate(e)} tournament={tournament}/> {tournament.date} {tournament.name}
                                 </label>
                                 <br /><br />
                             </div>
@@ -52,11 +53,11 @@ const Nested_tournaments = ({ tournaments, year, header, onDatesSelected, onTour
     )
 }
 
-const Calendar = ({ tournaments, default_idx, header, onDatesSelected, filter }) => {
+const Calendar = ({ tournaments, default_idx, onDatesSelected, filter }) => {
 
     const [tournament_years, setYears] = useState([])
     const { getCollapseProps, getToggleProps, isExpanded } = useCollapse()
-    const [selected_tournament, setSelected] = useState({ selected_id: 1 })
+    const [selected_tournament, setSelected] = useState({id: 1,date: "2024-02-25T09:00:00Z"})
 
     useEffect(() => {
         let calendar_years = get_years(tournaments)
@@ -64,8 +65,8 @@ const Calendar = ({ tournaments, default_idx, header, onDatesSelected, filter })
 
         if (tournaments.length == 0) return
 
-        handleTournament(tournaments[default_idx].id)
-        onDatesSelected(header, tournaments[default_idx].date)
+        handleTournament(tournaments[default_idx].id, tournaments[default_idx].date)
+        onDatesSelected(tournaments[default_idx].date)
 
     }, [tournaments])
 
@@ -83,21 +84,20 @@ const Calendar = ({ tournaments, default_idx, header, onDatesSelected, filter })
         return years
     }
 
-    const handleTournament = (id) => {
-        setSelected({ selected_id: id })
-        console.log(id)
+    const handleTournament = (id, date) => {
+        setSelected({id: id, date: date})
     }
 
     return (
         <div className="collapsible">
             <div className="header" {...getToggleProps()}>
-                {isExpanded ? "Choose year" : header}
+                {isExpanded ? "Choose year" : (selected_tournament ? selected_tournament.date : "asd")}
             </div>
             <div {...getCollapseProps()}>
                 <div className="content">
                     <div>
                         {tournament_years.map((year, index) =>
-                            <Nested_tournaments key={index} tournaments={tournaments} year={year} header={header} selected={selected_tournament}
+                            <Nested_tournaments key={index} tournaments={tournaments} year={year} selected={selected_tournament}
                                 filter={filter} onDatesSelected={onDatesSelected} onTournamentSelected={handleTournament}></Nested_tournaments>
                         )}
                     </div>
