@@ -5,8 +5,8 @@ const TopBar = ({reverseHandler, filterHandler, filter_by, tournaments, onDatesS
 
     return (
         <div>
-            <Calendar tournaments={tournaments} header={"Start date"} onDatesSelected={onDatesSelected} filter={filter_by}/>
-            <Calendar tournaments={tournaments} header={"End date"} onDatesSelected={onDatesSelected} filter={filter_by}/>
+            <Calendar tournaments={tournaments} default_idx={0} header={"Start date"} onDatesSelected={onDatesSelected} filter={filter_by}/>
+            <Calendar tournaments={tournaments} default_idx={tournaments.length-1} header={"End date"} onDatesSelected={onDatesSelected} filter={filter_by}/>
             <input type="radio" id="indoor" name="tournament_type" value="Indoor" checked={filter_by === "Indoor"} onChange={(e) => filterHandler(e)}></input>
             <label>Indoor</label>
             <input type="radio" id="beach" name="tournament_type" value="Beach" checked={filter_by === "Beach"} onChange={(e) => filterHandler(e)}></input>
