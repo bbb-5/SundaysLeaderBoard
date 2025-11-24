@@ -12,8 +12,8 @@ function App() {
   const [playersShow, setPlayersShow] = useState([])
   const [filter, setFilter] = useState({filter_by: "Both"})
   const [sorter, setSorter] = useState({sort_by: "Default"})
-  const [start_date, setStart] = useState({start_date: "2024-02-25T09:00:00Z"})
-  const [end_date, setEnd] = useState({end_date: "2025-06-22T11:30:00Z"})
+  const [start_date, setStart] = useState(new Date("2024-02-25T09:00:00Z"))
+  const [end_date, setEnd] = useState(new Date("2025-06-22T11:30:00Z"))
   
   const Medals = {
     Gold: "Gold",
@@ -134,6 +134,22 @@ function App() {
     })
   }, [])
 
+  useEffect(() => {
+    
+    const newPlayers = [...players].filter((player) => 
+      (player.placements.some((placements) => 
+          new Date(placements.tournament.date) >= start_date &&
+          new Date(placements.tournament.date) <= end_date)))
+
+    setPlayersShow(newPlayers)
+
+  }, [start_date, end_date])
+
+  const onDateChange = (setFunction, date) => {
+    const changed_date = new Date(date)
+    setFunction(changed_date)
+  }
+
   const handleSort = (sortFunction) => {
     const newPlayers = [...playersShow].sort(sortFunction)
     setPlayersShow(newPlayers)
@@ -215,9 +231,9 @@ function App() {
     <>
     <h1>Sunday's Leaderboard</h1>
     <TopBar reverseHandler={handleReverse} filterHandler={handleFilter} filter_by={filter.filter_by}
-        tournaments={tournaments} onStartDate={(d) => {setStart({start_date: d})}}
-        onEndDate={(d) => {setEnd({end_date: d})}} />
-    <LeaderBoard players={playersShow} sort_by={sorter.sort_by} filter_by={filter.filter_by}></LeaderBoard>
+        tournaments={tournaments} onStartDate={ (d) => {onDateChange(setStart,d)}}
+        onEndDate={(d) => {onDateChange(setEnd,d)}} />
+    <LeaderBoard players={playersShow} sort_by={sorter.sort_by} filter_by={filter.filter_by} start_date={start_date} end_date={end_date}></LeaderBoard>
     <BottomBar handleSelected={handleSelected} sort_by={sorter.sort_by} filter_by={filter.filter_by}/>
     </>
   )
