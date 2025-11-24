@@ -66,6 +66,7 @@ const Calendar = ({ tournaments, default_idx, onDatesSelected, filter }) => {
         if (tournaments.length == 0) return
 
         handleTournament(tournaments[default_idx].id, tournaments[default_idx].date)
+        console.log(tournaments[default_idx])
         onDatesSelected(tournaments[default_idx].date)
 
     }, [tournaments])

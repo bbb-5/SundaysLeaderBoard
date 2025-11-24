@@ -1,6 +1,6 @@
 import { useCollapse } from 'react-collapsed'
 
-const Player = ({ player, filter_by, sort_by }) => {
+const Player = ({ player, filter_by, sort_by, start_date, end_date}) => {
 
   const Filters = {
     Indoor: "Indoor",
@@ -26,6 +26,11 @@ const Player = ({ player, filter_by, sort_by }) => {
 
   const { getCollapseProps, getToggleProps, isExpanded } = useCollapse()
 
+  const is_in_daterange = (date) => {
+    const checked_date = new Date(date) 
+    return (checked_date >= start_date && checked_date <= end_date)
+  }
+
   const percen = (n) => (n * 100).toFixed(2) + '%'
 
   const ratio = (player, filter) => {
@@ -35,16 +40,20 @@ const Player = ({ player, filter_by, sort_by }) => {
           return 0
         } else {
           return (player.placements.filter((placement) =>
-            (placement.medaltype.location === 'Indoor' && placement.medaltype.medal === 'Gold')).length /
-            player.participation_indoor)
+            (placement.medaltype.location === Filters.Indoor &&
+             placement.medaltype.medal === Medals.Gold &&
+             (start_date <= placement.tournament.date <= end_date))).length
+              /player.participation_indoor)
         }
       case Filters.Beach:
         if (player.participation_beach === 0) {
           return 0
         } else {
           return (player.placements.filter((placement) =>
-            (placement.medaltype.location === 'Beach' && placement.medaltype.medal === 'Gold')).length /
-            player.participation_beach)
+            (placement.medaltype.location === Filters.Beach &&
+             placement.medaltype.medal === Medals.Gold &&
+             (placement.tournament.date >= start_date && placement.tournament.date <= end_date))).length
+              /player.participation_beach)
         }
 
       default:
@@ -52,7 +61,8 @@ const Player = ({ player, filter_by, sort_by }) => {
           return 0
         } else {
           return (player.placements.filter((placement) =>
-            (placement.medaltype.medal === 'Gold')).length /
+            (placement.medaltype.medal === Medals.Gold &&
+            (placement.tournament.date >= start_date && placement.tournament.date <= end_date))).length /
             (player.participation_beach + player.participation_indoor))
         }
     }
@@ -69,12 +79,15 @@ const Player = ({ player, filter_by, sort_by }) => {
   }
 
   const count_total = (filter, player) => {
-
+    
     if (filter != Filters.Both) {
-      return (player.placements.filter((placement) => (placement.medaltype.location === filter_by)).length)
+      return (player.placements.filter((placement) => (
+        placement.medaltype.location === filter_by &&
+        is_in_daterange(placement.tournament.date))).length)
     }
 
-    return (player.placements.length)
+    return (player.placements.filter((placement) => (
+      is_in_daterange(placement.tournament.date))).length)
   }
 
 
@@ -140,7 +153,8 @@ const Player = ({ player, filter_by, sort_by }) => {
     return (
       <ul>
         {placements.map((placement) =>
-          <li key={placement.tournament.id}>{placement.medaltype.medal} {placement.tournament.name} {placement.tournament.date}</li>
+          <li key={placement.tournament.id}>{placement.medaltype.medal}
+             {placement.tournament.name} {placement.tournament.date}</li>
         )}
       </ul>)
   }
@@ -149,7 +163,8 @@ const Player = ({ player, filter_by, sort_by }) => {
     return (
       <ul>
         {player.extra_awards.map((extra_award) =>
-          <li key={extra_award.id}> EXTRA {extra_award.name} {extra_award.tournament_name} {extra_award.tournament_date}</li>
+          <li key={extra_award.id}> EXTRA {extra_award.name}
+           {extra_award.tournament_name} {extra_award.tournament_date}</li>
         )}
       </ul>)
   }
