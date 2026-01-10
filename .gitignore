@@ -4,6 +4,5 @@ node_modules
 .vite
 dist
 leaderboard
-dist
 public
 docs/SundaysData.json

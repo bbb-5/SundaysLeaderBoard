@@ -15,6 +15,23 @@ function App() {
   const [start_date, setStart] = useState(new Date("2024-02-25T09:00:00Z"))
   const [end_date, setEnd] = useState(new Date("2025-06-22T11:30:00Z"))
   
+
+
+  /**
+   * leevin ehdotus
+   * 
+   * const filteredTournaments = tournaments.filter(tourn =>
+   *   tourn is before end_date && t is after start_date && t is type of filter
+   * )
+   * const playersWithFilteredTournaments = players.map(p=> p.placements are filtered by filteredTournaments)
+   * const playersSorted = playersWithFilteredTournaments.sort(jotain)
+   * const playersFiltered = playersSorted.filter(jotain)
+   * 
+   * kaikki tarvittavat automaattisesti re-evaluoituu, kun jotain useStaten määrittämiä muuttujia päivittää
+   * ja aina piirtyy uus ajantasainen UI :))
+  */
+  
+
   const Medals = {
     Gold: "Gold",
     Silver: "Silver",
@@ -95,14 +112,21 @@ function App() {
 
   const total_sort = (a,b,filter) => {
 
+    console.log("total sort filter: ",filter)
+
     let b_medals = 0
     let a_medals = 0
     
     if(filter != Filters.Both){
       b_medals = (b.placements.filter((placement) => 
-        (placement.medaltype.location === filter))).length
-      a_medals = (a.placements.filter((placement) => 
-        (placement.medaltype.location === filter))).length
+        (placement.medaltype.location === filter &&
+          (new Date(placement.tournament.date) >= start_date &&
+           new Date(placement.tournament.date) <= end_date)))).length
+           
+      a_medals = (a.placement.filter((placement) => 
+        (placement.medaltype.location === filter &&
+          (new Date(placement.tournament.date) >= start_date &&
+          new Date(placement.tournament.date) <= end_date)))).length
     } else {
       b_medals = b.placements.length
       a_medals = a.placements.length
@@ -135,15 +159,19 @@ function App() {
   }, [])
 
   useEffect(() => {
-    
+
     const newPlayers = [...players].filter((player) => 
       (player.placements.some((placements) => 
           new Date(placements.tournament.date) >= start_date &&
           new Date(placements.tournament.date) <= end_date)))
 
-    setPlayersShow(newPlayers)
+    setPlayersShow(newPlayers.sort(func_map[sorter.sort_by]))
 
   }, [start_date, end_date])
+
+  //järjestää silti kaikkien placements mukaan, mutta näyttää sillä aikavälillä saadut numerot
+  //hence biekku esim 5 vaikka 1 mitalli saanut, koska on oikeesti saanut 1 sil aikavälil mut on kaikki mukaan laskettun 5
+// muutetaan pelaajan placements
 
   const onDateChange = (setFunction, date) => {
     const changed_date = new Date(date)

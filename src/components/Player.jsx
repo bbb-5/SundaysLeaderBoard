@@ -71,11 +71,15 @@ const Player = ({ player, filter_by, sort_by, start_date, end_date}) => {
   const count_medals = (medal, filter, player) => {
 
     if (filter != Filters.Both) {
-      return (player.placements.filter((placement) => (placement.medaltype.medal === medal &&
-        placement.medaltype.location === filter)).length)
+      return (player.placements.filter((placement) => 
+        (placement.medaltype.medal === medal &&
+        placement.medaltype.location === filter &&
+        is_in_daterange(placement.tournament.date))).length)
     }
 
-    return (player.placements.filter((placement) => (placement.medaltype.medal === medal)).length)
+    return (player.placements.filter((placement) =>
+           (placement.medaltype.medal === medal &&
+            is_in_daterange(placement.tournament.date))).length)
   }
 
   const count_total = (filter, player) => {
