@@ -10,7 +10,7 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 )
 
-// OIKEA
+// CORRECT ONE
 
 type Player struct {
 	Name       string             `json:"name"`
