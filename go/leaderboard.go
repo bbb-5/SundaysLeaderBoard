@@ -39,6 +39,13 @@ type Tournament struct {
 	Team string `json:"team_name"`
 }
 
+type TournamentJSON_ONLY struct {
+	Id   int    `json:"id"`
+	Name string `json:"name"`
+	Type string `json:"type"`
+	Date string `json:"date"`
+}
+
 type Placement struct {
 	MedalType  *MedalType  `json:"medaltype"`
 	Tournament *Tournament `json:"tournament"`
@@ -56,7 +63,7 @@ type Card struct {
 
 type JSON_DB struct {
 	Players     []*Player
-	Tournaments []*Tournament
+	Tournaments []*TournamentJSON_ONLY
 }
 
 //----------- Constructors-----------------------------------------------------------------------------
@@ -89,6 +96,15 @@ func new_extraJSON(id int, name string, tournament string, filter string, date s
 	ej.Filter = filter
 	ej.Date = date
 	return ej
+}
+
+func new_tournamentJSON_ONLY(name string, id int, tournament_type string, date string) *TournamentJSON_ONLY {
+	tr := new(TournamentJSON_ONLY)
+	tr.Name = name
+	tr.Id = id
+	tr.Type = tournament_type
+	tr.Date = date
+	return tr
 }
 
 func new_tournament(name string, id int, tournament_type string, date string) *Tournament {
@@ -131,7 +147,7 @@ func new_card(id int, reason string) *Card {
 	return m
 }
 
-func new_JSON_DB(players []*Player, tournaments []*Tournament) *JSON_DB {
+func new_JSON_DB(players []*Player, tournaments []*TournamentJSON_ONLY) *JSON_DB {
 	db := new(JSON_DB)
 	db.Players = players
 	db.Tournaments = tournaments
@@ -371,9 +387,9 @@ func get_player_placements(db *sql.DB, player_id int) []*Placement {
 
 //---------- Getting and encoding tournaments --------------------------------------------------------------
 
-func get_tournaments(db *sql.DB) []*Tournament {
+func get_tournaments(db *sql.DB) []*TournamentJSON_ONLY {
 
-	tournaments := []*Tournament{}
+	tournaments := []*TournamentJSON_ONLY{}
 
 	tournament_data, err := db.Query("SELECT * FROM Tournament")
 	if err != nil {
@@ -388,7 +404,7 @@ func get_tournaments(db *sql.DB) []*Tournament {
 
 		tournament_data.Scan(&id, &tournament_type, &name, &date)
 
-		tournaments = append(tournaments, new_tournament(name, id, tournament_type, date))
+		tournaments = append(tournaments, new_tournamentJSON_ONLY(name, id, tournament_type, date))
 	}
 
 	return tournaments
