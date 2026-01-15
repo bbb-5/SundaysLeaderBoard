@@ -10,12 +10,15 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 )
 
+// OIKEA
+
 type Player struct {
 	Name       string             `json:"name"`
 	Player_Id  int                `json:"id"`
 	Indoor     int                `json:"participation_indoor"`
 	Beach      int                `json:"participation_beach"`
 	Extras     []*Extra_AwardJSON `json:"extra_awards"`
+	Cards      []*Card            `json:"cards"`
 	Nickname   string             `json:"nickname"`
 	Placements []*Placement       `json:"placements"`
 }
@@ -46,9 +49,14 @@ type MedalType struct {
 	Medal    string `json:"medal"`
 }
 
+type Card struct {
+	Id     int    `json:"id"`
+	Reason string `json:"reason"`
+}
+
 type JSON_DB struct {
-	Players      []*Player
-	Tournaments  []*Tournament
+	Players     []*Player
+	Tournaments []*Tournament
 }
 
 //----------- Constructors-----------------------------------------------------------------------------
@@ -60,13 +68,14 @@ func new_player(id int, name string) *Player {
 	return p
 }
 
-func new_playerJSON(name string, id int, indoor int, beach int, nickname string, extras []*Extra_AwardJSON, placements []*Placement) *Player {
+func new_playerJSON(name string, id int, indoor int, beach int, nickname string, extras []*Extra_AwardJSON, placements []*Placement, cards []*Card) *Player {
 	p := new(Player)
 	p.Name = name
 	p.Player_Id = id
 	p.Indoor = indoor
 	p.Beach = beach
 	p.Extras = extras
+	p.Cards = cards
 	p.Nickname = nickname
 	p.Placements = placements
 	return p
@@ -115,7 +124,14 @@ func new_medaltype(medal string, location string) *MedalType {
 	return m
 }
 
-func new_JSON_DB(players []*Player, tournaments []*Tournament) *JSON_DB  {
+func new_card(id int, reason string) *Card {
+	m := new(Card)
+	m.Id = id
+	m.Reason = reason
+	return m
+}
+
+func new_JSON_DB(players []*Player, tournaments []*Tournament) *JSON_DB {
 	db := new(JSON_DB)
 	db.Players = players
 	db.Tournaments = tournaments
@@ -196,6 +212,26 @@ func get_nickname(player *Player, db *sql.DB) string {
 	}
 
 	return nickname
+}
+
+func get_player_cards(player *Player, db *sql.DB) []*Card {
+
+	cards := []*Card{}
+
+	card_data, err := db.Query("SELECT cardtype_id, reason FROM PlayerCard WHERE player_id=?;", player.Player_Id)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if card_data.Next() {
+		var id int
+		var reason string
+
+		card_data.Scan(&id, &reason)
+		cards = append(cards, new_card(id, reason))
+	}
+
+	return cards
 }
 
 func get_player_extras(player *Player, db *sql.DB) []*Extra_AwardJSON {
@@ -333,7 +369,6 @@ func get_player_placements(db *sql.DB, player_id int) []*Placement {
 	return player_placements
 }
 
-
 //---------- Getting and encoding tournaments --------------------------------------------------------------
 
 func get_tournaments(db *sql.DB) []*Tournament {
@@ -359,7 +394,6 @@ func get_tournaments(db *sql.DB) []*Tournament {
 	return tournaments
 }
 
-
 //----------- Format player stats --------------------------------------------------------------------
 
 func get_player_stats(players []*Player, db *sql.DB) []*Player {
@@ -369,6 +403,7 @@ func get_player_stats(players []*Player, db *sql.DB) []*Player {
 	beach := 0
 	nickname := ""
 	var extras = []*Extra_AwardJSON{}
+	var cards = []*Card{}
 	var placements = []*Placement{}
 
 	for _, player := range players {
@@ -376,16 +411,17 @@ func get_player_stats(players []*Player, db *sql.DB) []*Player {
 		beach = get_participation_beach(player, db)
 		nickname = get_nickname(player, db)
 		extras = get_player_extras(player, db)
+		cards = get_player_cards(player, db)
 		placements = get_player_placements(db, player.Player_Id)
 
-		playersJSON = append(playersJSON, new_playerJSON(player.Name, player.Player_Id, indoor, beach, nickname, extras, placements))
+		playersJSON = append(playersJSON, new_playerJSON(player.Name, player.Player_Id, indoor, beach, nickname, extras, placements, cards))
 	}
 
 	return playersJSON
 
 }
 
-func form_json(db *sql.DB) *JSON_DB  {
+func form_json(db *sql.DB) *JSON_DB {
 	players := get_players(db)
 	playersJSON := get_player_stats(players, db)
 	tournaments := get_tournaments(db)
@@ -404,7 +440,6 @@ func encode_json(db *JSON_DB) {
 	}
 	fmt.Printf("%s\n", json_data)
 }
-
 
 //----------- Main, testing functions -----------------------------------------------------------------
 
