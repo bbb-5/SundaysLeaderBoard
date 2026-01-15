@@ -15,8 +15,6 @@ import (
 type Player struct {
 	Name       string             `json:"name"`
 	Player_Id  int                `json:"id"`
-	Indoor     int                `json:"participation_indoor"`
-	Beach      int                `json:"participation_beach"`
 	Extras     []*Extra_AwardJSON `json:"extra_awards"`
 	Cards      []*Card            `json:"cards"`
 	Nickname   string             `json:"nickname"`
@@ -40,10 +38,11 @@ type Tournament struct {
 }
 
 type TournamentJSON_ONLY struct {
-	Id   int    `json:"id"`
-	Name string `json:"name"`
-	Type string `json:"type"`
-	Date string `json:"date"`
+	Id           int    `json:"id"`
+	Name         string `json:"name"`
+	Type         string `json:"type"`
+	Date         string `json:"date"`
+	Participants []int  `json:"participants"`
 }
 
 type Placement struct {
@@ -75,12 +74,10 @@ func new_player(id int, name string) *Player {
 	return p
 }
 
-func new_playerJSON(name string, id int, indoor int, beach int, nickname string, extras []*Extra_AwardJSON, placements []*Placement, cards []*Card) *Player {
+func new_playerJSON(name string, id int, nickname string, extras []*Extra_AwardJSON, placements []*Placement, cards []*Card) *Player {
 	p := new(Player)
 	p.Name = name
 	p.Player_Id = id
-	p.Indoor = indoor
-	p.Beach = beach
 	p.Extras = extras
 	p.Cards = cards
 	p.Nickname = nickname
@@ -98,12 +95,13 @@ func new_extraJSON(id int, name string, tournament string, filter string, date s
 	return ej
 }
 
-func new_tournamentJSON_ONLY(name string, id int, tournament_type string, date string) *TournamentJSON_ONLY {
+func new_tournamentJSON_ONLY(name string, id int, tournament_type string, date string, participants []int) *TournamentJSON_ONLY {
 	tr := new(TournamentJSON_ONLY)
 	tr.Name = name
 	tr.Id = id
 	tr.Type = tournament_type
 	tr.Date = date
+	tr.Participants = participants
 	return tr
 }
 
@@ -174,44 +172,6 @@ func get_players(db *sql.DB) []*Player {
 		players = append(players, new_player(id, name))
 	}
 	return players
-}
-
-func get_participation_indoor(player *Player, db *sql.DB) int {
-
-	participated := 0
-
-	participations, err := db.Query(`SELECT COUNT(p.player_id) FROM Player p
-    INNER JOIN PlayerTeam pt ON pt.player_id = p.player_id
-    INNER JOIN TournamentTeam tt ON tt.team_id = pt.team_id
-    INNER JOIN Tournament t on t.tournament_id = tt.tournament_id AND t.type = 'Indoor' AND p.player_id = ?`, player.Player_Id)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	for participations.Next() {
-		participations.Scan(&participated)
-	}
-
-	return participated
-}
-
-func get_participation_beach(player *Player, db *sql.DB) int {
-
-	participated := 0
-
-	participations, err := db.Query(`SELECT COUNT(p.player_id) FROM Player p
-    INNER JOIN PlayerTeam pt ON pt.player_id = p.player_id
-    INNER JOIN TournamentTeam tt ON tt.team_id = pt.team_id
-    INNER JOIN Tournament t on t.tournament_id = tt.tournament_id AND t.type = 'Beach' AND p.player_id = ?`, player.Player_Id)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	for participations.Next() {
-		participations.Scan(&participated)
-	}
-
-	return participated
 }
 
 func get_nickname(player *Player, db *sql.DB) string {
@@ -385,6 +345,25 @@ func get_player_placements(db *sql.DB, player_id int) []*Placement {
 	return player_placements
 }
 
+func get_tournament_participants(db *sql.DB, tournament_id int) []int {
+
+	participants := []int{}
+
+	participant_data, err := db.Query("SELECT player_id FROM PlayerTeam INNER JOIN TournamentTeam ON PlayerTeam.team_id = TournamentTeam.team_id WHERE tournament_id=?", tournament_id)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for participant_data.Next() {
+		var player_id int
+		participant_data.Scan(&player_id)
+		participants = append(participants, player_id)
+	}
+
+	return participants
+}
+
 //---------- Getting and encoding tournaments --------------------------------------------------------------
 
 func get_tournaments(db *sql.DB) []*TournamentJSON_ONLY {
@@ -403,8 +382,8 @@ func get_tournaments(db *sql.DB) []*TournamentJSON_ONLY {
 		var date string
 
 		tournament_data.Scan(&id, &tournament_type, &name, &date)
-
-		tournaments = append(tournaments, new_tournamentJSON_ONLY(name, id, tournament_type, date))
+		participants := get_tournament_participants(db, id)
+		tournaments = append(tournaments, new_tournamentJSON_ONLY(name, id, tournament_type, date, participants))
 	}
 
 	return tournaments
@@ -415,22 +394,18 @@ func get_tournaments(db *sql.DB) []*TournamentJSON_ONLY {
 func get_player_stats(players []*Player, db *sql.DB) []*Player {
 
 	playersJSON := []*Player{}
-	indoor := 0
-	beach := 0
 	nickname := ""
 	var extras = []*Extra_AwardJSON{}
 	var cards = []*Card{}
 	var placements = []*Placement{}
 
 	for _, player := range players {
-		indoor = get_participation_indoor(player, db)
-		beach = get_participation_beach(player, db)
 		nickname = get_nickname(player, db)
 		extras = get_player_extras(player, db)
 		cards = get_player_cards(player, db)
 		placements = get_player_placements(db, player.Player_Id)
 
-		playersJSON = append(playersJSON, new_playerJSON(player.Name, player.Player_Id, indoor, beach, nickname, extras, placements, cards))
+		playersJSON = append(playersJSON, new_playerJSON(player.Name, player.Player_Id, nickname, extras, placements, cards))
 	}
 
 	return playersJSON
@@ -450,7 +425,7 @@ func form_json(db *sql.DB) *JSON_DB {
 
 func encode_json(db *JSON_DB) {
 
-	json_data, err := json.MarshalIndent(db, "", "\t")
+	json_data, err := json.MarshalIndent(db, "", "    ")
 	if err != nil {
 		log.Fatal(err)
 	}
