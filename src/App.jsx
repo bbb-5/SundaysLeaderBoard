@@ -119,14 +119,13 @@ function App() {
     
     if(filter != Filters.Both){
       b_medals = (b.placements.filter((placement) => 
-        (placement.medaltype.location === filter &&
-          (new Date(placement.tournament.date) >= start_date &&
-           new Date(placement.tournament.date) <= end_date)))).length
+        ((placement.medaltype.location === filter) &&
+        (is_in_daterange(get_tournament_date(placement.tournament_id)))))).length
            
-      a_medals = (a.placement.filter((placement) => 
-        (placement.medaltype.location === filter &&
-          (new Date(placement.tournament.date) >= start_date &&
-          new Date(placement.tournament.date) <= end_date)))).length
+      a_medals = (a.placements.filter((placement) => 
+        ((placement.medaltype.location === filter) &&
+        (is_in_daterange(get_tournament_date(placement.tournament_id)))))).length
+
     } else {
       b_medals = b.placements.length
       a_medals = a.placements.length
@@ -158,12 +157,29 @@ function App() {
     })
   }, [])
 
+  const is_in_daterange = (date) => {
+    const checked_date = new Date(date) 
+    return (checked_date >= start_date && checked_date <= end_date)
+  }
+
+  const get_tournament_date = (tournament_id) => {
+
+    let found_tournament = tournaments.find((tounament) => 
+      tounament.id === tournament_id 
+    )
+
+    if (found_tournament === undefined) {
+      return
+    }
+
+    return found_tournament.date
+  }
+
   useEffect(() => {
 
     const newPlayers = [...players].filter((player) => 
-      (player.placements.some((placements) => 
-          new Date(placements.tournament.date) >= start_date &&
-          new Date(placements.tournament.date) <= end_date)))
+      (player.placements.some((placement) =>
+        (is_in_daterange(get_tournament_date(placement.tournament_id))))))
 
     setPlayersShow(newPlayers.sort(func_map[sorter.sort_by]))
 
@@ -261,7 +277,7 @@ function App() {
     <TopBar reverseHandler={handleReverse} filterHandler={handleFilter} filter_by={filter.filter_by}
         tournaments={tournaments} onStartDate={ (d) => {onDateChange(setStart,d)}}
         onEndDate={(d) => {onDateChange(setEnd,d)}} />
-    <LeaderBoard players={playersShow} sort_by={sorter.sort_by} filter_by={filter.filter_by} start_date={start_date} end_date={end_date}></LeaderBoard>
+    <LeaderBoard players={playersShow} sort_by={sorter.sort_by} filter_by={filter.filter_by} start_date={start_date} end_date={end_date} tournaments={tournaments}></LeaderBoard>
     <BottomBar handleSelected={handleSelected} sort_by={sorter.sort_by} filter_by={filter.filter_by}/>
     </>
   )

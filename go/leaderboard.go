@@ -318,7 +318,7 @@ func get_tournament_participants(db *sql.DB, tournament_id int) []int {
 		participant_data.Scan(&player_id)
 		participants = append(participants, player_id)
 	}
-	print(participants)
+
 	return participants
 }
 
