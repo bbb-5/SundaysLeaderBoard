@@ -1,6 +1,6 @@
 import { useCollapse } from 'react-collapsed'
 
-const Player = ({ player, filter_by, sort_by, start_date, end_date}) => {
+const Player = ({ player, filter_by, sort_by, start_date, end_date, tournaments}) => {
 
   const Filters = {
     Indoor: "Indoor",
@@ -33,77 +33,95 @@ const Player = ({ player, filter_by, sort_by, start_date, end_date}) => {
 
   const percen = (n) => (n * 100).toFixed(2) + '%'
 
+  const get_in_date_participations = (filter,player) => {
+
+    let participations = get_participations(filter, player.id)
+
+    return participations.filter((participation) => 
+    (is_in_daterange(participation.date)))
+
+  }
+
   const ratio = (player, filter) => {
+    
+    let in_date = get_in_date_participations(filter, player)
+
+    if (in_date.length === 0) {
+      return 0
+    }
+
     switch (filter) {
       case Filters.Indoor:
-        if (player.participation_indoor === 0) {
-          return 0
-        } else {
-          return (player.placements.filter((placement) =>
-            (placement.medaltype.location === Filters.Indoor &&
-             placement.medaltype.medal === Medals.Gold &&
-             (start_date <= placement.tournament.date <= end_date))).length
-              /player.participation_indoor)
-        }
+          return (count_medals(Medals.Gold, Filters.Indoor, player)
+            /count_participation(Filters.Indoor, player))
+              
       case Filters.Beach:
-        if (player.participation_beach === 0) {
-          return 0
-        } else {
-          return (player.placements.filter((placement) =>
-            (placement.medaltype.location === Filters.Beach &&
-             placement.medaltype.medal === Medals.Gold &&
-             (placement.tournament.date >= start_date && placement.tournament.date <= end_date))).length
-              /player.participation_beach)
-        }
+          return (count_medals(Medals.Gold, Filters.Beach, player)
+          /count_participation(Filters.Beach, player))
 
       default:
-        if (player.participation_beach + player.participation_indoor === 0) {
-          return 0
-        } else {
-          return (player.placements.filter((placement) =>
-            (placement.medaltype.medal === Medals.Gold &&
-            (placement.tournament.date >= start_date && placement.tournament.date <= end_date))).length /
-            (player.participation_beach + player.participation_indoor))
-        }
-    }
+        return (count_medals(Medals.Gold, Filters.Both, player)
+        /count_participation(Filters.Both, player))
+      }
   }
 
   const count_medals = (medal, filter, player) => {
 
-    if (filter != Filters.Both) {
-      return (player.placements.filter((placement) => 
-        (placement.medaltype.medal === medal &&
-        placement.medaltype.location === filter &&
-        is_in_daterange(placement.tournament.date))).length)
-    }
+    let in_date = get_in_date_participations(filter, player)
 
-    return (player.placements.filter((placement) =>
-           (placement.medaltype.medal === medal &&
-            is_in_daterange(placement.tournament.date))).length)
+    let filtered = get_player_placements(filter, player).filter((placement) =>
+      placement.medaltype.medal === medal)
+
+    let counter = 0
+    let placement_ids = filtered.map(a => a.tournament_id)
+
+    in_date.forEach(tournament => {
+      if (placement_ids.includes(tournament.id)) {
+        counter ++
+      }
+    })
+    return counter
+
   }
 
   const count_total = (filter, player) => {
+
+    let in_date = get_in_date_participations(filter, player)
+
+    let counter = 0
+    let placement_ids = player.placements.map(a => a.tournament_id)
+
+    in_date.forEach(tournament => {
+      if (placement_ids.includes(tournament.id)) {
+        counter ++
+      }
+    })
+    return counter
     
-    if (filter != Filters.Both) {
-      return (player.placements.filter((placement) => (
-        placement.medaltype.location === filter_by &&
-        is_in_daterange(placement.tournament.date))).length)
-    }
-
-    return (player.placements.filter((placement) => (
-      is_in_daterange(placement.tournament.date))).length)
   }
-
 
   const count_participation = (filter, player) => {
 
+    return get_in_date_participations(filter,player).length
+
+  }
+
+  const get_participations = (filter, player_id) => {
+
     switch (filter) {
       case Filters.Beach:
-        return player.participation_beach
+        return (tournaments.filter((tournament) => (
+          tournament.type === Filters.Beach &&
+          tournament.participants.includes(player_id))))
+
       case Filters.Indoor:
-        return player.participation_indoor
+        return (tournaments.filter((tournament) => (
+          tournament.type === Filters.Indoor &&
+          tournament.participants.includes(player_id))))
+
       default:
-        return (player.participation_beach + player.participation_indoor)
+        return (tournaments.filter((tournament) => (
+          tournament.participants.includes(player_id))))
     }
   }
 
@@ -119,7 +137,6 @@ const Player = ({ player, filter_by, sort_by, start_date, end_date}) => {
     }
   }
 
-
   const get_player_placements = (filter, player) => {
 
     let placements = []
@@ -134,31 +151,39 @@ const Player = ({ player, filter_by, sort_by, start_date, end_date}) => {
     return placements
   }
 
-  const nested_placement = (medal, placements) => {
+  const get_tournament_name = (tournament_id) => {
 
-    filtered = [...placements].filter((placement) => (placement.medaltype.medal === medal))
-
-    return (
-      <div className="inner_collapsible">
-        <div className="header" {...getToggleProps()}>
-          {isExpanded ? medal : medal}
-        </div>
-        <div {...getCollapseProps()}>
-          <div className="content">
-            {list_placements(filtered)}
-          </div>
-        </div>
-      </div>
+    const found_tournament = tournaments.find((tounament) => 
+      tounament.id === tournament_id 
     )
+
+    if (found_tournament === undefined) {
+      return
+    }
+
+    return found_tournament.name
   }
 
+  const get_tournament_date = (tournament_id) => {
+    
+
+    let found_tournament = tournaments.find((tournament) => 
+      tournament.id === tournament_id 
+    )
+
+    if (found_tournament === undefined) {
+      return
+    }
+    return found_tournament.date
+  }
 
   const list_placements = (placements) => {
+
     return (
       <ul>
         {placements.map((placement) =>
-          <li key={placement.tournament.id}>{placement.medaltype.medal}
-             {placement.tournament.name} {placement.tournament.date}</li>
+          <li key={placement.tournament_id}>{placement.medaltype.medal}
+             {get_tournament_name(placement.tournament_id)} {get_tournament_date(placement.tournament_id)}</li>
         )}
       </ul>)
   }
@@ -180,7 +205,7 @@ const Player = ({ player, filter_by, sort_by, start_date, end_date}) => {
     return (
       <ul>
         {golds.map((placement) =>
-          <li key={placement.tournament.id}>{placement.tournament.name} {placement.tournament.date}</li>
+          <li key={placement.tournament_id}>{get_tournament_name(placement.tournament_id)} {get_tournament_date(placement.tournament_id)}</li>
         )}
       </ul>)
   }

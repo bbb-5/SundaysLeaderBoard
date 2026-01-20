@@ -14,23 +14,6 @@ function App() {
   const [sorter, setSorter] = useState({sort_by: "Default"})
   const [start_date, setStart] = useState(new Date("2024-02-25T09:00:00Z"))
   const [end_date, setEnd] = useState(new Date("2025-06-22T11:30:00Z"))
-  
-
-
-  /**
-   * leevin ehdotus
-   * 
-   * const filteredTournaments = tournaments.filter(tourn =>
-   *   tourn is before end_date && t is after start_date && t is type of filter
-   * )
-   * const playersWithFilteredTournaments = players.map(p=> p.placements are filtered by filteredTournaments)
-   * const playersSorted = playersWithFilteredTournaments.sort(jotain)
-   * const playersFiltered = playersSorted.filter(jotain)
-   * 
-   * kaikki tarvittavat automaattisesti re-evaluoituu, kun jotain useStaten määrittämiä muuttujia päivittää
-   * ja aina piirtyy uus ajantasainen UI :))
-  */
-  
 
   const Medals = {
     Gold: "Gold",
@@ -48,49 +31,95 @@ function App() {
     Start: "Start date",
     End: "End date"
   }
-  
-  const sort = (func) => {
-    return () => handleSort(func)
+
+  const is_in_daterange = (date) => {
+    const checked_date = new Date(date) 
+    return (checked_date >= start_date && checked_date <= end_date)
+  }
+
+  const count_medals = (medal, filter, player) => {
+
+    let in_date = get_in_date_participations(filter, player)
+
+    let filtered = get_player_placements(filter, player).filter((placement) =>
+      placement.medaltype.medal === medal)
+
+    let counter = 0
+    let placement_ids = filtered.map(a => a.tournament_id)
+
+    in_date.forEach(tournament => {
+      if (placement_ids.includes(tournament.id)) {
+        counter ++
+      }
+    })
+    return counter
+
+  }
+
+  const get_in_date_participations = (filter,player) => {
+
+    let participations = get_participations(filter, player.id)
+
+    return participations.filter((participation) => 
+    (is_in_daterange(participation.date)))
+
+  }
+
+  const get_participations = (filter, player_id) => {
+
+    switch (filter) {
+      case Filters.Beach:
+        return (tournaments.filter((tournament) => (
+          tournament.type === Filters.Beach &&
+          tournament.participants.includes(player_id))))
+
+      case Filters.Indoor:
+        return (tournaments.filter((tournament) => (
+          tournament.type === Filters.Indoor &&
+          tournament.participants.includes(player_id))))
+
+      default:
+        return (tournaments.filter((tournament) => (
+          tournament.participants.includes(player_id))))
+    }
+  }
+
+  const get_player_placements = (filter, player) => {
+
+    let placements = []
+
+    if (filter != Filters.Both) {
+      placements = player.placements.filter((placement) =>
+        (placement.medaltype.location === filter))
+    } else {
+      placements = player.placements
+    }
+
+    return placements
+  }
+
+  const get_tournament_date = (tournament_id) => {
+
+    let found_tournament = tournaments.find((tounament) => 
+      tounament.id === tournament_id 
+    )
+
+    if (found_tournament === undefined) {
+      return
+    }
+
+    return found_tournament.date
   }
 
   const ratio = (a,b,filter) => {
 
-    let b_ratio = 0
-    let a_ratio = 0
+    let b_gold = count_medals(Medals.Gold,filter,b)
+    let a_gold = count_medals(Medals.Gold,filter,a)
 
-    let b_gold = 0
-    let a_gold = 0
+    let b_ratio = b_gold /(get_in_date_participations(filter,b)).length
+    let a_ratio = a_gold /(get_in_date_participations(filter,a)).length
+    return (b_ratio - a_ratio)
     
-    if(filter != Filters.Both){
-      b_gold = (b.placements.filter((placement) => 
-        ((placement.medaltype.medal === Medals.Gold) && (placement.medaltype.location === filter)))).length
-
-      a_gold = (a.placements.filter((placement) => 
-        ((placement.medaltype.medal === Medals.Gold) && (placement.medaltype.location === filter)))).length
-    } else {
-      b_gold = (b.placements.filter((placement) => 
-        ((placement.medaltype.medal === Medals.Gold)))).length
-  
-      a_gold = (a.placements.filter((placement) => 
-        ((placement.medaltype.medal === Medals.Gold)))).length
-    } 
-    
-    switch(filter){
-        case Filters.Beach:
-            b_ratio = b_gold /(b.participation_beach)
-            a_ratio = a_gold /(a.participation_beach)
-            return (b_ratio - a_ratio)
-        
-        case Filters.Indoor:
-            b_ratio = b_gold /(b.participation_indoor)
-            a_ratio = a_gold /(a.participation_indoor)
-            return (b_ratio - a_ratio)
-        
-        default: 
-            b_ratio = b_gold /(b.participation_indoor+b.participation_beach)
-            a_ratio = a_gold /(a.participation_indoor+a.participation_beach)
-            return (b_ratio - a_ratio)
-    }
   }
 
   const medal_sort = (a,b,medal, filter) => {
@@ -99,9 +128,9 @@ function App() {
     let a_medals = 0
     
     if(filter != Filters.Both){
-    b_medals = (b.placements.filter((placement) => 
+      b_medals = (b.placements.filter((placement) => 
       ((placement.medaltype.medal === medal) && (placement.medaltype.location === filter)))).length
-    a_medals = (a.placements.filter((placement) => 
+      a_medals = (a.placements.filter((placement) => 
       ((placement.medaltype.medal === medal) && (placement.medaltype.location === filter)))).length
     } else {
       b_medals = (b.placements.filter((placement) => ((placement.medaltype.medal === medal)))).length
@@ -157,24 +186,6 @@ function App() {
     })
   }, [])
 
-  const is_in_daterange = (date) => {
-    const checked_date = new Date(date) 
-    return (checked_date >= start_date && checked_date <= end_date)
-  }
-
-  const get_tournament_date = (tournament_id) => {
-
-    let found_tournament = tournaments.find((tounament) => 
-      tounament.id === tournament_id 
-    )
-
-    if (found_tournament === undefined) {
-      return
-    }
-
-    return found_tournament.date
-  }
-
   useEffect(() => {
 
     const newPlayers = [...players].filter((player) => 
@@ -184,10 +195,6 @@ function App() {
     setPlayersShow(newPlayers.sort(func_map[sorter.sort_by]))
 
   }, [start_date, end_date])
-
-  //järjestää silti kaikkien placements mukaan, mutta näyttää sillä aikavälillä saadut numerot
-  //hence biekku esim 5 vaikka 1 mitalli saanut, koska on oikeesti saanut 1 sil aikavälil mut on kaikki mukaan laskettun 5
-// muutetaan pelaajan placements
 
   const onDateChange = (setFunction, date) => {
     const changed_date = new Date(date)
@@ -224,7 +231,7 @@ function App() {
   }
 
   const filterTournaments = (filter) => {
-    //debugger;
+
     let newTournaments = undefined
 
     switch(filter){
