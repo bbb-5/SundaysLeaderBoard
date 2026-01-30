@@ -1,4 +1,4 @@
-const RankBox = ({number}) => {
+const RankBox = ({ number }) => {
     return (
         <div className="rankbox">
             {number}

@@ -1,17 +1,11 @@
 import { useCollapse } from 'react-collapsed'
 import { useState, useEffect } from 'react'
 
-const Nested_tournaments = ({ tournaments, year,onDatesSelected, onTournamentSelected, selected }) => {
+const Nested_tournaments = ({ tournaments, year, onDatesSelected, onTournamentSelected, selected }) => {
 
     const [current_tournaments, setTournaments] = useState([])
     const [current_year, setYear] = useState(0)
     const { getCollapseProps, getToggleProps, isExpanded } = useCollapse()
-
-    const Filters = {
-        Indoor: "Indoor",
-        Beach: "Beach",
-        Both: "Both"
-    }
 
     useEffect(() => {
 
@@ -26,7 +20,7 @@ const Nested_tournaments = ({ tournaments, year,onDatesSelected, onTournamentSel
         onDatesSelected(e.target.attributes.date.value)
         console.log("date at end: ", e.target.attributes.date.value)
         onTournamentSelected(e.target.attributes.id.value, e.target.attributes.date.value)
-        console.log("clicked: ",e.target.attributes.id.value, e.target.attributes.date.value)
+        console.log("clicked: ", e.target.attributes.id.value, e.target.attributes.date.value)
     }
 
     return (
@@ -41,7 +35,7 @@ const Nested_tournaments = ({ tournaments, year,onDatesSelected, onTournamentSel
                             <div key={tournament.id}>
                                 <label>
                                     <input type="radio" checked={selected.id == tournament.id} id={tournament.id} date={tournament.date}
-                                        onChange={(e) => handleDate(e)} tournament={tournament}/> {tournament.date} {tournament.name}
+                                        onChange={(e) => handleDate(e)} tournament={tournament} /> {tournament.date} {tournament.name}
                                 </label>
                                 <br /><br />
                             </div>
@@ -57,7 +51,7 @@ const Calendar = ({ tournaments, default_idx, onDatesSelected, filter }) => {
 
     const [tournament_years, setYears] = useState([])
     const { getCollapseProps, getToggleProps, isExpanded } = useCollapse()
-    const [selected_tournament, setSelected] = useState({id: 1,date: "2024-02-25T09:00:00Z"})
+    const [selected_tournament, setSelected] = useState({ id: 1, date: "2024-02-25T09:00:00Z" })
 
     useEffect(() => {
         let calendar_years = get_years(tournaments)
@@ -86,7 +80,7 @@ const Calendar = ({ tournaments, default_idx, onDatesSelected, filter }) => {
     }
 
     const handleTournament = (id, date) => {
-        setSelected({id: id, date: date})
+        setSelected({ id: id, date: date })
     }
 
     return (
