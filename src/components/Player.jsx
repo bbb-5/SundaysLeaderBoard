@@ -33,7 +33,7 @@ const Player = ({ player, filter_by, sort_by, start_date, end_date, tournaments 
 
   const percen = (n) => (n * 100).toFixed(2) + '%'
 
-  const get_in_date_participations = (filter, player) => { //!!
+  const get_in_date_participations = (filter) => { //!!
 
     let participations = get_participations(filter, player.id)
 
@@ -42,9 +42,9 @@ const Player = ({ player, filter_by, sort_by, start_date, end_date, tournaments 
 
   }
 
-  const ratio = (player, filter) => { //!!
+  const ratio = (filter) => { //!!
 
-    let in_date = get_in_date_participations(filter, player)
+    let in_date = get_in_date_participations(filter)
 
     if (in_date.length === 0) {
       return 0
@@ -65,9 +65,9 @@ const Player = ({ player, filter_by, sort_by, start_date, end_date, tournaments 
     }
   }
 
-  const count_medals = (medal, filter, player) => { //!!
+  const count_medals = (medal, filter) => { //!!
 
-    let in_date = get_in_date_participations(filter, player)
+    let in_date = get_in_date_participations(filter)
 
     let filtered = get_player_placements(filter, player).filter((placement) =>
       placement.medaltype.medal === medal)
@@ -84,9 +84,9 @@ const Player = ({ player, filter_by, sort_by, start_date, end_date, tournaments 
 
   }
 
-  const count_total = (filter, player) => { //!!
+  const count_total = (filter) => { //!!
 
-    let in_date = get_in_date_participations(filter, player)
+    let in_date = get_in_date_participations(filter)
 
     let counter = 0
     let placement_ids = player.placements.map(a => a.tournament_id)
@@ -100,9 +100,9 @@ const Player = ({ player, filter_by, sort_by, start_date, end_date, tournaments 
 
   }
 
-  const count_participation = (filter, player) => { //!!
+  const count_participation = (filter) => { //!!
 
-    return get_in_date_participations(filter, player).length
+    return get_in_date_participations(filter).length
 
   }
 
@@ -125,19 +125,19 @@ const get_participations = (filter, player_id) => { //!!
     }
   }
 
-  const count_ratio = (filter, player) => { //!!
+  const count_ratio = (filter) => { //!!
 
     switch (filter) {
       case Filters.Beach:
-        return percen(ratio(player, Filters.Beach))
+        return percen(ratio(Filters.Beach))
       case Filters.Indoor:
-        return percen(ratio(player, Filters.Indoor))
+        return percen(ratio(Filters.Indoor))
       default:
-        return (percen(ratio(player, Filters.Both)))
+        return (percen(ratio(Filters.Both)))
     }
   }
 
-  const get_player_placements = (filter, player) => { //!!
+  const get_player_placements = (filter) => { //!!
 
     let placements = []
 
@@ -188,7 +188,7 @@ const get_participations = (filter, player_id) => { //!!
       </ul>)
   }
 
-  const get_player_extras = (player) => {
+  const get_player_extras = () => {
     return (
       <ul>
         {player.extra_awards.map((extra_award) =>
@@ -198,7 +198,7 @@ const get_participations = (filter, player_id) => { //!!
       </ul>)
   }
 
-  const get_player_golds = (filter, player) => {
+  const get_player_golds = (filter) => {
     let golds = (player.placements.filter((placement) =>
       ((placement.medaltype.medal === Sorters.Gold) && (placement.medaltype.location === filter))))
 
@@ -239,27 +239,27 @@ const get_participations = (filter, player_id) => { //!!
   const player_default_map = {
     'Gold':
       <div>
-        <p>{player.name} Gold: {count_medals(Medals.Gold, filter_by, player)}</p>
+        <p>{player.name} Gold: {count_medals(Medals.Gold, filter_by)}</p>
       </div>,
 
     'Silver':
       <div>
-        <p>{player.name} Silver: {count_medals(Medals.Silver, filter_by, player)}</p>
+        <p>{player.name} Silver: {count_medals(Medals.Silver, filter_by)}</p>
       </div>,
 
     'Bronze':
       <div>
-        <p>{player.name} Bronze: {count_medals(Medals.Bronze, filter_by, player)}</p>
+        <p>{player.name} Bronze: {count_medals(Medals.Bronze, filter_by)}</p>
       </div>,
 
     'Percentage':
       <div>
-        <p>{player.name} Participated: {count_participation(filter_by, player)} W Ratio: {count_ratio(filter_by, player)}</p>
+        <p>{player.name} Participated: {count_participation(filter_by)} W Ratio: {count_ratio(filter_by)}</p>
       </div>,
 
     'Total':
       <div>
-        <p>{player.name} Medals: {count_total(filter_by, player)}</p>
+        <p>{player.name} Medals: {count_total(filter_by)}</p>
       </div>,
 
     'Extra':
@@ -269,50 +269,50 @@ const get_participations = (filter, player_id) => { //!!
 
     'Default':
       <div>
-        <p>{player.name} M: {count_total(filter_by, player)} G: {count_medals(Medals.Gold, filter_by, player)}
-          S: {count_medals(Medals.Silver, filter_by, player)} B: {count_medals(Medals.Bronze, filter_by, player)}</p>
+        <p>{player.name} M: {count_total(filter_by)} G: {count_medals(Medals.Gold, filter_by)}
+          S: {count_medals(Medals.Silver, filter_by)} B: {count_medals(Medals.Bronze, filter_by)}</p>
       </div>
   };
 
   const player_pressed_map = {
     'Gold':
       <div>
-        {list_placements(sort_by_medal(Medals.Gold, get_player_placements(filter_by, player)))}
+        {list_placements(sort_by_medal(Medals.Gold, get_player_placements(filter_by)))}
       </div>,
 
     'Silver':
       <div>
-        {list_placements(sort_by_medal(Medals.Silver, get_player_placements(filter_by, player)))}
+        {list_placements(sort_by_medal(Medals.Silver, get_player_placements(filter_by)))}
       </div>,
 
     'Bronze':
       <div>
-        {list_placements(sort_by_medal(Medals.Bronze, get_player_placements(filter_by, player)))}
+        {list_placements(sort_by_medal(Medals.Bronze, get_player_placements(filter_by)))}
       </div>,
 
     'Percentage':
       <div>
-        <p>INDOOR {count_medals(Medals.Gold, Filters.Indoor, player)}/{count_participation(Filters.Indoor, player)}  {count_ratio(Filters.Indoor, player)}  </p>
-        {get_player_golds(Filters.Indoor, player)}
-        <p>BEACH  {count_medals(Medals.Gold, Filters.Beach, player)}/{count_participation(Filters.Beach, player)}   {count_ratio(Filters.Beach, player)}   </p>
-        {get_player_golds(Filters.Beach, player)}
-        <p>BOTH   {count_medals(Medals.Gold, Filters.Both, player)}/{count_participation(Filters.Both, player)}    {count_ratio(Filters.Both, player)}    </p>
+        <p>INDOOR {count_medals(Medals.Gold, Filters.Indoor)}/{count_participation(Filters.Indoor)}  {count_ratio(Filters.Indoor)}  </p>
+        {get_player_golds(Filters.Indoor)}
+        <p>BEACH  {count_medals(Medals.Gold, Filters.Beach)}/{count_participation(Filters.Beach)}   {count_ratio(Filters.Beach)}   </p>
+        {get_player_golds(Filters.Beach)}
+        <p>BOTH   {count_medals(Medals.Gold, Filters.Both)}/{count_participation(Filters.Both)}    {count_ratio(Filters.Both)}    </p>
       </div>,
 
     'Total':
       <div>
-        {list_placements(get_player_placements(filter_by, player))}
+        {list_placements(get_player_placements(filter_by))}
       </div>,
 
     'Extra':
       <div>
-        {get_player_extras(player)}
+        {get_player_extras()}
       </div>,
 
     'Default':
       <div>
-        {list_placements(get_player_placements(filter_by, player))}
-        {get_player_extras(player)}
+        {list_placements(get_player_placements(filter_by))}
+        {get_player_extras()}
       </div>
   };
 
