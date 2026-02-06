@@ -144,6 +144,12 @@ const get_participations = (filter, player_id) => {
     (tournament.type === filter))
   }
 
+  const get_in_date_extras = () => { 
+
+    return player.extra_awards.filter((extra) =>
+      (is_in_daterange(extra.tournament_date)))
+  }
+
   const get_player_placements = (filter) => {
 
     let tournaments = get_in_date_tournaments(filter)
@@ -189,6 +195,8 @@ const get_participations = (filter, player_id) => {
     return found_tournament.date
   }
 
+  
+
   const list_placements = (placements) => {
 
     return (
@@ -201,9 +209,12 @@ const get_participations = (filter, player_id) => {
   }
 
   const get_player_extras = () => {
+
+    let filtered_extras = get_in_date_extras()
+
     return (
       <ul>
-        {player.extra_awards.map((extra_award) =>
+        {filtered_extras.map((extra_award) =>
           <li key={extra_award.id}> EXTRA {extra_award.name}
             {extra_award.tournament_name} {extra_award.tournament_date}</li>
         )}
@@ -276,7 +287,7 @@ const get_participations = (filter, player_id) => {
 
     'Extra':
       <div>
-        <p>{player.name} Extra Awards: {player.extra_awards.length}</p>
+        <p>{player.name} Extra Awards: {get_in_date_extras().length}</p>
       </div>,
 
     'Default':
