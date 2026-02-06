@@ -259,7 +259,7 @@ const get_participations = (filter, player_id) => {
 
     let golds = (player.placements.filter((placement) =>
       ((placement.medaltype.medal === Sorters.Gold) &&
-       (placement.medaltype.location === filter) &&
+      (placement.medaltype.location === filter) &&
         (tournament_ids.includes(placement.tournament_id)))))
 
     return (

@@ -129,12 +129,20 @@ function App() {
 
     if (filter != Filters.Both) {
       b_medals = (b.placements.filter((placement) =>
-        ((placement.medaltype.medal === medal) && (placement.medaltype.location === filter)))).length
+        ((placement.medaltype.medal === medal) && 
+        (placement.medaltype.location === filter) &&
+        (is_in_daterange(get_tournament_date(placement.tournament_id)))))).length
+
       a_medals = (a.placements.filter((placement) =>
-        ((placement.medaltype.medal === medal) && (placement.medaltype.location === filter)))).length
+        ((placement.medaltype.medal === medal) && 
+        (placement.medaltype.location === filter) && 
+        (is_in_daterange(get_tournament_date(placement.tournament_id)))))).length
     } else {
-      b_medals = (b.placements.filter((placement) => ((placement.medaltype.medal === medal)))).length
-      a_medals = (a.placements.filter((placement) => ((placement.medaltype.medal === medal)))).length
+      b_medals = (b.placements.filter((placement) => ((placement.medaltype.medal === medal) &&
+      (is_in_daterange(get_tournament_date(placement.tournament_id)))))).length
+
+      a_medals = (a.placements.filter((placement) => ((placement.medaltype.medal === medal) &&
+      (is_in_daterange(get_tournament_date(placement.tournament_id)))))).length
     }
     return (b_medals - a_medals)
   }
@@ -156,10 +164,39 @@ function App() {
         (is_in_daterange(get_tournament_date(placement.tournament_id)))))).length
 
     } else {
-      b_medals = b.placements.length
-      a_medals = a.placements.length
+      b_medals = (b.placements.filter((placement) =>
+        ((is_in_daterange(get_tournament_date(placement.tournament_id)))))).length
+
+      a_medals = (a.placements.filter((placement) =>
+        ((is_in_daterange(get_tournament_date(placement.tournament_id)))))).length
     }
     return (b_medals - a_medals)
+  }
+
+  const extra_sort = (a, b, filter) => {
+
+    console.log("extra sort filter: ", filter)
+
+    let b_extras = 0
+    let a_extras = 0
+
+    if (filter != Filters.Both) {
+      b_extras = (b.extra_awards.filter((extra) =>
+      ((extra.location === filter) &&
+      (is_in_daterange(extra.tournament_date))))).length
+
+      a_extras = (a.extra_awards.filter((extra) =>
+      ((extra.location === filter) &&
+        (is_in_daterange(extra.tournament_date))))).length
+
+    } else {
+      b_extras = (b.extra_awards.filter((extra) =>
+        ((is_in_daterange(extra.tournament_date))))).length
+
+      a_extras = (a.extra_awards.filter((extra) =>
+        ((is_in_daterange(extra.tournament_date))))).length
+    }
+    return (b_extras - a_extras)
   }
 
   const func_map = {
@@ -168,7 +205,7 @@ function App() {
     'Bronze': (a, b) => medal_sort(a, b, Medals.Bronze, filter.filter_by),
     'Percentage': (a, b) => ratio(a, b, filter.filter_by),
     'Total': (a, b) => total_sort(a, b, filter.filter_by),
-    'Extra': (a, b) => b.extra_awards.length - a.extra_awards.length,
+    'Extra': (a, b) => extra_sort(a, b, filter.filter_by),
     'Default': (a, b) => medal_sort(a, b, Medals.Gold, filter.filter_by)
   };
 
@@ -230,6 +267,14 @@ function App() {
     filterTournaments(e.target.value)
   }
 
+  
+  const setStart2 = (newStart) => {
+    if (end_date < newStart) {
+      setEnd(newStart)
+    }
+    setStart(newStart)
+  }
+
   const filterTournaments = (filter) => {
 
     let newTournaments = undefined
@@ -282,9 +327,10 @@ function App() {
     <>
       <h1>Sunday's Leaderboard</h1>
       <TopBar reverseHandler={handleReverse} filterHandler={handleFilter} filter_by={filter.filter_by}
-        tournaments={tournaments} onStartDate={(d) => { onDateChange(setStart, d) }}
+        tournaments={tournaments} onStartDate={(d) => { onDateChange(setStart2, d) }}
         onEndDate={(d) => { onDateChange(setEnd, d) }} />
-      <LeaderBoard players={playersShow} sort_by={sorter.sort_by} filter_by={filter.filter_by} start_date={start_date} end_date={end_date} tournaments={tournaments}></LeaderBoard>
+      <LeaderBoard players={playersShow} sort_by={sorter.sort_by} filter_by={filter.filter_by}
+        start_date={start_date} end_date={end_date} tournaments={tournaments}></LeaderBoard>
       <BottomBar handleSelected={handleSelected} sort_by={sorter.sort_by} filter_by={filter.filter_by} />
     </>
   )
