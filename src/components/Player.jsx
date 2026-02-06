@@ -33,7 +33,7 @@ const Player = ({ player, filter_by, sort_by, start_date, end_date, tournaments 
 
   const percen = (n) => (n * 100).toFixed(2) + '%'
 
-  const get_in_date_participations = (filter) => { //!!
+  const get_in_date_participations = (filter) => { 
 
     let participations = get_participations(filter, player.id)
 
@@ -42,7 +42,7 @@ const Player = ({ player, filter_by, sort_by, start_date, end_date, tournaments 
 
   }
 
-  const ratio = (filter) => { //!!
+  const ratio = (filter) => { 
 
     let in_date = get_in_date_participations(filter)
 
@@ -65,7 +65,7 @@ const Player = ({ player, filter_by, sort_by, start_date, end_date, tournaments 
     }
   }
 
-  const count_medals = (medal, filter) => { //!!
+  const count_medals = (medal, filter) => {
 
     let in_date = get_in_date_participations(filter)
 
@@ -84,7 +84,7 @@ const Player = ({ player, filter_by, sort_by, start_date, end_date, tournaments 
 
   }
 
-  const count_total = (filter) => { //!!
+  const count_total = (filter) => { 
 
     let in_date = get_in_date_participations(filter)
 
@@ -100,13 +100,13 @@ const Player = ({ player, filter_by, sort_by, start_date, end_date, tournaments 
 
   }
 
-  const count_participation = (filter) => { //!!
+  const count_participation = (filter) => {
 
     return get_in_date_participations(filter).length
 
   }
 
-const get_participations = (filter, player_id) => { //!!
+const get_participations = (filter, player_id) => { 
 
     switch (filter) {
       case Filters.Beach:
@@ -125,7 +125,7 @@ const get_participations = (filter, player_id) => { //!!
     }
   }
 
-  const count_ratio = (filter) => { //!!
+  const count_ratio = (filter) => { 
 
     switch (filter) {
       case Filters.Beach:
@@ -137,13 +137,25 @@ const get_participations = (filter, player_id) => { //!!
     }
   }
 
-  const get_player_placements = (filter) => { //!!
+  const get_in_date_tournaments = (filter) => { 
+
+    return tournaments.filter((tournament) =>
+    (is_in_daterange(tournament.date)) &&
+    (tournament.type === filter))
+  }
+
+  const get_player_placements = (filter) => {
+
+    let tournaments = get_in_date_tournaments(filter)
+    let tournament_ids = tournaments.map(a => a.id)
 
     let placements = []
 
     if (filter != Filters.Both) {
       placements = player.placements.filter((placement) =>
-        (placement.medaltype.location === filter))
+        (placement.medaltype.location === filter &&
+          tournament_ids.includes(placement.tournament_id)
+        ))
     } else {
       placements = player.placements
     }
