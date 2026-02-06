@@ -195,8 +195,6 @@ const get_participations = (filter, player_id) => {
     return found_tournament.date
   }
 
-  
-
   const list_placements = (placements) => {
 
     return (
@@ -206,6 +204,39 @@ const get_participations = (filter, player_id) => {
             {get_tournament_name(placement.tournament_id)} {get_tournament_date(placement.tournament_id)}</li>
         )}
       </ul>)
+  }
+
+  const list_ratios = () => {
+
+    switch (filter_by) {
+      case Filters.Indoor:
+        return (
+          <div>
+          <p>INDOOR {count_medals(Medals.Gold, Filters.Indoor)}/{count_participation(Filters.Indoor)}  {count_ratio(Filters.Indoor)}  </p>
+          {get_player_golds(Filters.Indoor)} 
+          </div>
+        )
+        
+      case Filters.Beach:
+        return (
+          <div>
+          <p>BEACH  {count_medals(Medals.Gold, Filters.Beach)}/{count_participation(Filters.Beach)}   {count_ratio(Filters.Beach)}   </p>
+          {get_player_golds(Filters.Beach)}
+          </div>
+        )        
+        
+      case Filters.Both:
+        return (
+          <div>
+          <p>INDOOR {count_medals(Medals.Gold, Filters.Indoor)}/{count_participation(Filters.Indoor)}  {count_ratio(Filters.Indoor)}  </p>
+          {get_player_golds(Filters.Indoor)}
+          <p>BEACH  {count_medals(Medals.Gold, Filters.Beach)}/{count_participation(Filters.Beach)}   {count_ratio(Filters.Beach)}   </p>
+          {get_player_golds(Filters.Beach)}
+          <p>BOTH   {count_medals(Medals.Gold, Filters.Both)}/{count_participation(Filters.Both)}    {count_ratio(Filters.Both)}    </p>
+          </div>
+        )
+    }
+
   }
 
   const get_player_extras = () => {
@@ -222,8 +253,14 @@ const get_participations = (filter, player_id) => {
   }
 
   const get_player_golds = (filter) => {
+
+    let tournaments = get_in_date_tournaments(filter)
+    let tournament_ids = tournaments.map(a => a.id)
+
     let golds = (player.placements.filter((placement) =>
-      ((placement.medaltype.medal === Sorters.Gold) && (placement.medaltype.location === filter))))
+      ((placement.medaltype.medal === Sorters.Gold) &&
+       (placement.medaltype.location === filter) &&
+        (tournament_ids.includes(placement.tournament_id)))))
 
     return (
       <ul>
@@ -315,11 +352,7 @@ const get_participations = (filter, player_id) => {
 
     'Percentage':
       <div>
-        <p>INDOOR {count_medals(Medals.Gold, Filters.Indoor)}/{count_participation(Filters.Indoor)}  {count_ratio(Filters.Indoor)}  </p>
-        {get_player_golds(Filters.Indoor)}
-        <p>BEACH  {count_medals(Medals.Gold, Filters.Beach)}/{count_participation(Filters.Beach)}   {count_ratio(Filters.Beach)}   </p>
-        {get_player_golds(Filters.Beach)}
-        <p>BOTH   {count_medals(Medals.Gold, Filters.Both)}/{count_participation(Filters.Both)}    {count_ratio(Filters.Both)}    </p>
+        {list_ratios()}
       </div>,
 
     'Total':
