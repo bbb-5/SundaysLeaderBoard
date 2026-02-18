@@ -5,6 +5,21 @@
   text-align: center;
 }
 
+html{
+  min-width: 100%;
+  min-height: 100%;
+}
+
+body{
+  min-width: 100%;
+  min-height: 100%;
+}
+
+html, body{
+  margin: 0;
+  padding: 0;
+}
+
 ul {
   list-style: none;
 }
@@ -72,11 +87,27 @@ li {
   color: #888;
 }
 
-.sorter { 
+/* Filter icons in topbar */
+.filter{
   position: absolute;
   opacity: 0;
-  width: 60;
-  height: 60;
+}
+
+/* Caldendars */
+.calendar { 
+  position: absolute;
+  opacity: 0;
+}
+
+/* Reverse icon */
+.reverse :checked {
+  outline: 2px solid rgb(248, 242, 242);
+}
+
+/* Icons in bottom bar */
+.sorter { 
+  position: absolute left;
+  opacity: 0;
 }
 
 /* IMAGE STYLES */
