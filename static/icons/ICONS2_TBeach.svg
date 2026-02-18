@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Beach_Indoor" data-name="Beach Indoor" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 128 128">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4 {
+        stroke-width: 0px;
+      }
+
+      .cls-2, .cls-5 {
+        fill: #000;
+      }
+
+      .cls-6, .cls-3 {
+        fill: #fff;
+      }
+
+      .cls-7 {
+        clip-path: url(#clippath);
+      }
+
+      .cls-4 {
+        fill: #0e0e73;
+      }
+    </style>
+    <clipPath id="clippath">
+      <path id="Beach_half-2" data-name="Beach half" class="cls-3" d="M77.34,44.29c.79-.96,2.2-1.09,3.05-.26,10.68,10.36,11.42,28.06,1.33,40.28-10.09,12.22-27.61,14.83-39.8,6.3-.97-.68-1.11-2.09-.32-3.05l35.73-43.27Z"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="63.72" y1="93.11" x2="64.3" y2="52.12" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f15a24"/>
+      <stop offset=".11" stop-color="#f26326"/>
+      <stop offset=".28" stop-color="#f67c2f"/>
+      <stop offset=".5" stop-color="#fca53b"/>
+      <stop offset=".59" stop-color="#ffb942"/>
+    </linearGradient>
+  </defs>
+  <g>
+    <path id="Beach_half" data-name="Beach half" class="cls-6" d="M77.34,44.29c.79-.96,2.2-1.09,3.05-.26,10.68,10.36,11.42,28.06,1.33,40.28-10.09,12.22-27.61,14.83-39.8,6.3-.97-.68-1.11-2.09-.32-3.05l35.73-43.27Z"/>
+    <g class="cls-7">
+      <path class="cls-1" d="M57.45,65.95c4.81,1.18,10.16,2.24,16,3,3.87.5,7.54.82,11,1l-3,9c-3.77,1.83-8.82,3.81-15,5-9.62,1.86-17.77,1-23,0,4.67-6,9.33-12,14-18Z"/>
+      <path class="cls-4" d="M70.45,50.95c8.34,6.25,12.77,16.08,11,25-2.48,12.48-16.91,22.2-33,19,11.33,1,22.67,2,34,3l9-27v-18l-11-11-3-1-7,10Z"/>
+    </g>
+  </g>
+  <path id="Indoor_half" data-name="Indoor half" class="cls-5" d="M35.59,82.58c-.79.96-2.21,1.08-3.07.25-10.78-10.45-11.62-28.22-1.53-40.44s27.7-14.76,40-6.14c.98.69,1.13,2.1.33,3.06l-35.73,43.27Z"/>
+  <rect id="line_in_the_middle" data-name="line in the middle" class="cls-2" x="55.45" y="13.95" width="2.2" height="99" rx="1.1" ry="1.1" transform="translate(53.2 -21.48) rotate(39.45)"/>
+</svg>

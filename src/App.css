@@ -72,11 +72,11 @@ li {
   color: #888;
 }
 
-.gold { 
+.sorter { 
   position: absolute;
   opacity: 0;
-  width: 0;
-  height: 0;
+  width: 60;
+  height: 60;
 }
 
 /* IMAGE STYLES */
