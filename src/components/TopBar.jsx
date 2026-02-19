@@ -9,20 +9,20 @@ const TopBar = ({ reverseHandler, filterHandler, filter_by, tournaments, onStart
 
             <label>
                 <input type="radio" className="filter" id="indoor" name="tournament_type" value="Indoor" checked={filter_by === "Indoor"} onChange={(e) => filterHandler(e)}></input>
-                <img src="./public/icons/ICONS2_TIndoor.svg" width={55} height={55} />
+                <img src="icons/ICONS2_TIndoor.svg" width={55} height={55} />
             </label>
             
             <label>
                 <input type="radio" className="filter" id="beach" name="tournament_type" value="Beach" checked={filter_by === "Beach"} onChange={(e) => filterHandler(e)}></input>
-                <img src="./public/icons/ICONS2_TBeach.svg" width={55} height={55} />
+                <img src="icons/ICONS2_TBeach.svg" width={55} height={55} />
             </label>
 
             <label>
                 <input type="radio" className="filter" id="both" name="tournament_type" value="Both" checked={filter_by === "Both"} onChange={(e) => filterHandler(e)}></input>
-                <img src="./public/icons/ICONS2_TBeach - Indoor.svg" width={55} height={55} />
+                <img src="icons/ICONS2_TBeach - Indoor.svg" width={55} height={55} />
             </label>
 
-            <img className="reverse" src="./public/icons/ICONS2_Reverse.svg" onClick={reverseHandler} width={55} height={55}/>
+            <img className="reverse" src="icons/ICONS2_Reverse.svg" onClick={reverseHandler} width={55} height={55}/>
             
         </div>
     )

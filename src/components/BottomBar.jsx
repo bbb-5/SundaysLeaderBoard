@@ -72,7 +72,7 @@ const BottomBar = ({ handleSelected, sort_by, filter_by }) => {
 
             <label>
                 <input type="radio" className="sorter" id="total" name="icon" value="Total" checked={sort_by === Selected.Total} onChange={(e) => handleSelected(e)}></input>
-                <img src="./public/icons/ICONS2_Total amount of medals.svg" width={55} height={55} />
+                <img src="icons/ICONS2_Total amount of medals.svg" width={55} height={55} />
             </label>
 
             <label>
