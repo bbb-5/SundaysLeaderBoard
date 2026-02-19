@@ -245,11 +245,28 @@ function App() {
     }
   }
 
+  const remove_0_percent = (input_players) => {
+
+    if (filter.filter_by === Filters.Both) {
+      return [...input_players].filter((player) =>
+        (player.placements.filter((placement) =>
+          (placement.medaltype.medal === Medals.Gold) &&
+          (is_in_daterange(get_tournament_date(placement.tournament_id))))).length != 0)
+    } else {
+      return [...input_players].filter((player) =>
+        (player.placements.filter((placement) =>
+          (placement.medaltype.medal === Medals.Gold) &&
+          (placement.medaltype.location === filter.filter_by) &&
+          (is_in_daterange(get_tournament_date(placement.tournament_id))))).length != 0)
+    }
+
+  }
+
   const filter_0s_map = {
     'Gold': (input_players) => remove_0_medals(input_players, Medals.Gold),
     'Silver': (input_players) => remove_0_medals(input_players, Medals.Silver),
     'Bronze': (input_players) => remove_0_medals(input_players, Medals.Bronze),
-    'Percentage': (input_players) => {return input_players},
+    'Percentage': (input_players) => remove_0_percent(input_players),
     'Total': (input_players) => remove_0_total(input_players),
     'Extra': (input_players) => remove_0_extras(input_players),
     'Default': (input_players) => remove_0_total(input_players)
@@ -286,14 +303,6 @@ function App() {
     console.log("set current players: ",current_players)
   }, [filter.filter_by, sorter.sort_by, start_date, end_date])
 
-  const handleSort = (sortFunction) => {
-    let newPlayers = [...playersShow].sort(sortFunction)
-    console.log('before ',newPlayers)
-    //newPlayers = filter_0s_map[sorter.sort_by](newPlayers)
-    //console.log('after ',newPlayers)
-    setPlayersShow(newPlayers)
-  }
-
   const handleReverse = () => {
     const newPlayers = [...playersShow].reverse()
     setPlayersShow(newPlayers)
@@ -302,16 +311,12 @@ function App() {
   const handleSorter = (e) => {
     setSorter({ sort_by: e.target.value })
     console.log('new sorter: ',e.target.value)
-    //handleSort(func_map[e.target.value])
-    //console.log(func_map[e.target.value])
   }
 
   const handleFilter = (e) => {
     setFilter({ filter_by: e.target.value })
     console.log("new filter: ",e.target.value)
     filterTournaments(e.target.value)
-    //filterPlayers(e.target.value)
-    //filterTournaments(e.target.value)
   }
   
   const setStart2 = (newStart) => {
