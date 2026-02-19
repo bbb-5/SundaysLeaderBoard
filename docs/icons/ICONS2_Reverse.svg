@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Reverse" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 128 128">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: #521317;
+      }
+
+      .cls-3 {
+        fill: #410f17;
+      }
+
+      .cls-3, .cls-2, .cls-4 {
+        stroke-width: 0px;
+      }
+
+      .cls-5 {
+        clip-path: url(#clippath);
+      }
+
+      .cls-4 {
+        fill: #fff;
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-2" x="45.16" y="29.5" width="45" height="80" rx="5.48" ry="5.48"/>
+    </clipPath>
+  </defs>
+  <g>
+    <rect class="cls-1" x="45.16" y="29.5" width="45" height="80" rx="5.48" ry="5.48"/>
+    <g class="cls-5">
+      <polygon class="cls-3" points="32 78 105 33 104 64 25 121 32 78"/>
+    </g>
+  </g>
+  <g id="ARROW">
+    <g>
+      <g id="Arrow1">
+        <rect class="cls-4" x="57.7" y="51.26" width="7.48" height="28.74" rx="1.2" ry="1.2" transform="translate(122.89 131.26) rotate(-180)"/>
+      </g>
+      <path class="cls-4" d="M63.34,40c-1.2.01-1.68,1.28-4,4-.57.67-1.01,1.22-4.77,6.61-1.48,2.13-2.22,3.2-1.95,3.79.41.88,2.1.81,5.17.74,3.85-.08,7.7-.02,11.55-.15,5.95-.19,7.67-.09,8-1,.26-.7-.55-1.32-3-4-1.37-1.5-4.35-4.82-9-9-.5-.45-1.14-1.01-2-1Z"/>
+    </g>
+    <g id="ARROW-2" data-name="ARROW">
+      <g id="Arrow1-2" data-name="Arrow1">
+        <rect class="cls-4" x="70.13" y="60" width="7.48" height="28.74" rx="1.2" ry="1.2"/>
+      </g>
+      <path class="cls-4" d="M71.97,100c1.2-.01,1.68-1.28,4-4,.57-.67,1.01-1.22,4.77-6.61,1.48-2.13,2.22-3.2,1.95-3.79-.41-.88-2.1-.81-5.17-.74-3.85.08-7.7.02-11.55.15-5.95.19-7.67.09-8,1-.26.7.55,1.32,3,4,1.37,1.5,4.35,4.82,9,9,.5.45,1.14,1.01,2,1Z"/>
+    </g>
+  </g>
+</svg>

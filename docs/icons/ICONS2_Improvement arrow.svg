@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Improvement_arrow" data-name="Improvement arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        stroke-width: 0px;
+      }
+    </style>
+  </defs>
+  <g id="ARROW">
+    <g id="Arrow1">
+      <rect class="cls-1" x="56" y="59" width="20" height="38" rx="2.26" ry="2.26" transform="translate(132 156) rotate(-180)"/>
+    </g>
+    <path class="cls-1" d="M66,35.75c-3.09,0-23.73,28-23.73,31.49,0,1.62,11.42,2.06,23.73,1.96,12.31.1,23.73-.34,23.73-1.96,0-3.49-20.64-31.49-23.73-31.49Z"/>
+  </g>
+</svg>

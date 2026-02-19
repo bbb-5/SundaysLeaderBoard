@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Go_up" data-name="Go up" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 128 128">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: #521317;
+      }
+
+      .cls-3 {
+        fill: #410f17;
+      }
+
+      .cls-3, .cls-2, .cls-4 {
+        stroke-width: 0px;
+      }
+
+      .cls-5 {
+        clip-path: url(#clippath);
+      }
+
+      .cls-4 {
+        fill: #fff;
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-2" x="33.94" y="28.12" width="67" height="67" rx="8.16" ry="8.16"/>
+    </clipPath>
+  </defs>
+  <g>
+    <rect class="cls-1" x="33.94" y="28.12" width="67" height="67" rx="8.16" ry="8.16"/>
+    <g class="cls-5">
+      <polygon class="cls-3" points="19 68 99 18 114 35 64 107 16 103 19 68"/>
+    </g>
+  </g>
+  <g>
+    <g id="Arrow1">
+      <rect class="cls-4" x="61.37" y="62.29" width="11.69" height="17.59" rx="1.18" ry="1.18" transform="translate(134.42 142.18) rotate(-180)"/>
+    </g>
+    <path class="cls-4" d="M67.42,43.58c-2.49,0-19.11,22.54-19.11,25.35,0,1.31,9.19,1.66,19.11,1.58,9.91.08,19.11-.28,19.11-1.58,0-2.81-16.61-25.35-19.11-25.35Z"/>
+  </g>
+</svg>
