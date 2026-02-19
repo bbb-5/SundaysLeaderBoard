@@ -146,8 +146,14 @@ const get_participations = (filter, player_id) => {
 
   const get_in_date_extras = () => { 
 
-    return player.extra_awards.filter((extra) =>
-      (is_in_daterange(extra.tournament_date)))
+    if (filter_by === Filters.Both) {
+      return player.extra_awards.filter((extra) =>
+        (is_in_daterange(extra.tournament_date)))
+    } else {
+      return player.extra_awards.filter((extra) =>
+        (is_in_daterange(extra.tournament_date)) && 
+        (extra.location === filter_by))
+    }
   }
 
   const get_player_placements = (filter) => {

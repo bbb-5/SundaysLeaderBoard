@@ -209,6 +209,52 @@ function App() {
     'Default': (a, b) => medal_sort(a, b, Medals.Gold, filter.filter_by)
   };
 
+  const remove_0_medals = (input_players, medaltype) => {
+
+    return [...input_players].filter((player) =>
+      (player.placements.filter((placement) =>
+        (placement.medaltype.medal === medaltype) &&
+        (is_in_daterange(get_tournament_date(placement.tournament_id))))).length != 0)
+  }
+
+  const remove_0_total = (input_players) => {
+
+    if (filter.filter_by === Filters.Both) {
+      return [...input_players].filter((player) =>
+        (player.placements.some((placement) =>
+          (is_in_daterange(get_tournament_date(placement.tournament_id))))))
+    } else {
+      return [...input_players].filter((player) =>
+        (player.placements.some((placement) =>
+          (placement.medaltype.location === filter.filter_by) &&
+          (is_in_daterange(get_tournament_date(placement.tournament_id))))))
+    }
+  }
+
+  const remove_0_extras = (input_players) => {
+
+    if (filter.filter_by === Filters.Both) {
+      return input_players.filter((player) =>
+        (player.extra_awards.filter((extra) => 
+          is_in_daterange(extra.tournament_date))).length != 0)
+    } else {
+      return input_players.filter((player) =>
+        (player.extra_awards.filter((extra) => 
+          is_in_daterange(extra.tournament_date) && 
+          extra.location === filter.filter_by)).length != 0)
+    }
+  }
+
+  const filter_0s_map = {
+    'Gold': (input_players) => remove_0_medals(input_players, Medals.Gold),
+    'Silver': (input_players) => remove_0_medals(input_players, Medals.Silver),
+    'Bronze': (input_players) => remove_0_medals(input_players, Medals.Bronze),
+    'Percentage': (input_players) => {return input_players},
+    'Total': (input_players) => remove_0_total(input_players),
+    'Extra': (input_players) => remove_0_extras(input_players),
+    'Default': (input_players) => remove_0_total(input_players)
+  };
+
   useEffect(() => {
     dataService.getData().then((jsonData) => {
       console.log(jsonData.data)
@@ -223,23 +269,28 @@ function App() {
     })
   }, [])
 
-  useEffect(() => {
-
-    const newPlayers = [...players].filter((player) =>
-    (player.placements.some((placement) =>
-      (is_in_daterange(get_tournament_date(placement.tournament_id))))))
-
-    setPlayersShow(newPlayers.sort(func_map[sorter.sort_by]))
-
-  }, [start_date, end_date])
-
   const onDateChange = (setFunction, date) => {
     const changed_date = new Date(date)
     setFunction(changed_date)
   }
 
+  useEffect(() => {
+
+    let current_players = filterPlayers(filter.filter_by)
+
+    console.log("filtered current players: ",current_players)
+    current_players = filter_0s_map[sorter.sort_by](current_players) 
+    console.log("0 current players: ",current_players)
+    current_players = [...current_players].sort(func_map[sorter.sort_by])
+    setPlayersShow(current_players)
+    console.log("set current players: ",current_players)
+  }, [filter.filter_by, sorter.sort_by, start_date, end_date])
+
   const handleSort = (sortFunction) => {
-    const newPlayers = [...playersShow].sort(sortFunction)
+    let newPlayers = [...playersShow].sort(sortFunction)
+    console.log('before ',newPlayers)
+    //newPlayers = filter_0s_map[sorter.sort_by](newPlayers)
+    //console.log('after ',newPlayers)
     setPlayersShow(newPlayers)
   }
 
@@ -248,25 +299,20 @@ function App() {
     setPlayersShow(newPlayers)
   }
 
-  const handleSelected = (e) => {
-    console.log(e)
+  const handleSorter = (e) => {
     setSorter({ sort_by: e.target.value })
-    console.log(e.target.value)
-    handleSort(func_map[e.target.value])
-    console.log(func_map[e.target.value])
+    console.log('new sorter: ',e.target.value)
+    //handleSort(func_map[e.target.value])
+    //console.log(func_map[e.target.value])
   }
-
-  useEffect(() => {
-    filterPlayers(filter.filter_by)
-    console.log('Updated: ', filter.filter_by)
-  }, [filter.filter_by])
 
   const handleFilter = (e) => {
     setFilter({ filter_by: e.target.value })
-    console.log(e.target.value)
+    console.log("new filter: ",e.target.value)
     filterTournaments(e.target.value)
+    //filterPlayers(e.target.value)
+    //filterTournaments(e.target.value)
   }
-
   
   const setStart2 = (newStart) => {
     if (end_date < newStart) {
@@ -304,23 +350,22 @@ function App() {
 
     switch (filter) {
       case Filters.Beach:
-        newPlayers = [...players].filter((player) => (player.placements.some((placements) =>
-          placements.medaltype.location === Filters.Beach)))
-        console.log(newPlayers)
+        newPlayers = [...players].filter((player) => 
+          (get_in_date_participations(Filters.Beach,player).length != 0))
         break
 
       case Filters.Indoor:
-        newPlayers = [...players].filter((player) => (player.placements.some((placements) =>
-          placements.medaltype.location === Filters.Indoor)))
-        console.log(newPlayers)
+        newPlayers = [...players].filter((player) =>
+          (get_in_date_participations(Filters.Indoor,player).length != 0))
         break
 
       default:
-        newPlayers = [...players]
-        console.log(newPlayers)
+        newPlayers = [...players].filter((player) =>
+          (get_in_date_participations(Filters.Both,player).length != 0))
         break
     }
-    setPlayersShow(newPlayers.sort(func_map[sorter.sort_by]))
+
+    return(newPlayers)
   }
 
   return (
@@ -331,7 +376,7 @@ function App() {
         onEndDate={(d) => { onDateChange(setEnd, d) }} />
       <LeaderBoard players={playersShow} sort_by={sorter.sort_by} filter_by={filter.filter_by}
         start_date={start_date} end_date={end_date} tournaments={tournaments}></LeaderBoard>
-      <BottomBar handleSelected={handleSelected} sort_by={sorter.sort_by} filter_by={filter.filter_by} />
+      <BottomBar handleSelected={handleSorter} sort_by={sorter.sort_by} filter_by={filter.filter_by} />
     </>
   )
 }
