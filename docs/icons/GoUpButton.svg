@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="EXPORT_BOARD" data-name="EXPORT BOARD" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 128 128">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: #521317;
+      }
+
+      .cls-3 {
+        fill: #410f17;
+      }
+
+      .cls-3, .cls-2, .cls-4 {
+        stroke-width: 0px;
+      }
+
+      .cls-5 {
+        clip-path: url(#clippath);
+      }
+
+      .cls-4 {
+        fill: #fff;
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-2" x=".75" y=".75" width="126.5" height="126.5" rx="15.42" ry="15.42"/>
+    </clipPath>
+  </defs>
+  <g id="Go_up-2" data-name="Go up">
+    <g>
+      <rect class="cls-1" x=".75" y=".75" width="126.5" height="126.5" rx="15.42" ry="15.42"/>
+      <g class="cls-5">
+        <polygon class="cls-3" points="-27.46 76.05 123.58 -18.35 151.9 13.75 57.5 149.69 -33.13 142.14 -27.46 76.05"/>
+      </g>
+    </g>
+    <g>
+      <g id="Arrow1">
+        <rect class="cls-4" x="52.53" y="65.28" width="22.07" height="33.21" rx="2.22" ry="2.22" transform="translate(127.13 163.77) rotate(-180)"/>
+      </g>
+      <path class="cls-4" d="M63.95,29.94c-4.7,0-36.07,42.56-36.07,47.85,0,2.46,17.36,3.13,36.07,2.98,18.72.15,36.07-.52,36.07-2.98,0-5.3-31.37-47.85-36.07-47.85Z"/>
+    </g>
+  </g>
+</svg>
