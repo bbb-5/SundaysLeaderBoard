@@ -245,6 +245,62 @@ const get_participations = (filter, player_id) => {
 
   }
 
+  const ratio_box = () => {
+
+    switch (filter_by) {
+      case Filters.Indoor:
+        return (
+          <p> {player.name} {count_medals(Medals.Gold, Filters.Indoor)}/{count_participation(Filters.Indoor)}  {count_ratio(Filters.Indoor)} </p>
+        )
+        
+      case Filters.Beach:
+        return (
+          <p>{player.name} {count_medals(Medals.Gold, Filters.Beach)}/{count_participation(Filters.Beach)}   {count_ratio(Filters.Beach)} </p>
+        )        
+        
+      case Filters.Both:
+        return (
+          <p>{player.name}   {count_medals(Medals.Gold, Filters.Both)}/{count_participation(Filters.Both)}    {count_ratio(Filters.Both)} </p>
+        )
+    }
+
+  }
+
+  const get_medal_string = () =>{
+
+    let s = ''
+
+    if (count_medals(Medals.Gold, filter_by) > 0) {
+      s = s + 'G: ' + count_medals(Medals.Gold, filter_by) + ' '
+    }
+
+    if (count_medals(Medals.Silver, filter_by) > 0) {
+      s = s + 'S: ' + count_medals(Medals.Silver, filter_by) + ' '
+    }
+
+    if (count_medals(Medals.Bronze, filter_by) > 0) {
+      s = s + 'B: ' + count_medals(Medals.Bronze, filter_by) + ' '
+    }
+
+    return s
+  }
+
+  <p>{player.name} M: {count_total(filter_by)} {get_medal_string()}</p>
+
+  const get_default_box = () =>{
+
+    if (filter_by === Filters.Indoor) {
+      return (
+        <p>{player.name} {get_medal_string()}</p>
+      )
+    } else {
+      return (
+        <p>{player.name} M: {count_total(filter_by)} {get_medal_string()}</p>
+      )
+    }
+
+  }
+
   const get_player_extras = () => {
 
     let filtered_extras = get_in_date_extras()
@@ -320,7 +376,7 @@ const get_participations = (filter, player_id) => {
 
     'Percentage':
       <div>
-        <p>{player.name} Participated: {count_participation(filter_by)} W Ratio: {count_ratio(filter_by)}</p>
+        {ratio_box()}
       </div>,
 
     'Total':
@@ -335,8 +391,7 @@ const get_participations = (filter, player_id) => {
 
     'Default':
       <div>
-        <p>{player.name} M: {count_total(filter_by)} G: {count_medals(Medals.Gold, filter_by)}
-          S: {count_medals(Medals.Silver, filter_by)} B: {count_medals(Medals.Bronze, filter_by)}</p>
+        {get_default_box()}
       </div>
   };
 
