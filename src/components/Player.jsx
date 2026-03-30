@@ -31,6 +31,12 @@ const Player = ({ player, filter_by, sort_by, start_date, end_date, tournaments 
     return (checked_date >= start_date && checked_date <= end_date)
   }
 
+  const formatted_date = (given_date) => {
+
+    const  date = new Date(given_date)
+    return date.toLocaleDateString("en-GB")
+  }
+
   const percen = (n) => (n * 100).toFixed(2) + '%'
 
   const get_in_date_participations = (filter) => { 
@@ -198,7 +204,9 @@ const get_participations = (filter, player_id) => {
     if (found_tournament === undefined) {
       return
     }
-    return found_tournament.date
+
+    return formatted_date(found_tournament.date)
+  
   }
 
   const list_placements = (placements) => {
@@ -309,7 +317,7 @@ const get_participations = (filter, player_id) => {
       <ul>
         {filtered_extras.map((extra_award) =>
           <li key={extra_award.id}> EXTRA {extra_award.name}
-            {extra_award.tournament_name} {extra_award.tournament_date}</li>
+            {extra_award.tournament_name} {formatted_date(extra_award.tournament_date)}</li>
         )}
       </ul>)
   }
@@ -386,7 +394,7 @@ const get_participations = (filter, player_id) => {
 
     'Extra':
       <div>
-        <p>{player.name} Extra Awards: {get_in_date_extras().length}</p>
+        <p>{player.name} Extras: {get_in_date_extras().length}</p>
       </div>,
 
     'Default':

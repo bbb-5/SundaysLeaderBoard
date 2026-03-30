@@ -1,6 +1,12 @@
 import { useCollapse } from 'react-collapsed'
 import { useState, useEffect } from 'react'
 
+const formatted_date = (given_date) => {
+
+    const  date = new Date(given_date)
+    return date.toLocaleDateString("en-GB")
+}
+
 const Nested_tournaments = ({ tournaments, year, onDatesSelected, onTournamentSelected, selected }) => {
 
     const [current_tournaments, setTournaments] = useState([])
@@ -35,7 +41,7 @@ const Nested_tournaments = ({ tournaments, year, onDatesSelected, onTournamentSe
                             <div key={tournament.id}>
                                 <label>
                                     <input type="radio" checked={selected.id == tournament.id} id={tournament.id} date={tournament.date}
-                                        onChange={(e) => handleDate(e)} tournament={tournament} /> {tournament.date} {tournament.name}
+                                        onChange={(e) => handleDate(e)} tournament={tournament} /> {formatted_date(tournament.date)} {tournament.name}
                                 </label>
                                 <br /><br />
                             </div>
@@ -86,7 +92,7 @@ const Calendar = ({ tournaments, default_idx, onDatesSelected, filter }) => {
     return (
         <div className="collapsible">
             <div className="header" {...getToggleProps()}>
-                {isExpanded ? "Choose year" : (selected_tournament ? selected_tournament.date : "asd")}
+                {isExpanded ? "Choose year" : (selected_tournament ? formatted_date(selected_tournament.date) : "asd")}
             </div>
             <div {...getCollapseProps()}>
                 <div className="content">
