@@ -240,15 +240,15 @@ const get_participations = (filter, player_id) => {
         )        
         
       case Filters.Both:
-        return (
-          <div>
-          <p>INDOOR {count_medals(Medals.Gold, Filters.Indoor)}/{count_participation(Filters.Indoor)}  {count_ratio(Filters.Indoor)}  </p>
-          {get_player_golds(Filters.Indoor)}
-          <p>BEACH  {count_medals(Medals.Gold, Filters.Beach)}/{count_participation(Filters.Beach)}   {count_ratio(Filters.Beach)}   </p>
-          {get_player_golds(Filters.Beach)}
-          <p>BOTH   {count_medals(Medals.Gold, Filters.Both)}/{count_participation(Filters.Both)}    {count_ratio(Filters.Both)}    </p>
-          </div>
-        )
+        if ((count_participation(Filters.Indoor)) > 0 && (count_participation(Filters.Beach)) === 0) {
+          return percentage_map[Filters.Indoor]
+        }
+
+        if ((count_participation(Filters.Indoor)) === 0 && (count_participation(Filters.Beach)) > 0) {
+          return percentage_map[Filters.Beach]
+        }
+
+        return percentage_map[Filters.Both]
     }
 
   }
@@ -365,6 +365,29 @@ const get_participations = (filter, player_id) => {
   const sort_by_medal = (medal, placements) => {
     return [...placements].sort((a, b) => compare_medals(a, b, medal))
   }
+
+  const percentage_map = {
+    'Indoor':
+    <div>
+    <p>INDOOR {count_medals(Medals.Gold, Filters.Indoor)}/{count_participation(Filters.Indoor)}  {count_ratio(Filters.Indoor)}  </p>
+    {get_player_golds(Filters.Indoor)}
+    </div>,
+
+    'Beach':
+    <div>
+    <p>BEACH  {count_medals(Medals.Gold, Filters.Beach)}/{count_participation(Filters.Beach)}   {count_ratio(Filters.Beach)}   </p>
+    {get_player_golds(Filters.Beach)}
+    </div>,
+
+    'Both':
+    <div>
+    <p>INDOOR {count_medals(Medals.Gold, Filters.Indoor)}/{count_participation(Filters.Indoor)}  {count_ratio(Filters.Indoor)}  </p>
+    {get_player_golds(Filters.Indoor)}
+    <p>BEACH  {count_medals(Medals.Gold, Filters.Beach)}/{count_participation(Filters.Beach)}   {count_ratio(Filters.Beach)}   </p>
+    {get_player_golds(Filters.Beach)}
+    <p>BOTH   {count_medals(Medals.Gold, Filters.Both)}/{count_participation(Filters.Both)}    {count_ratio(Filters.Both)}    </p>
+    </div>
+  };
 
   const player_default_map = {
     'Gold':
