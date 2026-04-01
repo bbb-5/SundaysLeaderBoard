@@ -240,11 +240,14 @@ const get_participations = (filter, player_id) => {
         )        
         
       case Filters.Both:
-        if ((count_participation(Filters.Indoor)) > 0 && (count_participation(Filters.Beach)) === 0) {
+        let gold_in = count_medals(Medals.Gold, Filters.Indoor)
+        let gold_beach = count_medals(Medals.Gold, Filters.Beach)
+
+        if ((gold_in > 0) && (gold_beach === 0)) {
           return percentage_map[Filters.Indoor]
         }
 
-        if ((count_participation(Filters.Indoor)) === 0 && (count_participation(Filters.Beach)) > 0) {
+        if ((gold_in === 0) && (gold_beach > 0)) {
           return percentage_map[Filters.Beach]
         }
 
@@ -277,17 +280,20 @@ const get_participations = (filter, player_id) => {
   const get_medal_string = () =>{
 
     let s = ''
+    let gold_medals = count_medals(Medals.Gold, filter_by)
+    let silver_medals = count_medals(Medals.Silver, filter_by)
+    let bronze_medals = count_medals(Medals.Bronze, filter_by)
 
-    if (count_medals(Medals.Gold, filter_by) > 0) {
-      s = s + 'G: ' + count_medals(Medals.Gold, filter_by) + ' '
+    if  (gold_medals > 0) {
+      s = s + 'G: ' + gold_medals + ' '
     }
 
-    if (count_medals(Medals.Silver, filter_by) > 0) {
-      s = s + 'S: ' + count_medals(Medals.Silver, filter_by) + ' '
+    if (silver_medals > 0) {
+      s = s + 'S: ' + silver_medals + ' '
     }
 
-    if (count_medals(Medals.Bronze, filter_by) > 0) {
-      s = s + 'B: ' + count_medals(Medals.Bronze, filter_by) + ' '
+    if (bronze_medals > 0) {
+      s = s + 'B: ' + bronze_medals + ' '
     }
 
     return s
@@ -385,7 +391,6 @@ const get_participations = (filter, player_id) => {
     {get_player_golds(Filters.Indoor)}
     <p>BEACH  {count_medals(Medals.Gold, Filters.Beach)}/{count_participation(Filters.Beach)}   {count_ratio(Filters.Beach)}   </p>
     {get_player_golds(Filters.Beach)}
-    <p>BOTH   {count_medals(Medals.Gold, Filters.Both)}/{count_participation(Filters.Both)}    {count_ratio(Filters.Both)}    </p>
     </div>
   };
 
