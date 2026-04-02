@@ -15,6 +15,8 @@ function App() {
   const [start_date, setStart] = useState(new Date("2024-02-25T09:00:00Z"))
   const [end_date, setEnd] = useState(new Date("2025-06-22T11:30:00Z"))
 
+  const [filter_index, setFilterIndex] = useState(2)
+
   const Medals = {
     Gold: "Gold",
     Silver: "Silver",
@@ -27,10 +29,7 @@ function App() {
     Both: "Both"
   }
 
-  const Dates = {
-    Start: "Start date",
-    End: "End date"
-  }
+  const filter_keys = Object.keys(Filters)
 
   const is_in_daterange = (date) => {
     const checked_date = new Date(date)
@@ -309,14 +308,24 @@ function App() {
   }
 
   const handleSorter = (e) => {
+
     setSorter({ sort_by: e.target.value })
     console.log('new sorter: ',e.target.value)
   }
 
-  const handleFilter = (e) => {
-    setFilter({ filter_by: e.target.value })
-    console.log("new filter: ",e.target.value)
-    filterTournaments(e.target.value)
+  const handleFilter = () => {
+
+    let new_index = (filter_index+1) % filter_keys.length
+
+    if ((sorter.sort_by == Medals.Silver || sorter.sort_by == Medals.Bronze)) {
+      setSorter({sort_by: 'Default'})
+    }
+
+    setFilterIndex(new_index)
+
+    setFilter({filter_by: filter_keys[new_index]})
+    filterTournaments(filter_keys[new_index])
+    console.log("NEW FILTER: ",filter_keys[new_index])
   }
   
   const setStart2 = (newStart) => {

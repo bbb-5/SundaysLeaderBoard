@@ -71,6 +71,7 @@ const Player = ({ player, filter_by, sort_by, start_date, end_date, tournaments 
     }
   }
 
+  //TODO: refactor 
   const count_medals = (medal, filter) => {
 
     let in_date = get_in_date_participations(filter)
@@ -328,6 +329,7 @@ const get_participations = (filter, player_id) => {
       </ul>)
   }
 
+  // TODO: refactor
   const get_player_golds = (filter) => {
 
     let tournaments = get_in_date_tournaments(filter)
