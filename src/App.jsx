@@ -274,7 +274,7 @@ function App() {
   useEffect(() => {
     dataService.getData().then((jsonData) => {
       console.log(jsonData.data)
-      let filtered = jsonData.data.Players.filter((player) => (player.placements.length != 0))
+      let filtered = jsonData.data.Players.filter((player) => ((player.placements.length != 0) || (player.extra_awards.length != 0)))
       filtered = [...filtered].sort(func_map[sorter.sort_by])
       let tournaments = jsonData.data.Tournaments
       setTournaments(tournaments)
