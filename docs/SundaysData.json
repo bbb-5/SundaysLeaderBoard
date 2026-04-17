@@ -79,6 +79,22 @@
                     },
                     "team_name": "Batman",
                     "tournament_id": 18
+                },
+                {
+                    "medaltype": {
+                        "location": "Indoor",
+                        "medal": "Gold"
+                    },
+                    "team_name": "Blackhole",
+                    "tournament_id": 22
+                },
+                {
+                    "medaltype": {
+                        "location": "Indoor",
+                        "medal": "Gold"
+                    },
+                    "team_name": "Finland is not real",
+                    "tournament_id": 25
                 }
             ]
         },
@@ -104,6 +120,22 @@
                     },
                     "team_name": "Hearts",
                     "tournament_id": 21
+                },
+                {
+                    "medaltype": {
+                        "location": "Indoor",
+                        "medal": "Gold"
+                    },
+                    "team_name": "Stark",
+                    "tournament_id": 23
+                },
+                {
+                    "medaltype": {
+                        "location": "Indoor",
+                        "medal": "Gold"
+                    },
+                    "team_name": "Finland is not real",
+                    "tournament_id": 25
                 }
             ]
         },
@@ -153,6 +185,14 @@
                     },
                     "team_name": "Hearts",
                     "tournament_id": 21
+                },
+                {
+                    "medaltype": {
+                        "location": "Indoor",
+                        "medal": "Gold"
+                    },
+                    "team_name": "Hiiden hirvet",
+                    "tournament_id": 24
                 }
             ]
         },
@@ -240,7 +280,15 @@
         {
             "name": "Gray",
             "id": 7,
-            "extra_awards": [],
+            "extra_awards": [
+                {
+                    "id": 21,
+                    "name": "Most unpredictable player",
+                    "tournament_name": "Game of Thrones Tournament",
+                    "location": "Indoor",
+                    "tournament_date": "2026-02-15T09:00:00Z"
+                }
+            ],
             "cards": [],
             "nickname": "Hidden",
             "placements": [
@@ -289,6 +337,13 @@
                     "tournament_name": "HungerGames Tournament",
                     "location": "Beach",
                     "tournament_date": "2024-08-25T09:00:00Z"
+                },
+                {
+                    "id": 19,
+                    "name": "Space Survivor",
+                    "tournament_name": "Outer Space Tournament",
+                    "location": "Indoor",
+                    "tournament_date": "2026-01-25T09:00:00Z"
                 }
             ],
             "cards": [],
@@ -325,6 +380,14 @@
                     },
                     "team_name": "Loki",
                     "tournament_id": 17
+                },
+                {
+                    "medaltype": {
+                        "location": "Indoor",
+                        "medal": "Gold"
+                    },
+                    "team_name": "Finland is not real",
+                    "tournament_id": 25
                 }
             ]
         },
@@ -546,6 +609,22 @@
                     },
                     "team_name": "You shall not pass",
                     "tournament_id": 19
+                },
+                {
+                    "medaltype": {
+                        "location": "Indoor",
+                        "medal": "Gold"
+                    },
+                    "team_name": "Stark",
+                    "tournament_id": 23
+                },
+                {
+                    "medaltype": {
+                        "location": "Indoor",
+                        "medal": "Gold"
+                    },
+                    "team_name": "Finland is not real",
+                    "tournament_id": 25
                 }
             ]
         },
@@ -604,6 +683,22 @@
                     },
                     "team_name": "Karasuno 2.0",
                     "tournament_id": 15
+                },
+                {
+                    "medaltype": {
+                        "location": "Indoor",
+                        "medal": "Gold"
+                    },
+                    "team_name": "Blackhole",
+                    "tournament_id": 22
+                },
+                {
+                    "medaltype": {
+                        "location": "Indoor",
+                        "medal": "Gold"
+                    },
+                    "team_name": "Hiiden hirvet",
+                    "tournament_id": 24
                 }
             ]
         },
@@ -962,6 +1057,14 @@
                     },
                     "team_name": "Loki",
                     "tournament_id": 17
+                },
+                {
+                    "medaltype": {
+                        "location": "Indoor",
+                        "medal": "Gold"
+                    },
+                    "team_name": "Blackhole",
+                    "tournament_id": 22
                 }
             ]
         },
@@ -990,6 +1093,13 @@
                     "tournament_name": "Casino Tournament",
                     "location": "Indoor",
                     "tournament_date": "2025-11-30T12:00:00Z"
+                },
+                {
+                    "id": 20,
+                    "name": "Star Setter",
+                    "tournament_name": "Outer Space Tournament",
+                    "location": "Indoor",
+                    "tournament_date": "2026-01-25T09:00:00Z"
                 }
             ],
             "cards": [
@@ -1100,11 +1210,27 @@
                     "tournament_name": "AmazingAnimals Tournament",
                     "location": "Indoor",
                     "tournament_date": "2025-02-16T11:30:00Z"
+                },
+                {
+                    "id": 23,
+                    "name": "Conspiracy Theorist",
+                    "tournament_name": "Conspiracy Tournament",
+                    "location": "Indoor",
+                    "tournament_date": "2026-04-12T09:00:00Z"
                 }
             ],
             "cards": [],
             "nickname": "Hidden",
-            "placements": []
+            "placements": [
+                {
+                    "medaltype": {
+                        "location": "Indoor",
+                        "medal": "Gold"
+                    },
+                    "team_name": "Blackhole",
+                    "tournament_id": 22
+                }
+            ]
         },
         {
             "name": "Tomi",
@@ -1148,6 +1274,30 @@
                     },
                     "team_name": "HarleyQuinn",
                     "tournament_id": 18
+                },
+                {
+                    "medaltype": {
+                        "location": "Indoor",
+                        "medal": "Gold"
+                    },
+                    "team_name": "Blackhole",
+                    "tournament_id": 22
+                },
+                {
+                    "medaltype": {
+                        "location": "Indoor",
+                        "medal": "Gold"
+                    },
+                    "team_name": "Hiiden hirvet",
+                    "tournament_id": 24
+                },
+                {
+                    "medaltype": {
+                        "location": "Indoor",
+                        "medal": "Gold"
+                    },
+                    "team_name": "Finland is not real",
+                    "tournament_id": 25
                 }
             ]
         },
@@ -1328,6 +1478,14 @@
                     },
                     "team_name": "HarleyQuinn",
                     "tournament_id": 18
+                },
+                {
+                    "medaltype": {
+                        "location": "Indoor",
+                        "medal": "Gold"
+                    },
+                    "team_name": "Stark",
+                    "tournament_id": 23
                 }
             ]
         },
@@ -1862,7 +2020,16 @@
             "extra_awards": [],
             "cards": [],
             "nickname": "Hidden",
-            "placements": []
+            "placements": [
+                {
+                    "medaltype": {
+                        "location": "Indoor",
+                        "medal": "Gold"
+                    },
+                    "team_name": "Blackhole",
+                    "tournament_id": 22
+                }
+            ]
         },
         {
             "name": "Maelle",
@@ -2036,7 +2203,16 @@
             "extra_awards": [],
             "cards": [],
             "nickname": "Hidden",
-            "placements": []
+            "placements": [
+                {
+                    "medaltype": {
+                        "location": "Indoor",
+                        "medal": "Gold"
+                    },
+                    "team_name": "Stark",
+                    "tournament_id": 23
+                }
+            ]
         },
         {
             "name": "Clement",
@@ -2077,11 +2253,185 @@
             "extra_awards": [],
             "cards": [],
             "nickname": "Hidden",
-            "placements": []
+            "placements": [
+                {
+                    "medaltype": {
+                        "location": "Indoor",
+                        "medal": "Gold"
+                    },
+                    "team_name": "Hiiden hirvet",
+                    "tournament_id": 24
+                }
+            ]
         },
         {
             "name": "Pauliina V",
             "id": 91,
+            "extra_awards": [],
+            "cards": [],
+            "nickname": "Hidden",
+            "placements": []
+        },
+        {
+            "name": "Jaakko Y",
+            "id": 92,
+            "extra_awards": [],
+            "cards": [],
+            "nickname": "Hidden",
+            "placements": []
+        },
+        {
+            "name": "Ursa",
+            "id": 93,
+            "extra_awards": [],
+            "cards": [],
+            "nickname": "Hidden",
+            "placements": []
+        },
+        {
+            "name": "Jatta",
+            "id": 94,
+            "extra_awards": [],
+            "cards": [],
+            "nickname": "Hidden",
+            "placements": []
+        },
+        {
+            "name": "Emilia",
+            "id": 95,
+            "extra_awards": [
+                {
+                    "id": 22,
+                    "name": "Puolukan poimija",
+                    "tournament_name": "Kalevala Tournament",
+                    "location": "Indoor",
+                    "tournament_date": "2026-03-08T09:00:00Z"
+                }
+            ],
+            "cards": [],
+            "nickname": "Hidden",
+            "placements": []
+        },
+        {
+            "name": "Liv",
+            "id": 96,
+            "extra_awards": [],
+            "cards": [],
+            "nickname": "Hidden",
+            "placements": [
+                {
+                    "medaltype": {
+                        "location": "Indoor",
+                        "medal": "Gold"
+                    },
+                    "team_name": "Finland is not real",
+                    "tournament_id": 25
+                }
+            ]
+        },
+        {
+            "name": "Andre",
+            "id": 97,
+            "extra_awards": [],
+            "cards": [],
+            "nickname": "Hidden",
+            "placements": [
+                {
+                    "medaltype": {
+                        "location": "Indoor",
+                        "medal": "Gold"
+                    },
+                    "team_name": "Stark",
+                    "tournament_id": 23
+                }
+            ]
+        },
+        {
+            "name": "Kas",
+            "id": 98,
+            "extra_awards": [],
+            "cards": [],
+            "nickname": "Hidden",
+            "placements": [
+                {
+                    "medaltype": {
+                        "location": "Indoor",
+                        "medal": "Gold"
+                    },
+                    "team_name": "Hiiden hirvet",
+                    "tournament_id": 24
+                }
+            ]
+        },
+        {
+            "name": "Bae",
+            "id": 99,
+            "extra_awards": [],
+            "cards": [],
+            "nickname": "Hidden",
+            "placements": [
+                {
+                    "medaltype": {
+                        "location": "Indoor",
+                        "medal": "Gold"
+                    },
+                    "team_name": "Hiiden hirvet",
+                    "tournament_id": 24
+                }
+            ]
+        },
+        {
+            "name": "Bure",
+            "id": 100,
+            "extra_awards": [],
+            "cards": [],
+            "nickname": "Hidden",
+            "placements": []
+        },
+        {
+            "name": "Larthan",
+            "id": 101,
+            "extra_awards": [],
+            "cards": [],
+            "nickname": "Hidden",
+            "placements": []
+        },
+        {
+            "name": "Joona",
+            "id": 102,
+            "extra_awards": [],
+            "cards": [],
+            "nickname": "Hidden",
+            "placements": []
+        },
+        {
+            "name": "Mariia",
+            "id": 103,
+            "extra_awards": [],
+            "cards": [],
+            "nickname": "Hidden",
+            "placements": [
+                {
+                    "medaltype": {
+                        "location": "Indoor",
+                        "medal": "Gold"
+                    },
+                    "team_name": "Stark",
+                    "tournament_id": 23
+                }
+            ]
+        },
+        {
+            "name": "Joosef",
+            "id": 104,
+            "extra_awards": [],
+            "cards": [],
+            "nickname": "Hidden",
+            "placements": []
+        },
+        {
+            "name": "Lucho",
+            "id": 105,
             "extra_awards": [],
             "cards": [],
             "nickname": "Hidden",
@@ -2717,6 +3067,134 @@
                 36,
                 34,
                 7
+            ]
+        },
+        {
+            "id": 22,
+            "name": "Outer Space Tournament",
+            "type": "Indoor",
+            "date": "2026-01-25T09:00:00Z",
+            "participants": [
+                69,
+                105,
+                20,
+                4,
+                99,
+                26,
+                30,
+                31,
+                27,
+                16,
+                1,
+                71,
+                29,
+                97,
+                77,
+                7,
+                37,
+                52,
+                34,
+                10,
+                8,
+                9,
+                12,
+                104
+            ]
+        },
+        {
+            "id": 23,
+            "name": "Game of Thrones Tournament",
+            "type": "Indoor",
+            "date": "2026-02-15T09:00:00Z",
+            "participants": [
+                86,
+                14,
+                97,
+                37,
+                2,
+                103,
+                102,
+                29,
+                90,
+                26,
+                100,
+                12,
+                101,
+                9,
+                20,
+                52,
+                8,
+                3,
+                31,
+                34,
+                16,
+                1,
+                10,
+                7
+            ]
+        },
+        {
+            "id": 24,
+            "name": "Kalevala Tournament",
+            "type": "Indoor",
+            "date": "2026-03-08T09:00:00Z",
+            "participants": [
+                29,
+                26,
+                15,
+                97,
+                12,
+                20,
+                99,
+                98,
+                90,
+                3,
+                31,
+                16,
+                37,
+                9,
+                1,
+                95,
+                34,
+                100,
+                96,
+                101,
+                8,
+                2,
+                10,
+                7
+            ]
+        },
+        {
+            "id": 25,
+            "name": "Conspiracy Tournament",
+            "type": "Indoor",
+            "date": "2026-04-12T09:00:00Z",
+            "participants": [
+                31,
+                14,
+                9,
+                2,
+                96,
+                1,
+                102,
+                68,
+                97,
+                95,
+                7,
+                93,
+                29,
+                30,
+                101,
+                16,
+                15,
+                26,
+                20,
+                10,
+                3,
+                90,
+                94,
+                99
             ]
         }
     ]

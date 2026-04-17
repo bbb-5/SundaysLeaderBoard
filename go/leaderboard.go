@@ -279,6 +279,9 @@ AND pt.player_id=? AND tt.tournament_id=?`, player_id, tournament_id)
 		names = append(names, name)
 	}
 
+	if len(names) == 0 {
+		return "Not found"
+	}
 	return names[0]
 }
 
@@ -407,5 +410,4 @@ func main() {
 	db.Close()
 }
 
-//go run leaderboard.go ../Sundays_Clean_DB/SundaysDatabase.db > PlayerData.json
 //go run leaderboard.go ../../Sundays_Clean_DB/SundaysDatabase.db > test2.json
