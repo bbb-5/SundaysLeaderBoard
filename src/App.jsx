@@ -4,6 +4,7 @@ import TopBar from './components/TopBar'
 import LeaderBoard from './components/LeaderBoard'
 import BottomBar from './components/BottomBar'
 import dataService from './services/data'
+import Style from './components/Style'
 
 function App() {
   const [players, setPlayers] = useState([])
@@ -16,6 +17,7 @@ function App() {
   const [end_date, setEnd] = useState(new Date("2025-06-22T11:30:00Z"))
 
   const [filter_index, setFilterIndex] = useState(2)
+  const [light__dark_mode, setMode] = useState(0)
 
   const Medals = {
     Gold: "Gold",
@@ -327,6 +329,18 @@ function App() {
     filterTournaments(filter_keys[new_index])
     console.log("NEW FILTER: ",filter_keys[new_index])
   }
+
+  const handleModeChange = () => {
+
+    let mode_index = light__dark_mode+1
+
+    if (light__dark_mode > 0) {
+      mode_index = 0
+    }
+    
+    setMode(mode_index)
+    console.log('new mode: ', light__dark_mode)
+  }
   
   const setStart2 = (newStart) => {
     if (end_date < newStart) {
@@ -384,10 +398,11 @@ function App() {
 
   return (
     <>
+      <Style mode={light__dark_mode}/>
       <h1>Sunday's Leaderboard</h1>
       <TopBar reverseHandler={handleReverse} filterHandler={handleFilter} filter_by={filter.filter_by}
         tournaments={tournaments} onStartDate={(d) => { onDateChange(setStart2, d) }}
-        onEndDate={(d) => { onDateChange(setEnd, d) }} />
+        onEndDate={(d) => { onDateChange(setEnd, d) }} mode={light__dark_mode} onModeChange={handleModeChange}/>
       <LeaderBoard players={playersShow} sort_by={sorter.sort_by} filter_by={filter.filter_by}
         start_date={start_date} end_date={end_date} tournaments={tournaments}></LeaderBoard>
       <BottomBar handleSelected={handleSorter} sort_by={sorter.sort_by} filter_by={filter.filter_by} />
