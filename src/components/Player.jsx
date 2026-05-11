@@ -472,7 +472,7 @@ const get_participations = (filter, player_id) => {
   };
 
   return (
-    <div className="collapsible">
+    <div className="player">
       <div className="header" {...getToggleProps()}>
         {isExpanded ? player_default_map[sort_by] : player_default_map[sort_by]}
       </div>

@@ -41,12 +41,21 @@ li {
   padding: 1em;
 }
 
+.playerbox {
+  display:grid;
+  grid-template-columns: 1fr 8fr;
+}
+
 .rankbox {
   border: solid thin lightcyan;
-  margin-bottom: 1em;
-  height: 50px;
-  width: 50px;
+  height: 54px;
+  width: 54px;
   background-color: #242424;
+  display: inline-block;
+}
+
+.player {
+display: inline-block;
 }
 
 .logo {
